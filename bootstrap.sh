@@ -9,6 +9,8 @@ function doIt() {
 		--exclude ".DS_Store" \
 		--exclude "bootstrap.sh" \
 		--exclude "README.md" \
+    --exclude "brew.sh" \ # init file, run from repo
+    --exclude ".macos" \ # init file, run from repo
 		-avh --no-perms . ~;
 	source ~/.bash_profile;
 }
