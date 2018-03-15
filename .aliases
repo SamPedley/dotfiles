@@ -9,8 +9,10 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 alias cdp="cd ~/Projects"
-alias cdts="cd ~/Projects/TransferSafe/"
 alias cdgo="cd $GOPATH"
+
+# GR shortcuts
+alias cdts="cd ~/Projects/TransferSafe/"
 
 # Shortcuts
 alias g="git"

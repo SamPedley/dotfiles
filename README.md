@@ -1,6 +1,6 @@
 # dotfiles
 
-> Based heavliy off [mathiasbynens dotfiles](https://github.com/mathiasbynens/dotfiles)
+> Based heavily off [Mathias dotfiles](https://github.com/mathiasbynens/dotfiles)
 
 ## Installation
 
