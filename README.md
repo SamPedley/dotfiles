@@ -2,12 +2,22 @@
 
 > Some dotfiles and what not.
 
+
+<p align="center">
+  <img src="docs/screenshot.png" border="0" />
+</p>
+
 ## Working with stuff
 * Install or update with `source bootstrap.sh`
 * First time mac setup with `./.macos`
 * Install common brew packages with `./brew.sh`
 
 ## Included function stuff
+
+```bash
+# Opens the github page for the current working dir
+repo
+```
 
 ```bash
 # Create a new directory and enter it

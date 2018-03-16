@@ -99,6 +99,6 @@ repo()
     fi
 
     echo $giturl
-    o $giturl
+    open $giturl
   fi
 }
