@@ -74,3 +74,31 @@ function tre() {
 function kproxy () {
   open "http://127.0.0.1:8001/ui" && kubectl proxy
 }
+
+# Call from a local repo to open the repository on github/bitbucket in browser
+repo()
+{
+  local giturl=$(git config --get remote.origin.url \
+    | sed 's/git@/\/\//g' \
+    | sed 's/.git$//' \
+    | sed 's/https://g' \
+    | sed 's/:/\//g')
+
+  if [[ $giturl == "" ]]; then
+    echo "Not a git repository or no remote.origin.url is set."
+  else
+    local gitbranch=$(git rev-parse --abbrev-ref HEAD)
+    local giturl="https:${giturl}"
+
+    if [[ $gitbranch != "master" ]]; then
+      if echo "${giturl}" | grep -i "bitbucket" > /dev/null ; then
+        local giturl="${giturl}/branch/${gitbranch}"
+      else
+        local giturl="${giturl}/tree/${gitbranch}"
+      fi
+    fi
+
+    echo $giturl
+    o $giturl
+  fi
+}
