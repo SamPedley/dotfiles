@@ -38,12 +38,12 @@ prompt_git() {
 
          if [ "$unpushed" != "0" ]
         then
-          s+="${green}\UF431 "
+          s+="${green}▲ "
         fi
 
         if [ "$unmerged" != "0" ]
         then
-            s+="${red}\UF433 "
+            s+="${red}▼ "
         fi
 
         if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
