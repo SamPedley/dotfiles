@@ -48,3 +48,9 @@ echo 'Should I give you links for system applications (e.g. VS Code, FireFox, Ch
 echo 'n / y'
 read give_links
 [[ "$give_links" == 'y' ]] && open_apps
+
+
+echo 'Should I copy over the .extra file (say no unless youre sam)?'
+echo 'n / y'
+read copy_extra
+[[ "$copy_extra" == 'y' ]] && rsync ./.extra ~/.extra

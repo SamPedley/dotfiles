@@ -12,6 +12,7 @@ function doIt() {
     --exclude "brew.sh" \
     --exclude "init.sh" \
     --exclude ".macos" \
+    --exclude ".extra" \
     --exclude "docs/" \
 		-avh --no-perms . ~;
 	source ~/.bash_profile;
