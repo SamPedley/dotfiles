@@ -52,7 +52,7 @@ prompt_git() {
 
 			# Check for unstaged changes.
 			if ! $(git diff-files --quiet --ignore-submodules --); then
-				s+="${orange}UC ";
+				s+="${orange}US ";
 			fi;
 
 			# Check for uncommitted changes in the index.
@@ -62,7 +62,7 @@ prompt_git() {
       
       # Check for untracked files.
 			if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-				s+="${red}N ";
+				s+="${red}UT ";
 			fi;
 
       if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
