@@ -38,15 +38,17 @@ prompt_git() {
 
          if [ "$unpushed" != "0" ]
         then
-          s+="${green}$unpushed\UF431 "
+          s+="${green}\UF431 "
         fi
 
         if [ "$unmerged" != "0" ]
         then
-            s+="${red}$unmerged\UF433 "
+            s+="${red}\UF433 "
         fi
 
-      s+="${yellow}( "
+        if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
+        s+="${yellow}("
+        fi
 
 			# Check for unstaged changes.
 			if ! $(git diff-files --quiet --ignore-submodules --); then
@@ -63,8 +65,12 @@ prompt_git() {
 				s+="${red}N ";
 			fi;
 
-      #s="${s::-1}"
-      s+="${yellow})"
+      if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
+        s="${s::-1}"
+        s+="${yellow})"
+        fi
+
+
 
 
 			# Check for stashed files.
