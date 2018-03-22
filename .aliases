@@ -19,6 +19,9 @@ alias g="git"
 alias nr="npm run"
 alias gb="go build"
 
+# kubectl
+alias ku="kubectl"
+
 alias hosts="sudo vim /etc/hosts"
 
 # Detect which `ls` flavor is in use
