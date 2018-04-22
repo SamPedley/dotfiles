@@ -68,13 +68,6 @@ function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
-# GR Helpers --------------------------------------------------------
-
-# Opens the ui for kubectl
-function kproxy () {
-  open "http://127.0.0.1:8001/ui" && kubectl proxy
-}
-
 # Call from a local repo to open the repository on github/bitbucket in browser
 repo()
 {
@@ -101,4 +94,9 @@ repo()
     echo $giturl
     open $giturl
   fi
+}
+
+# Opens the ui for kubectl
+function kproxy () {
+  open "http://127.0.0.1:8001/ui" && kubectl proxy
 }

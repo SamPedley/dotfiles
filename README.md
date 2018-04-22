@@ -12,57 +12,58 @@
 * First time mac setup with `./.macos`
 * Install common brew packages with `./brew.sh`
 
-## Included function stuff
+## Some good comands to remember:
+
+### `json`
+Syntax-highlight JSON strings or files
 
 ```bash
-# Opens the github page for the current working dir
-repo
+echo '{"foo":42, "bar": {"baz": false}}' | json
+
+> {
+>     "bar": {
+>        "baz": false
+>    },
+>    "foo": 42
+> }
 ```
+
+### `tre`
+`tre` is a shorthand for `tree` with hidden files and color enabled.
 
 ```bash
-# Create a new directory and enter it
-mkdr
-# EX: mkd foo
+tre dotfiles/init
+
+>  1 init
+>  2 ├── .DS_Store
+>  3 ├── Flat.itermcolors
+>  4 ├── Flat.terminal
+>  5 ├── Solarized\ Dark\ xterm-256color.terminal
+>  6 ├── Solarized\ Dark.itermcolors
+>  7 └── com.googlecode.iterm2.plist
+>  8
+>  9 0 directories, 6 files
 ```
 
+
+Opens the github page for the current working dir.
+
+### `mkd`
+Create a new directory and enter it.
+
+### `cdf`
+Change working directory to the top-most Finder.
+
+### `fs`
+Determine size of a file or total size of a directory.
 ```bash
-# Change working directory to the top-most Finder window location
-cdf
+fs dotfiles
+> 604K	dotfiles
 ```
 
-```bash
-# Determine size of a file or total size of a directory
-fs
-# EX: fs dotfiles
-# 604K	dotfiles
-```
-
-```bash
-# Create a data URL from a file
-dataurl
-# EX: dataurl logo.png
-# data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtQAA...
-```
-
-```bash
-# Start python simple HTTP server from a directory, optionally specifying the port
-server
-# EX: server
-# Serving HTTP on 0.0.0.0 port 8000 ...
-```
-
-```bash
-# Syntax-highlight JSON strings or files
-json
-# EX: echo '{"foo":42}' | json
-```
-
-```bash
-# `tre` is a shorthand for `tree` with hidden files and color enabled
-tre
-```
-
+### `server`
+Start python simple HTTP server from a directory, optionally specifying the port.
 
 
 ## Links and stuff
-* This is based heavily off the [Mathias dotfiles](https://github.com/mathiasbynens/dotfiles) repo.
+* This is based heavily off the awesome [Mathias dotfiles](https://github.com/mathiasbynens/dotfiles) repo.

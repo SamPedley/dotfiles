@@ -18,37 +18,15 @@ prompt_git() {
 	# Check if the current directory is in a Git repository.
 	if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then
 
-    # Show git commit hash
-    #s+="$(git rev-parse --short HEAD 2> /dev/null || echo '(unknown)') ";
-
-    # for showing dirty repo
-    #if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
-    #s+="${white}\UE701 "
-    #fi
-
 		# check if the current directory is in .git before running git checks
 		if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]; then
 
 			# Ensure the index is up to date.
 			git update-index --really-refresh -q &>/dev/null;
 
-      local unmerged=`expr $(git branch --no-color -a --no-merged | wc -l)`
-      local unpushed=`expr $( (git branch --no-color -r --contains HEAD; \
-        git branch --no-color -r) | sort | uniq -u | wc -l )`
-
-         if [ "$unpushed" != "0" ]
-        then
-          s+="${green}▲ "
-        fi
-
-        if [ "$unmerged" != "0" ]
-        then
-            s+="${red}▼ "
-        fi
-
-        if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
+      if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
         s+="${yellow}("
-        fi
+      fi
 
 			# Check for unstaged changes.
 			if ! $(git diff-files --quiet --ignore-submodules --); then
@@ -68,15 +46,7 @@ prompt_git() {
       if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
         s="${s::-1}"
         s+="${yellow})"
-        fi
-
-
-
-
-			# Check for stashed files.
-			# if $(git rev-parse --verify refs/stash &>/dev/null); then
-			# 	s+='sf';
-			# fi;
+      fi;
 
 		fi;
 
