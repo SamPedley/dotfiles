@@ -1,4 +1,6 @@
 # in vim mode show status
+set editing-mode vi
+set keymap vi-command
 set show-mode-in-prompt on
 
 # Make Tab autocomplete regardless of filename case
