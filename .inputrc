@@ -1,3 +1,6 @@
+# in vim mode show status
+set show-mode-in-prompt on
+
 # Make Tab autocomplete regardless of filename case
 set completion-ignore-case on
 
