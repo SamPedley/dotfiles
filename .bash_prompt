@@ -107,9 +107,9 @@ PS1="\[\033]0;\W\007\]"; # working directory base name
 PS1+="\[${bold}\]\n"; # newline
 PS1+="\[${orange}\]\D{%I:%M} "; # Time
 PS1+="\[${white}\]\w"; # working directory full path
-PS1+="\$(prompt_git \"\[${white}\] \[${blue}\]\" \"\[${blue}\]\")"; # Git repository details
+PS1+="\$(prompt_git \"\[${white}\] \[${blue}\]\" \"\[${blue}\]\")\[${reset}\]"; # Git repository details
 PS1+="\n";
-PS1+="\[${white}\]❯ \[${reset}\]"; # `$` (and reset color)
+PS1+="\[${reset}\] "; # `$` (and reset color)
 export PS1;
 
 PS2="\[${yellow}\]→ \[${reset}\]";
