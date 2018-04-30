@@ -3,8 +3,8 @@ set editing-mode vi
 set keymap vi-command
 set show-mode-in-prompt on
 
-set vi-ins-mode-string "\e[1;34m+\e[1;37m❯"
-set vi-cmd-mode-string "\e[1;31m:❯"
+set vi-ins-mode-string "\e[1;34m+\e[1;37m ❯"
+set vi-cmd-mode-string "\e[1;31m: ❯"
 
 # Make Tab autocomplete regardless of filename case
 set completion-ignore-case on
