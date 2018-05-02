@@ -96,7 +96,38 @@ repo()
   fi
 }
 
-# Opens the ui for kubectl
+# Opens the dashboard ui for kubectl
+# usage: kproxy [prod | dev] [gr | gra]
+# Arg1 for enviroment will default to prod
+# Arg2 for Context will default to gr
 function kproxy () {
-  open "http://127.0.0.1:8001/ui" && kubectl proxy
+  local ENV="prod"
+  local CONTEXT="gr"
+  local URL="http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/overview?namespace=default"
+
+  if [ "$1" == "dev" ];then
+      ENV="dev"
+  fi
+
+  if [ "$2" == "gra" ];then
+      CONTEXT="gra"
+  fi
+
+  if [ "$CONTEXT" == "gra" ] && [ "$ENV" == "dev" ];then
+    echo "There is no dev gra context"
+    exit 1
+  fi
+
+  local K8_FULL_CONTEXT="k8s-green.$CONTEXT-$ENV.com"
+  
+  # Log debugging info
+  echo "Opening k8s $CONTEXT $ENV dashboard..."
+  echo "Context: $K8_FULL_CONTEXT"
+  echo "Url: $URL" 
+
+  # Open url in default browser
+  Open "$URL"
+  
+  # Start last since it blocks 
+  kubectl proxy --context=$K8_FULL_CONTEXT
 }
