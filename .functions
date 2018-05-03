@@ -97,14 +97,15 @@ repo()
 }
 
 # Opens the dashboard ui for kubectl
-# usage: kproxy [prod | dev] [gr | gra]
+# usage: kproxy [prod | dev] [gr | gra] [ts | dm]
 # Arg1 for enviroment will default to prod
 # Arg2 for Context will default to gr
+# Arg3 is shorthand for namespace will default to default
 function kproxy () {
   local ENV="prod"
   local CONTEXT="gr"
-  local URL="http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/overview?namespace=default"
-
+  local NAMESPACE="default"
+  
   if [ "$1" == "dev" ];then
       ENV="dev"
   fi
@@ -113,16 +114,24 @@ function kproxy () {
       CONTEXT="gra"
   fi
 
+  # Figure out namespace to open dashboard directly to where you want to go
+  if [ "$3" == "ts" ] || [ "$3" == "transfersafe" ];then
+    NAMESPACE="transfersafe-$1"
+  elif [ "$3" == "dm" ] || [ "$3" == "ra" ] || [ "$3" == "kracken" ];then
+    NAMESPACE="kraken-$1"
+  fi
+
   if [ "$CONTEXT" == "gra" ] && [ "$ENV" == "dev" ];then
     echo "There is no dev gra context"
     exit 1
   fi
 
   local K8_FULL_CONTEXT="k8s-green.$CONTEXT-$ENV.com"
+  local URL="http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/overview?namespace=$NAMESPACE"
   
   # Log debugging info
   echo "Opening k8s $CONTEXT $ENV dashboard..."
-  echo "Context: $K8_FULL_CONTEXT"
+  echo "Context: $K8_FULL_CONTEXT | Namespace: $NAMESPACE"
   echo "Url: $URL" 
 
   # Open url in default browser
