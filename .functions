@@ -105,7 +105,7 @@ function kproxy () {
   local ENV="prod"
   local CONTEXT="gr"
   local NAMESPACE="default"
-  
+
   if [ "$1" == "dev" ];then
       ENV="dev"
   fi
@@ -128,15 +128,29 @@ function kproxy () {
 
   local K8_FULL_CONTEXT="k8s-green.$CONTEXT-$ENV.com"
   local URL="http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/overview?namespace=$NAMESPACE"
-  
+
   # Log debugging info
   echo "Opening k8s $CONTEXT $ENV dashboard..."
   echo "Context: $K8_FULL_CONTEXT | Namespace: $NAMESPACE"
-  echo "Url: $URL" 
+  echo "Url: $URL"
 
   # Open url in default browser
   Open "$URL"
-  
-  # Start last since it blocks 
+
+  # Start last since it blocks
   kubectl proxy --context=$K8_FULL_CONTEXT
 }
+
+# function jswap(){
+#   local VER="9"
+
+#   if ["$1" == "hi"];then
+#       echo "working"
+#       VER="1.8"
+#   fi
+
+#   echo "$VER"
+
+#   echo "---> java is now -->"
+#   java -version
+# }
