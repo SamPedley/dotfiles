@@ -1,12 +1,35 @@
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
-" Use the Solarized Dark theme
-set background=dark
-colorscheme solarized
-let g:solarized_termtrans=1
-
 " Make Vim more useful
 set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
+Plugin 'scrooloose/nerdtree'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-fireplace'
+Plugin 'luochen1990/rainbow'
+Plugin 'guns/vim-clojure-static'
+Plugin 'guns/vim-clojure-highlight'
+Plugin 'pangloss/vim-javascript'
+Plugin 'fatih/vim-go'
+Plugin 'flazz/vim-colorschemes'
+
+call vundle#end()
+filetype plugin indent on
+
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+
+" Use the Solarized Dark theme
+"set background=dark
+"colorscheme solarized
+"let g:solarized_termtrans=1
+colorscheme molokai
+
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
 " Enhance command-line completion
