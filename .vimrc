@@ -24,11 +24,14 @@ filetype plugin indent on
 
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
-" Use the Solarized Dark theme
-"set background=dark
-"colorscheme solarized
-"let g:solarized_termtrans=1
-colorscheme atomified
+let NERDTreeQuitOnOpen = 1 "close nerdTree when opening a file
+let NERDTreeMinimalUI = 1 "Hide extra details
+let NERDTreeDirArrows = 1
+
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+set termguicolors
+colorscheme monokai_pro
 
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
@@ -75,7 +78,9 @@ set cursorline
 set tabstop=2
 " Show “invisible” characters
 "set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
-set list
+"set list
+" Hide invis characters
+set nolist
 " Highlight searches
 set hlsearch
 " Ignore case of searches
@@ -107,6 +112,10 @@ if exists("&relativenumber")
 endif
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
+
+" NerdTree
+nnoremap <Leader>f :NERDTreeToggle<Enter> "Toggle nerdtree with f
+nnoremap <silent> <Leader>v :NERDTreeFind<CR> "Toggle nerdtree find with v
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
