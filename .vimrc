@@ -31,7 +31,7 @@ let NERDTreeDirArrows = 1
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 set termguicolors
-colorscheme monokai_pro
+colorscheme deus
 
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
@@ -114,8 +114,8 @@ endif
 set scrolloff=3
 
 " NerdTree
-nnoremap <Leader>f :NERDTreeToggle<Enter> "Toggle nerdtree with f
-nnoremap <silent> <Leader>v :NERDTreeFind<CR> "Toggle nerdtree find with v
+nnoremap <Leader>f :NERDTreeToggle<Enter>
+nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
