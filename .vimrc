@@ -28,7 +28,7 @@ let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 "set background=dark
 "colorscheme solarized
 "let g:solarized_termtrans=1
-colorscheme molokai
+colorscheme atomified
 
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
@@ -74,7 +74,7 @@ set cursorline
 " Make tabs as wide as two spaces
 set tabstop=2
 " Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+"set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set list
 " Highlight searches
 set hlsearch
