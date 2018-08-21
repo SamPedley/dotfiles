@@ -18,7 +18,9 @@ Plugin 'guns/vim-clojure-highlight'
 Plugin 'pangloss/vim-javascript'
 Plugin 'fatih/vim-go'
 Plugin 'flazz/vim-colorschemes'
-
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin  'edkolev/tmuxline.vim'
 call vundle#end()
 filetype plugin indent on
 
