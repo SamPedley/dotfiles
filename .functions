@@ -141,16 +141,9 @@ function kproxy () {
   kubectl proxy --context=$K8_FULL_CONTEXT
 }
 
-# function jswap(){
-#   local VER="9"
-
-#   if ["$1" == "hi"];then
-#       echo "working"
-#       VER="1.8"
-#   fi
-
-#   echo "$VER"
-
-#   echo "---> java is now -->"
-#   java -version
-# }
+function jswap(){
+  export JAVA_HOME=`/usr/libexec/java_home $@`
+  echo "JAVA_HOME:" $JAVA_HOME
+  echo "java -version:"
+  java -version
+}
