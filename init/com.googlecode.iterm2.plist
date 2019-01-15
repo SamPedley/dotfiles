@@ -435,6 +435,10 @@
 	</dict>
 	<key>Default Bookmark Guid</key>
 	<string>A457D7F4-9F41-4D91-92F8-A6BD664981A3</string>
+	<key>HideFromDockAndAppSwitcher</key>
+	<true/>
+	<key>HideMenuBarInFullscreen</key>
+	<false/>
 	<key>Hotkey</key>
 	<false/>
 	<key>HotkeyChar</key>
@@ -496,11 +500,11 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>640 262 702 308 0 0 1680 1027 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>393 614 928 394 0 0 1680 1027 </string>
+	<string>393 522 796 486 0 0 1680 1050 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>127 443 592 584 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1680 1050 0 0 1680 1027 </string>
+	<string>0 0 1680 1028 0 0 1680 1027 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1866,7 +1870,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-01-14T04:30:10Z</date>
+	<date>2019-01-15T21:58:44Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>TabViewType</key>
