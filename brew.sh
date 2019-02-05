@@ -51,6 +51,17 @@ brew install rename
 brew install ssh-copy-id
 brew install tree
 
+# Fonts
+brew tap homebrew/cask-fonts
+brew cask install font-source-code-pro
+
+# Terminals & editors
+brew cask install alacritty
+brew tap d12frosted/emacs-plus
+brew install emacs-plus
+brew linkapps emacs-plus
+
+
 # Install other languages
 brew install clojure
 brew install leiningen
