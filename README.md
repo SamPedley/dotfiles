@@ -67,3 +67,7 @@ Start python simple HTTP server from a directory, optionally specifying the port
 
 ## Links and stuff
 * This is based heavily off the awesome [Mathias dotfiles](https://github.com/mathiasbynens/dotfiles) repo.
+
+
+## tmux
+https://github.com/tmux-plugins/tpm

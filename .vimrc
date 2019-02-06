@@ -118,6 +118,10 @@ set scrolloff=3
 nnoremap <Leader>f :NERDTreeToggle<Enter>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 
+" Fireplace
+nnoremap <Leader>e :Eval<CR>
+nnoremap <Leader>E :%Eval<CR>
+
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
 	let save_cursor = getpos(".")

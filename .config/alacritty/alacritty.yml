@@ -41,10 +41,10 @@ window:
   # Values for `decorations` (macOS only):
   #     - buttonless: Title bar, transparent background and title bar buttons
   #     - transparent: Title bar, transparent background, but no title bar buttons
-  decorations: none
+  decorations: buttonless
 
   # When true, alacritty starts maximized.
-  start_maximized: false
+  start_maximized: true
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
