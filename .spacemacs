@@ -52,7 +52,8 @@ values."
           git-gutter-use-fringe t)
      github
      markdown
-     org
+     (org :variables
+          org-projectile-file "~/Library/Mobile\ Documents/com~apple~CloudDocs/Org-Notes/TODO.org")
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -354,3 +355,6 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background nil)))))
+
+(with-eval-after-load 'org (setq org-agenda-files 
+                                 (append (file-expand-wildcards (concat org-directory "~/Library/Mobile\ Documents/com~apple~CloudDocs/Org-Notes/*.org")))))
