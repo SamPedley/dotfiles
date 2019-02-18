@@ -200,3 +200,12 @@
 
 [url "ssh://git@github.com/"]
   insteadOf = "https://github.com/"
+[user]
+	name = Sam Pedley
+	email = sjpeds@gmail.com
+[magithub]
+	online = true
+[magithub "status"]
+	includeStatusHeader = true
+	includePullRequestsSection = true
+	includeIssuesSection = true

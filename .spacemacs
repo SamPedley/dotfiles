@@ -1,6 +1,4 @@
 ;; -*- mode: emacs-lisp -*-
-;; This file is loaded by Spacemacs at startup.
-;; It must be stored in your home directory.
 
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
@@ -18,50 +16,50 @@ values."
    ;; listed in `dotspacemacs-configuration-layers'. `nil' disable the lazy
    ;; installation feature and you have to explicitly list a layer in the
    ;; variable `dotspacemacs-configuration-layers' to install it.
-   ;; (default 'unused)
-   dotspacemacs-enable-lazy-installation
-   'unused
+   ;; (default 'unused) dotspacemacs-enable-lazy-installation 'unused
    ;; If non-nil then Spacemacs will ask for confirmation before installing
-   ;; a layer lazily. (default t)
-   dotspacemacs-ask-for-lazy-installation
-   t
+   ;; a layer lazily. (default t) dotspacemacs-ask-for-lazy-installation t
    ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
-   ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path
-   '()
+   ;; Paths must have a trailing slash (i.e. `~/.mycontribs/') dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(react yaml
-           semantic
-           javascript
-           (clojure :variables clojure-enable-sayid
-                    t clojure-enable-clj-refactor t)
-           ;; ----------------------------------------------------------------
-           ;; Example of useful layers you may want to use right away.
-           ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-           ;; <M-m f e R> (Emacs style) to install them.
-           ;; ----------------------------------------------------------------
-           helm
-           themes-megapack
-           auto-completion
-                                        ;  better-defaults
-           emacs-lisp
-           (git :variables git-magit-status-fullscreen
-                t git-enable-github-support t git-gutter-use-fringe
-                t)
-           github
-           prettier
-           markdown
-           (org :variables org-projectile-file
-                "~/Library/Mobile\ Documents/com~apple~CloudDocs/Org-Notes/TODO.org")
-           ;; (shell :variables
-           ;;        shell-default-height 30
-           ;;        shell-default-position 'bottom)
-           ;; spell-checking
-           syntax-checking
-           (version-control :variables version-control-diff-tool'diff-hl
-                            version-control-global-margin t))
+    '(restclient
+       (go :variables go-tab-width
+         4 go-format-before-save t) react
+         yaml
+         semantic
+         plantuml
+         spotify
+         (json :variables json-fmt-tool'prettier-js)
+         javascript
+         (clojure :variables clojure-enable-sayid
+                  t clojure-enable-clj-refactor t)
+         helm
+         restclient
+         themes-megapack
+         auto-completion
+         ;; (colors :variables colors-enable-nyan-cat-progress-bar t)
+         shell-scripts
+         command-log
+         (ranger :variables ranger-show-preview
+                 t)
+         tern
+         terraform
+         emacs-lisp
+         git
+                                        ; github
+         prettier
+         markdown
+         (org :variables org-projectile-file
+              (expand-file-name "~/Library/Mobile\ Documents/com~apple~CloudDocs/org/PROJECT-NOTES.org"))
+         (shell :variables shell-default-height
+                30 shell-default-position 'bottom)
+         ;; spell-checking
+         syntax-checking
+         (version-control :variables version-control-diff-tool'git-gutter+
+                          version-control-diff-side 'left version-control-global-margin
+                          t))
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
@@ -335,12 +333,12 @@ values."
                 ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
                 ;; (default nil)
                 dotspacemacs-smartparens-strict-mode
-                nil
+                t
                 ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
                 ;; over any automatically added closing parenthesis, bracket, quote, etc…
                 ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
                 dotspacemacs-smart-closing-parenthesis
-                nil
+                t
                 ;; Select a scope to highlight delimiters. Possible values are `any',
                 ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
                 ;; emphasis the current one). (default 'all)
@@ -366,7 +364,7 @@ values."
                 ;; delete only whitespace for changed lines or `nil' to disable cleanup.
                 ;; (default nil)
                 dotspacemacs-whitespace-cleanup
-                nil))
+                'trailing))
 
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
@@ -375,7 +373,8 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  (setq javascript-fmt-tool 'prettier))
+  (setq-default git-magit-status-fullscreen
+                t))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -384,10 +383,10 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (unless (display-graphic-p)
-    (setq linum-relative-format "%3s ")) ;; Alternatively
-  (unless (display-graphic-p)
-    (setq linum-relative-format (concat linum-relative-format " "))))
+  (with-eval-after-load 'org
+    (setq org-directory (expand-file-name "~/Library/Mobile\ Documents/com~apple~CloudDocs/org/"))
+    (setq org-default-notes-file (expand-file-name "~/Library/Mobile\ Documents/com~apple~CloudDocs/org/default.org"))))
+
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
@@ -445,65 +444,23 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(default ((t (:background nil)))))
 
-;; (with-eval-after-load 'org (setq org-agenda-files
-;;                                  (append (file-expand-wildcards (concat org-directory "~/Library/Mobile\ Documents/com~apple~CloudDocs/Org-Notes/*.org")))))
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-  (custom-set-variables
-   ;; custom-set-variables was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(package-selected-packages (quote (stickyfunc-enhance srefactor yaml-mode magit-gh-pulls
-                                                          github-search github-clone github-browse-file
-                                                          gist gh marshal logito pcache ht git-gutter-fringe+
-                                                          git-gutter-fringe fringe-helper git-gutter+
-                                                          git-gutter flyspell-correct-helm flyspell-correct
-                                                          diff-hl auto-dictionary web-beautify simple-httpd
-                                                          json-snatcher json-reformat js2-mode js-doc
-                                                          tern coffee-mode unfill smeargle orgit mwim
-                                                          mmm-mode markdown-toc markdown-mode magit-gitflow
-                                                          helm-gitignore helm-company helm-c-yasnippet
-                                                          gitignore-mode gitconfig-mode gitattributes-mode
-                                                          git-timemachine git-messenger git-link gh-md
-                                                          fuzzy flycheck-pos-tip pos-tip flycheck evil-magit
-                                                          magit magit-popup git-commit with-editor company-statistics
-                                                          company clojure-snippets auto-yasnippet ac-ispell
-                                                          auto-complete clj-refactor inflections edn
-                                                          multiple-cursors paredit yasnippet peg cider-eval-sexp-fu
-                                                          cider sesman queue clojure-mode ws-butler
-                                                          winum which-key volatile-highlights vi-tilde-fringe
-                                                          uuidgen use-package toc-org spaceline powerline
-                                                          restart-emacs request rainbow-delimiters popwin
-                                                          persp-mode pcre2el paradox spinner org-plus-contrib
-                                                          org-bullets open-junk-file neotree move-text
-                                                          macrostep lorem-ipsum linum-relative link-hint
-                                                          indent-guide hydra hungry-delete hl-todo highlight-parentheses
-                                                          highlight-numbers parent-mode highlight-indentation
-                                                          helm-themes helm-swoop helm-projectile helm-mode-manager
-                                                          helm-make projectile pkg-info epl helm-flx
-                                                          helm-descbinds helm-ag google-translate golden-ratio
-                                                          flx-ido flx fill-column-indicator fancy-battery
-                                                          eyebrowse expand-region exec-path-from-shell
-                                                          evil-visualstar evil-visual-mark-mode evil-unimpaired
-                                                          evil-tutor evil-surround evil-search-highlight-persist
-                                                          highlight evil-numbers evil-nerd-commenter
-                                                          evil-mc evil-matchit evil-lisp-state smartparens
-                                                          evil-indent-plus evil-iedit-state iedit evil-exchange
-                                                          evil-escape evil-ediff evil-args evil-anzu
-                                                          anzu evil goto-chg undo-tree eval-sexp-fu
-                                                          elisp-slime-nav dumb-jump f dash s diminish
-                                                          define-word column-enforce-mode clean-aindent-mode
-                                                          bind-map bind-key auto-highlight-symbol auto-compile
-                                                          packed aggressive-indent adaptive-wrap ace-window
-                                                          ace-link ace-jump-helm-line helm avy helm-core
-                                                          popup async))))
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(default ((t (:background nil))))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+  '(package-selected-packages
+     (quote
+       (restclient-helm ob-restclient restclient ob-http know-your-http-well yaml-mode magit-gh-pulls github-search github-clone github-browse-file gist gh marshal logito pcache ht git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter flyspell-correct-helm flyspell-correct diff-hl auto-dictionary web-beautify simple-httpd json-snatcher json-reformat js2-mode js-doc tern coffee-mode unfill smeargle orgit mwim mmm-mode markdown-toc markdown-mode magit-gitflow helm-gitignore helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor company-statistics company clojure-snippets auto-yasnippet ac-ispell auto-complete clj-refactor inflections edn multiple-cursors paredit yasnippet peg cider-eval-sexp-fu cider sesman queue clojure-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:background nil)))))
+)
