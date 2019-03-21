@@ -17,7 +17,7 @@ brew install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew install findutils
 # Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed --with-default-names
+brew install gnu-sed
 # Install Bash 4.
 # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
 # running `chsh`.
@@ -31,42 +31,42 @@ if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
 fi;
 
 # Install `wget` with IRI support.
-brew install wget --with-iri
+brew install wget
 
 # Install GnuPG to enable PGP-signing commits.
 brew install gnupg
 
 # Install more recent versions of some macOS tools.
-brew install tmux
-brew install vim --with-override-system-vi
+# brew install tmux
+brew install vim
 brew install grep
 brew install openssh
-brew install screen
-brew install homebrew/php/php56 --with-gmp
+# brew install screen
+# brew install homebrew/php/php56 --with-gmp
 
 # Install other useful binaries.
 brew install git
 brew install git-lfs
-brew install rename
-brew install ssh-copy-id
+# brew install rename
+# brew install ssh-copy-id
 brew install tree
 
-# Fonts
-brew tap homebrew/cask-fonts
-brew cask install font-source-code-pro
+# # Fonts
+# brew tap homebrew/cask-fonts
+# brew cask install font-source-code-pro
 
-# Terminals & editors
-brew cask install alacritty
-brew tap d12frosted/emacs-plus
-brew install emacs-plus
-brew linkapps emacs-plus
+# # Terminals & editors
+# # brew cask install alacritty
+# brew tap d12frosted/emacs-plus
+# brew install emacs-plus
+# brew linkapps emacs-plus
 
 
-# Install other languages
-brew install clojure
-brew install leiningen
+# # Install other languages
+# brew install clojure
+# brew install leiningen
 
-brew install python
+# brew install python
 
 # Remove outdated versions from the cellar.
 brew cleanup

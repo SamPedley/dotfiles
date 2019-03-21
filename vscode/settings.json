@@ -1,0 +1,19 @@
+{
+    "workbench.colorTheme": "Gruvbox Dark (Hard)",
+    "sync.gist": "65deb49fa9d39d2cf1d3928e756aabfd",
+    "editor.minimap.enabled": false,
+    "editor.fontSize": 16,
+    "editor.tabSize": 2,
+    "workbench.iconTheme": "simple-icons",
+    "editor.lineNumbers": "relative",
+    "bracketPairColorizer.highlightActiveScope": true,
+    "bracketPairColorizer.showBracketsInGutter": true,
+    "breadcrumbs.enabled": true,
+    "window.nativeTabs": true,
+    "projectManager.any.baseFolders": ["~/Projects"],
+    "editor.renderIndentGuides": false,
+    "editor.formatOnSave": false,
+    "[javascript]": {
+        "editor.formatOnSave": true
+  }
+}

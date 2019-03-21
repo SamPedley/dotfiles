@@ -2,8 +2,6 @@
 export PATH="$HOME/bin:$PATH";
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-export ORG_NOTES_PATH="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Org-Notes"
-
 # Golang stuff
 export GOPATH=$HOME/Projects/Go
 export GOBIN=$GOPATH/bin

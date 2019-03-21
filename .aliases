@@ -15,7 +15,7 @@ alias cdgo="cd $GOPATH"
 alias cdts="cd ~/Projects/TransferSafe/"
 
 # Shortcuts
-alias e="emacs"
+alias e="emacs -nw"
 alias v="vim"
 alias g="git"
 alias nr="npm run"
