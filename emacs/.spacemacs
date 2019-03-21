@@ -9,72 +9,26 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(javascript
-  restclient
-      4 go-format-before-save t)
-  yaml
-  semantic
-  ;; (clojure :variables clojure-enable-sayid
-  ;;                 t clojure-enable-clj-refactor t)
-
-    
-         auto-completion
-
-     
+     ;; ----------------------------------------------------------------
+     ;; Example of useful layers you may want to use right away.
+     ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
+     ;; `M-m f e R' (Emacs style) to install them.
+     ;; ----------------------------------------------------------------
      helm
-     
-     
+     ;; auto-completion
+     ;; better-defaults
      emacs-lisp
-     shell-scripts
-     command-log
-     git
-     markdown
+     ;; git
+     ;; markdown
      multiple-cursors
      treemacs
-     tern
-     org
-     emacs-lisp
-     prettier
-     github
-     ;; themes-megapack
-     (shell :variables shell-default-height
-                30 shell-default-position 'bottom)
-   ;; (json :variables json-fmt-tool'prettier-js)
-  ;; plantuml
-  ;; spotify
-     ;; version-control
-
-     ;; terraform
-  ;; (go :variables go-tab-width
-  ;;  
-
-
-         ;; (shell :variables
+     ;; org
+     ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; spell-checking
      ;; syntax-checking
-     
-         
-         
-         
-         
-         
-         
-         ;; (colors :variables colors-enable-nyan-cat-progress-bar t)
-         
-         
-       
-         
-         
-         
-     
-     
-         
-         
-         
-        
-
-
+     ;; version-control
      )
 
    ;; List of additional packages that will be installed without being
@@ -134,7 +88,7 @@ It should only modify the values of Spacemacs settings."
    ;; This variable has no effect if Emacs is launched with the parameter
    ;; `--insecure' which forces the value of this variable to nil.
    ;; (default t)
-   dotspacemacs-elpa-https t
+   dotspacemacs-elpa-https nil
 
    ;; Maximum allowed time in seconds to contact an ELPA repository.
    ;; (default 5)
@@ -207,13 +161,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(gruvbox-dark-hard monokai ample zen-and-art
-                                    lush dakrone reverse jazz darktooth grandshell
-                                    ;; -- Light Themes -- whiteboard spacemacs-light
-                                    ;; -- Other  --
-                                        ; gruvbox ; like but bugged
-                                    ;; -- safe default --
-                                    spacemacs-dark)
+   dotspacemacs-themes '(gruvbox-dark-hard spacemacs-dark
+                         spacemacs-light)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
