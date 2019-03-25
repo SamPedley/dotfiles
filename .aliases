@@ -10,6 +10,7 @@ alias -- -="cd -"
 
 alias cdp="cd ~/Projects"
 alias cdgo="cd $GOPATH"
+alias notes="cd ~/Dropbox/Notes"
 
 # GR shortcuts
 alias cdts="cd ~/Projects/TransferSafe/"
