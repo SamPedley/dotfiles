@@ -18,7 +18,7 @@ This function should only modify configuration layer settings."
        multiple-cursors
        semantic
        ;; ( neotree :variables neo-theme 'icons )
-       (treemacs :variables treemacs-use-filewatch-mode t treemacs-use-follow-mode t)
+       (treemacs :variables   treemacs-use-filewatch-mode t treemacs-use-follow-mode t)
        (org :variables org-projectile-file "~/Dropbox/Notes/inbox.org"
          org-enable-reveal-js-support t
          org-enable-github-support t)
@@ -49,7 +49,7 @@ This function should only modify configuration layer settings."
     ;; To use a local version of a package, use the `:location' property:
     ;; '(your-package :location "~/path/to/your-package/")
     ;; Also include the dependencies as they will not be resolved automatically.
-    dotspacemacs-additional-packages '()
+    dotspacemacs-additional-packages '(doom-themes)
 
     ;; A list of packages that cannot be updated.
     dotspacemacs-frozen-packages '()
@@ -172,7 +172,34 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(gruvbox-dark-hard spacemacs-dark
+   dotspacemacs-themes '(  
+;;
+;; Doom Themes : https://github.com/hlissner/emacs-doom-themes
+;; 
+
+doom-vibrant
+doom-one
+doom-one-light
+doom-city-lights
+doom-dracula
+;;doom-Iosvkem
+doom-molokai
+doom-nord
+doom-nord-light
+doom-opera
+doom-opera-light
+doom-nova
+doom-peacock
+doom-solarized-light
+;;doom-sourcerer
+doom-spacegrey
+doom-tomorrow-night
+doom-tomorrow-day
+
+;;
+;; General Themes
+;; 
+ gruvbox-dark-hard spacemacs-dark
                          spacemacs-light)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
@@ -182,7 +209,7 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme 'vim-powerline
+   dotspacemacs-mode-line-theme '(all-the-icons :separator arrow) 
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -441,6 +468,24 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+
+;;(setq-default cursor-type 'bar)
+;;(setq-default evil-insert-state-cursor 'bar)
+;;(setq-default evil-emacs-state-cursor 'bar)
+
+;;(setq evil-default-cursor (quote (t "#750000"))
+;;    evil-visual-state-cursor '("#880000" bar)
+ ;;   evil-normal-state-cursor '("#750000" bar)
+  ;;  evil-insert-state-cursor '("#e2e222" bar)
+   ;; )
+
+(setq evil-default-cursor (quote (t "#750000"))
+    evil-visual-state-cursor 'bar
+    evil-normal-state-cursor 'bar 
+    evil-insert-state-cursor 'bar 
+    )
+(add-hook 'text-mode-hook 'auto-fill-mode)
+(setq-default fill-column 80)
   ;;
   ;; org mode config
   ;;
@@ -457,7 +502,7 @@ before packages are loaded."
   ;; org-capture
   (setq org-directory "~/Dropbox/Notes")
   (setq org-default-notes-file "~/Dropbox/Notes/inbox.org")
-  (setq org-default-work-notes-file "~/Dropbox/Notes/gr-notes.org")
+  (setq org-default-work-notes-file "~/Dropbox/Notes/work.org")
 
   (setq org-capture-templates
     (quote (("t" "todo" entry (file "~/Dropbox/Notes/inbox.org")
@@ -469,8 +514,16 @@ before packages are loaded."
              ("m" "Meeting" entry (file org-default-work-notes-file)
                "* MEETING with %? :MEETING:\n%T" :clock-in t :clock-resume t))))
 
+;; Enable flashing mode-line on errors
+;; (doom-themes-visual-bell-config)
 
+;; or for treemacs users
+(doom-themes-treemacs-config)
 
+;; Corrects (and improves) org-mode's native fontification.
+(doom-themes-org-config)
+;;
+;; (setq treemacs-resize-icons 15)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
