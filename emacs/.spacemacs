@@ -12,6 +12,7 @@ This function should only modify configuration layer settings."
                                          ( restclient :variables restclient-use-org t)
                                          auto-completion
                                          emacs-lisp
+                                         command-log
                                          git
                                          github
                                          ( templates :variables templates-private-directory "~/.templates/" )
@@ -28,7 +29,7 @@ This function should only modify configuration layer settings."
                                            org-enable-reveal-js-support t
                                            org-enable-github-support t)
                                          shell-scripts
-                                         (shell :variables shell-default-term-shell "/bin/bash"
+                                         (shell :variables shell-default-term-shell "/usr/local/bin/bash"
                                            shell-default-height 30
                                            shell-default-position 'bottom)
                                          (version-control :variables version-control-diff-tool'git-gutter+
@@ -61,7 +62,7 @@ This function should only modify configuration layer settings."
     dotspacemacs-frozen-packages '()
 
     ;; A list of packages that will not be installed and loaded.
-    dotspacemacs-excluded-packages '()
+    dotspacemacs-excluded-packages '(adaptive-wrap)
 
     ;; Defines the behaviour of Spacemacs when installing packages.
     ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -152,7 +153,7 @@ It should only modify the values of Spacemacs settings."
     ;; Default major mode of the scratch buffer (default `text-mode')
     dotspacemacs-scratch-mode 'org-mode
 
-    dotspacemacs-themes '(gruvbox-dark-hard
+    dotspacemacs-themes '(doom-molokai
                            ;;
                            ;; Doom Themes : https://github.com/hlissner/emacs-doom-themes
                            ;;
@@ -177,6 +178,7 @@ It should only modify the values of Spacemacs settings."
                            ;;
                            ;; General Themes
                            ;;
+                           gruvbox-dark-hard
                            spacemacs-dark
                            spacemacs-light)
 
@@ -187,7 +189,8 @@ It should only modify the values of Spacemacs settings."
     ;; refer to the DOCUMENTATION.org for more info on how to create your own
     ;; spaceline theme. Value can be a symbol or list with additional properties.
     ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-    dotspacemacs-mode-line-theme '(all-the-icons :separator arrow)
+    ;; dotspacemacs-mode-line-theme '(all-the-icons :separator arrow)
+    dotspacemacs-mode-line-theme 'doom
 
 
     ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -341,7 +344,7 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-
+  (setq org-startup-indented t)
   (setq org-journal-dir "~/Dropbox/Notes/journal/")
   (setq magit-repository-directories '("~/Projects"))
   (add-hook 'js2-mode-hook 'prettier-js-mode)
@@ -413,6 +416,7 @@ before packages are loaded."
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config)
   ;;
+  ;; (org-indent-mode)
   ;; (find-file "~/Dropbox/Notes")
   )
 
@@ -428,9 +432,9 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-  '(package-selected-packages
-     (quote
-       (yatemplate copy-as-format org-journal insert-shebang flycheck-bashate fish-mode company-shell yaml-mode flycheck treemacs-projectile treemacs-evil treemacs ht pfuture yasnippet-snippets xterm-color ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit symon string-inflection stickyfunc-enhance srefactor spaceline-all-the-icons smeargle slim-mode shell-pop scss-mode sayid sass-mode rjsx-mode reveal-in-osx-finder restclient-helm restart-emacs rainbow-delimiters pug-mode prettier-js popwin persp-mode pcre2el password-generator parinfer paradox ox-reveal ox-gfm overseer osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file ob-restclient ob-http neotree nameless multi-term move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum livid-mode link-hint launchctl json-navigator json-mode js2-refactor js-doc indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag gruvbox-theme google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-helm flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish diff-hl counsel-projectile company-web company-tern company-statistics company-restclient column-enforce-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu centered-cursor-mode browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))))
+ '(package-selected-packages
+   (quote
+    (command-log-mode yatemplate copy-as-format org-journal insert-shebang flycheck-bashate fish-mode company-shell yaml-mode flycheck treemacs-projectile treemacs-evil treemacs ht pfuture yasnippet-snippets xterm-color ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit symon string-inflection stickyfunc-enhance srefactor spaceline-all-the-icons smeargle slim-mode shell-pop scss-mode sayid sass-mode rjsx-mode reveal-in-osx-finder restclient-helm restart-emacs rainbow-delimiters pug-mode prettier-js popwin persp-mode pcre2el password-generator parinfer paradox ox-reveal ox-gfm overseer osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file ob-restclient ob-http neotree nameless multi-term move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum livid-mode link-hint launchctl json-navigator json-mode js2-refactor js-doc indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag gruvbox-theme google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-helm flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish diff-hl counsel-projectile company-web company-tern company-statistics company-restclient column-enforce-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu centered-cursor-mode browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

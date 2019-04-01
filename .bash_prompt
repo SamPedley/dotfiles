@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-export TERM='xterm-256color';
+
+if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
+	export TERM='gnome-256color';
+elif infocmp xterm-256color >/dev/null 2>&1; then
+	export TERM='xterm-256color';
+fi;
 
 prompt_git() {
 	local s='';
@@ -28,7 +33,7 @@ prompt_git() {
 			if ! $(git diff --quiet --ignore-submodules --cached); then
 				s+="${violet}S ";
 			fi;
-      
+
       # Check for untracked files.
 			if [ -n "$(git ls-files --others --exclude-standard)" ]; then
 				s+="${red}UT ";
@@ -56,7 +61,21 @@ prompt_git() {
 	fi;
 }
 
-if tput setaf 1 &> /dev/null; then
+if [[ "${EMACS}" ]]; then
+  export TERM='eterm-color';
+  bold='';
+	reset="\e[0m";
+	black="\e[1;30m";
+	blue="\e[1;34m";
+	cyan="\e[1;36m";
+	green="\e[1;32m";
+	orange="\e[1;33m";
+	purple="\e[1;35m";
+	red="\e[1;31m";
+	violet="\e[1;35m";
+	white="\e[1;37m";
+	yellow="\e[1;33m";
+elif tput setaf 1 &> /dev/null; then
 	tput sgr0; # reset colors
 	bold=$(tput bold);
 	reset=$(tput sgr0);
@@ -94,8 +113,8 @@ else
 fi;
 
 # Set the terminal title and prompt.
-PS1="\[\033]0;\W\007\]"; # working directory base name
-PS1+="\[${bold}\]\n"; # newline
+# PS1="\[\033]0;\W\007\]"; # working directory base name
+PS1="\[${bold}\]\n"; # newline
 PS1+="\[${orange}\]\D{%I:%M} "; # Time
 PS1+="\[${white}\]\w"; # working directory full path
 PS1+="\$(prompt_git \"\[${white}\] \[${blue}\]\" \"\[${blue}\]\")\[${reset}\]"; # Git repository details
