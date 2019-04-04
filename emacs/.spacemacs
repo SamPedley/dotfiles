@@ -46,12 +46,12 @@ This function should only modify configuration layer settings."
                                          asciidoc
                                          (clojure :variables clojure-enable-sayid
                                            t clojure-enable-clj-refactor t)
-                                         (json :variables json-fmt-tool 'prettier-js)
+                                         (json :variables json-fmt-tool 'prettier)
                                          html
                                          markdown
                                          react
                                          emacs-lisp
-                                         javascript)
+                                         (javascript :variables javascript-fmt-tool 'prettier ))
 
     ;; List of additional packages that will be installed without being
     ;; wrapped in a layer. If you need some configuration for these
@@ -327,6 +327,7 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (setq javascript-fmt-tool 'prettier)
   (setq-default git-magit-status-fullscreen t))
 
 (defun dotspacemacs/user-load ()
@@ -346,9 +347,9 @@ before packages are loaded."
   (setq org-startup-indented t)
   (setq org-journal-dir "~/Dropbox/Notes/journal/")
   (setq magit-repository-directories '("~/Projects"))
-  (add-hook 'js2-mode-hook 'prettier-js-mode)
-  (add-hook 'web-mode-hook 'prettier-js-mode)
-
+  ;; (add-hook 'js2-mode-hook 'prettier-js-mode)
+  ;; (add-hook 'web-mode-hook 'prettier-js-mode)
+  ((js2-mode (javascript-fmt-tool . prettier)))
   ;;(setq-default cursor-type 'bar)
   ;;(setq-default evil-insert-state-cursor 'bar)
   ;;(setq-default evil-emacs-state-cursor 'bar)
