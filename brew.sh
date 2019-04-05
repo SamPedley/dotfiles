@@ -70,3 +70,9 @@ brew install tree
 
 # Remove outdated versions from the cellar.
 brew cleanup
+
+
+
+# brew install vault
+# brew install awscli
+# brew install kubectl

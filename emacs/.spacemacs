@@ -349,7 +349,7 @@ before packages are loaded."
   (setq magit-repository-directories '("~/Projects"))
   ;; (add-hook 'js2-mode-hook 'prettier-js-mode)
   ;; (add-hook 'web-mode-hook 'prettier-js-mode)
-  ((js2-mode (javascript-fmt-tool . prettier)))
+;;  ((js2-mode (javascript-fmt-tool . prettier)))
   ;;(setq-default cursor-type 'bar)
   ;;(setq-default evil-insert-state-cursor 'bar)
   ;;(setq-default evil-emacs-state-cursor 'bar)
