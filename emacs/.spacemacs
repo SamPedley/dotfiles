@@ -85,233 +85,233 @@ It should only modify the values of Spacemacs settings."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
   (setq-default
-    ;; If non-nil ELPA repositories are contacted via HTTPS whenever it's
-    ;; possible. Set it to nil if you have no way to use HTTPS in your
-    ;; environment, otherwise it is strongly recommended to let it set to t.
-    ;; This variable has no effect if Emacs is launched with the parameter
-    ;; `--insecure' which forces the value of this variable to nil.
-    ;; (default t)
-    dotspacemacs-elpa-https t
+   ;; If non-nil ELPA repositories are contacted via HTTPS whenever it's
+   ;; possible. Set it to nil if you have no way to use HTTPS in your
+   ;; environment, otherwise it is strongly recommended to let it set to t.
+   ;; This variable has no effect if Emacs is launched with the parameter
+   ;; `--insecure' which forces the value of this variable to nil.
+   ;; (default t)
+   dotspacemacs-elpa-https t
 
-    ;; Maximum allowed time in seconds to contact an ELPA repository.
-    ;; (default 5)
-    dotspacemacs-elpa-timeout 10
-    dotspacemacs-enable-emacs-pdumper nil
-    dotspacemacs-emacs-pdumper-executable-file "emacs-27.0.50"
-    dotspacemacs-emacs-dumper-dump-file "spacemacs.pdmp"
-    dotspacemacs-gc-cons '(100000000 0.1)
-    dotspacemacs-use-spacelpa nil
-    dotspacemacs-verify-spacelpa-archives nil
-    dotspacemacs-check-for-update nil
-    dotspacemacs-elpa-subdirectory 'emacs-version
-    dotspacemacs-editing-style 'vim
-    dotspacemacs-verbose-loading nil
-    dotspacemacs-startup-buffer-responsive t
-    dotspacemacs-initial-scratch-message nil
-    dotspacemacs-colorize-cursor-according-to-state t
-    dotspacemacs-leader-key "SPC"
-    dotspacemacs-emacs-command-key "SPC"
-    dotspacemacs-ex-command-key ":"
-    dotspacemacs-emacs-leader-key "M-m"
-    dotspacemacs-major-mode-leader-key ","
-    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
-    dotspacemacs-distinguish-gui-tab nil
-    dotspacemacs-large-file-size 1
-    dotspacemacs-auto-save-file-location 'cache
-    dotspacemacs-max-rollback-slots 5
-    dotspacemacs-which-key-position 'bottom
-    dotspacemacs-loading-progress-bar t
-    dotspacemacs-active-transparency 90
-    dotspacemacs-inactive-transparency 90
-    dotspacemacs-show-transient-state-title t
-    dotspacemacs-show-transient-state-color-guide t
-    dotspacemacs-mode-line-unicode-symbols t
-    dotspacemacs-smooth-scrolling t
-    dotspacemacs-line-numbers nil
-    dotspacemacs-folding-method 'evil
-    dotspacemacs-zone-out-when-idle nil
+   ;; Maximum allowed time in seconds to contact an ELPA repository.
+   ;; (default 5)
+   dotspacemacs-elpa-timeout 10
+   dotspacemacs-enable-emacs-pdumper nil
+   dotspacemacs-emacs-pdumper-executable-file "emacs-27.0.50"
+   dotspacemacs-emacs-dumper-dump-file "spacemacs.pdmp"
+   dotspacemacs-gc-cons '(100000000 0.1)
+   dotspacemacs-use-spacelpa nil
+   dotspacemacs-verify-spacelpa-archives nil
+   dotspacemacs-check-for-update nil
+   dotspacemacs-elpa-subdirectory 'emacs-version
+   dotspacemacs-editing-style 'vim
+   dotspacemacs-verbose-loading nil
+   dotspacemacs-startup-buffer-responsive t
+   dotspacemacs-initial-scratch-message nil
+   dotspacemacs-colorize-cursor-according-to-state t
+   dotspacemacs-leader-key "SPC"
+   dotspacemacs-emacs-command-key "SPC"
+   dotspacemacs-ex-command-key ":"
+   dotspacemacs-emacs-leader-key "M-m"
+   dotspacemacs-major-mode-leader-key ","
+   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
+   dotspacemacs-distinguish-gui-tab nil
+   dotspacemacs-large-file-size 1
+   dotspacemacs-auto-save-file-location 'cache
+   dotspacemacs-max-rollback-slots 5
+   dotspacemacs-which-key-position 'bottom
+   dotspacemacs-loading-progress-bar t
+   dotspacemacs-active-transparency 90
+   dotspacemacs-inactive-transparency 90
+   dotspacemacs-show-transient-state-title t
+   dotspacemacs-show-transient-state-color-guide t
+   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-smooth-scrolling t
+   dotspacemacs-line-numbers nil
+   dotspacemacs-folding-method 'evil
+   dotspacemacs-zone-out-when-idle nil
 
-    ;; Specify the startup banner. Default value is `official', it displays
-    ;; the official spacemacs logo. An integer value is the index of text
-    ;; banner, `random' chooses a random text banner in `core/banners'
-    ;; directory. A string value must be a path to an image format supported
-    ;; by your Emacs build.
-    ;; If the value is nil then no banner is displayed. (default 'official)
-    dotspacemacs-startup-banner 0
+   ;; Specify the startup banner. Default value is `official', it displays
+   ;; the official spacemacs logo. An integer value is the index of text
+   ;; banner, `random' chooses a random text banner in `core/banners'
+   ;; directory. A string value must be a path to an image format supported
+   ;; by your Emacs build.
+   ;; If the value is nil then no banner is displayed. (default 'official)
+   dotspacemacs-startup-banner 0
 
-    ;; List of items to show in startup buffer or an association list of
-    ;; the form `(list-type . list-size)`. If nil then it is disabled.
-    ;; Possible values for list-type are:
-    ;; `recents' `bookmarks' `projects' `agenda' `todos'.
-    ;; List sizes may be nil, in which case
-    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-    dotspacemacs-startup-lists '((recents . 5)
-                                  (projects . 15))
+   ;; List of items to show in startup buffer or an association list of
+   ;; the form `(list-type . list-size)`. If nil then it is disabled.
+   ;; Possible values for list-type are:
+   ;; `recents' `bookmarks' `projects' `agenda' `todos'.
+   ;; List sizes may be nil, in which case
+   ;; `spacemacs-buffer-startup-lists-length' takes effect.
+   dotspacemacs-startup-lists '((recents . 5)
+                                (projects . 15))
 
-    ;; Default major mode of the scratch buffer (default `text-mode')
-    dotspacemacs-scratch-mode 'org-mode
+   ;; Default major mode of the scratch buffer (default `text-mode')
+   dotspacemacs-scratch-mode 'org-mode
 
-    dotspacemacs-themes '(gruvbox-dark-hard
-                           ;;
-                           ;; Doom Themes : https://github.com/hlissner/emacs-doom-themes
-                           ;;
-                           doom-vibrant
-                           doom-molokai
-                           doom-one
-                           doom-one-light
-                           doom-city-lights
-                           doom-dracula
-                           ;;doom-Iosvkem
-                           doom-molokai
-                           doom-nord
-                           doom-nord-light
-                           doom-opera
-                           doom-opera-light
-                           doom-nova
-                           doom-peacock
-                           doom-solarized-light
-                           ;;doom-sourcerer
-                           doom-spacegrey
-                           doom-tomorrow-night
-                           doom-tomorrow-day
-                           ;;
-                           ;; General Themes
-                           ;;
+   dotspacemacs-themes '(gruvbox-dark-hard
+                         ;;
+                         ;; Doom Themes : https://github.com/hlissner/emacs-doom-themes
+                         ;;
+                         doom-vibrant
+                         doom-molokai
+                         doom-one
+                         doom-one-light
+                         doom-city-lights
+                         doom-dracula
+                         ;;doom-Iosvkem
+                         doom-molokai
+                         doom-nord
+                         doom-nord-light
+                         doom-opera
+                         doom-opera-light
+                         doom-nova
+                         doom-peacock
+                         doom-solarized-light
+                         ;;doom-sourcerer
+                         doom-spacegrey
+                         doom-tomorrow-night
+                         doom-tomorrow-day
+                         ;;
+                         ;; General Themes
+                         ;;
 
-                           spacemacs-dark
-                           spacemacs-light)
+                         spacemacs-dark
+                         spacemacs-light)
 
-    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
-    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
-    ;; first three are spaceline themes. `doom' is the doom-emacs mode-line.
-    ;; `vanilla' is default Emacs mode-line. `custom' is a user defined themes,
-    ;; refer to the DOCUMENTATION.org for more info on how to create your own
-    ;; spaceline theme. Value can be a symbol or list with additional properties.
-    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-    ;; dotspacemacs-mode-line-theme '(all-the-icons :separator arrow)
-    dotspacemacs-mode-line-theme 'doom
-
-
-    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
-    ;; quickly tweak the mode-line size to make separators look not too crappy.
-    dotspacemacs-default-font '("Source Code Pro"
-                                 :size 15
-                                 :weight normal
-                                 :width normal)
-
-    ;; Name of the default layout (default "Default")
-    dotspacemacs-default-layout-name "Default"
-
-    ;; If non-nil the default layout name is displayed in the mode-line.
-    ;; (default nil)
-    dotspacemacs-display-default-layout nil
-
-    ;; If non-nil then the last auto saved layouts are resumed automatically upon
-    ;; start. (default nil)
-    dotspacemacs-auto-resume-layouts nil
-
-    ;; If non-nil, auto-generate layout name when creating new layouts. Only has
-    ;; effect when using the "jump to layout by number" commands. (default nil)
-    dotspacemacs-auto-generate-layout-names nil
-
-    ;; If non-nil, the paste transient-state is enabled. While enabled, after you
-    ;; paste something, pressing `C-j' and `C-k' several times cycles through the
-    ;; elements in the `kill-ring'. (default nil)
-    dotspacemacs-enable-paste-transient-state nil
-
-    ;; Which-key delay in seconds. The which-key buffer is the popup listing
-    ;; the commands bound to the current keystroke sequence. (default 0.4)
-    dotspacemacs-which-key-delay 0.4
-
-    ;; Control where `switch-to-buffer' displays the buffer. If nil,
-    ;; `switch-to-buffer' displays the buffer in the current window even if
-    ;; another same-purpose window is available. If non-nil, `switch-to-buffer'
-    ;; displays the buffer in a same-purpose window even if the buffer can be
-    ;; displayed in the current window. (default nil)
-    dotspacemacs-switch-to-buffer-prefers-purpose nil
+   ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
+   ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
+   ;; first three are spaceline themes. `doom' is the doom-emacs mode-line.
+   ;; `vanilla' is default Emacs mode-line. `custom' is a user defined themes,
+   ;; refer to the DOCUMENTATION.org for more info on how to create your own
+   ;; spaceline theme. Value can be a symbol or list with additional properties.
+   ;; (default '(spacemacs :separator wave :separator-scale 1.5))
+   ;; dotspacemacs-mode-line-theme '(all-the-icons :separator arrow)
+   dotspacemacs-mode-line-theme 'doom
 
 
-    ;; If non-nil the frame is fullscreen when Emacs starts up. (default nil)
-    ;; (Emacs 24.4+ only)
-    dotspacemacs-fullscreen-at-startup t
+   ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
+   ;; quickly tweak the mode-line size to make separators look not too crappy.
+   dotspacemacs-default-font '("Source Code Pro"
+                               :size 15
+                               :weight normal
+                               :width normal)
 
-    ;; If non-nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
-    ;; Use to disable fullscreen animations in OSX. (default nil)
-    dotspacemacs-fullscreen-use-non-native nil
+   ;; Name of the default layout (default "Default")
+   dotspacemacs-default-layout-name "Default"
 
-    ;; If non-nil the frame is maximized when Emacs starts up.
-    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
-    ;; (default nil) (Emacs 24.4+ only)
-    dotspacemacs-maximized-at-startup nil
+   ;; If non-nil the default layout name is displayed in the mode-line.
+   ;; (default nil)
+   dotspacemacs-display-default-layout nil
 
-    ;; If non-nil `smartparens-strict-mode' will be enabled in programming modes.
-    ;; (default nil)
-    dotspacemacs-smartparens-strict-mode nil
+   ;; If non-nil then the last auto saved layouts are resumed automatically upon
+   ;; start. (default nil)
+   dotspacemacs-auto-resume-layouts nil
 
-    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
-    ;; over any automatically added closing parenthesis, bracket, quote, etc…
-    ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
-    dotspacemacs-smart-closing-parenthesis nil
+   ;; If non-nil, auto-generate layout name when creating new layouts. Only has
+   ;; effect when using the "jump to layout by number" commands. (default nil)
+   dotspacemacs-auto-generate-layout-names nil
 
-    ;; Select a scope to highlight delimiters. Possible values are `any',
-    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
-    ;; emphasis the current one). (default 'all)
-    dotspacemacs-highlight-delimiters 'all
+   ;; If non-nil, the paste transient-state is enabled. While enabled, after you
+   ;; paste something, pressing `C-j' and `C-k' several times cycles through the
+   ;; elements in the `kill-ring'. (default nil)
+   dotspacemacs-enable-paste-transient-state nil
 
-    ;; If non-nil, start an Emacs server if one is not already running.
-    ;; (default nil)
-    dotspacemacs-enable-server nil
+   ;; Which-key delay in seconds. The which-key buffer is the popup listing
+   ;; the commands bound to the current keystroke sequence. (default 0.4)
+   dotspacemacs-which-key-delay 0.4
 
-    ;; Set the emacs server socket location.
-    ;; If nil, uses whatever the Emacs default is, otherwise a directory path
-    ;; like \"~/.emacs.d/server\". It has no effect if
-    ;; `dotspacemacs-enable-server' is nil.
-    ;; (default nil)
-    dotspacemacs-server-socket-dir nil
+   ;; Control where `switch-to-buffer' displays the buffer. If nil,
+   ;; `switch-to-buffer' displays the buffer in the current window even if
+   ;; another same-purpose window is available. If non-nil, `switch-to-buffer'
+   ;; displays the buffer in a same-purpose window even if the buffer can be
+   ;; displayed in the current window. (default nil)
+   dotspacemacs-switch-to-buffer-prefers-purpose nil
 
-    ;; If non-nil, advise quit functions to keep server open when quitting.
-    ;; (default nil)
-    dotspacemacs-persistent-server nil
 
-    ;; List of search tool executable names. Spacemacs uses the first installed
-    ;; tool of the list. Supported tools are `rg', `ag', `pt', `ack' and `grep'.
-    ;; (default '("rg" "ag" "pt" "ack" "grep"))
-    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
+   ;; If non-nil the frame is fullscreen when Emacs starts up. (default nil)
+   ;; (Emacs 24.4+ only)
+   dotspacemacs-fullscreen-at-startup nil
 
-    ;; Format specification for setting the frame title.
-    ;; %a - the `abbreviated-file-name', or `buffer-name'
-    ;; %t - `projectile-project-name'
-    ;; %I - `invocation-name'
-    ;; %S - `system-name'
-    ;; %U - contents of $USER
-    ;; %b - buffer name
-    ;; %f - visited file name
-    ;; %F - frame name
-    ;; %s - process status
-    ;; %p - percent of buffer above top of window, or Top, Bot or All
-    ;; %P - percent of buffer above bottom of window, perhaps plus Top, or Bot or All
-    ;; %m - mode name
-    ;; %n - Narrow if appropriate
-    ;; %z - mnemonics of buffer, terminal, and keyboard coding systems
-    ;; %Z - like %z, but including the end-of-line format
-    ;; (default "%I@%S")
-    dotspacemacs-frame-title-format "%I@%S"
+   ;; If non-nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
+   ;; Use to disable fullscreen animations in OSX. (default nil)
+   dotspacemacs-fullscreen-use-non-native nil
 
-    ;; Format specification for setting the icon title format
-    ;; (default nil - same as frame-title-format)
-    dotspacemacs-icon-title-format nil
+   ;; If non-nil the frame is maximized when Emacs starts up.
+   ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
+   ;; (default nil) (Emacs 24.4+ only)
+   dotspacemacs-maximized-at-startup nil
 
-    ;; Delete whitespace while saving buffer. Possible values are `all'
-    ;; to aggressively delete empty line and long sequences of whitespace,
-    ;; `trailing' to delete only the whitespace at end of lines, `changed' to
-    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
-    ;; (default nil)
-    dotspacemacs-whitespace-cleanup nil
+   ;; If non-nil `smartparens-strict-mode' will be enabled in programming modes.
+   ;; (default nil)
+   dotspacemacs-smartparens-strict-mode nil
 
-    ;; Run `spacemacs/prettify-org-buffer' when
-    ;; visiting README.org files of Spacemacs.
-    ;; (default nil)
-    dotspacemacs-pretty-docs nil))
+   ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
+   ;; over any automatically added closing parenthesis, bracket, quote, etc…
+   ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
+   dotspacemacs-smart-closing-parenthesis nil
+
+   ;; Select a scope to highlight delimiters. Possible values are `any',
+   ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
+   ;; emphasis the current one). (default 'all)
+   dotspacemacs-highlight-delimiters 'all
+
+   ;; If non-nil, start an Emacs server if one is not already running.
+   ;; (default nil)
+   dotspacemacs-enable-server nil
+
+   ;; Set the emacs server socket location.
+   ;; If nil, uses whatever the Emacs default is, otherwise a directory path
+   ;; like \"~/.emacs.d/server\". It has no effect if
+   ;; `dotspacemacs-enable-server' is nil.
+   ;; (default nil)
+   dotspacemacs-server-socket-dir nil
+
+   ;; If non-nil, advise quit functions to keep server open when quitting.
+   ;; (default nil)
+   dotspacemacs-persistent-server nil
+
+   ;; List of search tool executable names. Spacemacs uses the first installed
+   ;; tool of the list. Supported tools are `rg', `ag', `pt', `ack' and `grep'.
+   ;; (default '("rg" "ag" "pt" "ack" "grep"))
+   dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
+
+   ;; Format specification for setting the frame title.
+   ;; %a - the `abbreviated-file-name', or `buffer-name'
+   ;; %t - `projectile-project-name'
+   ;; %I - `invocation-name'
+   ;; %S - `system-name'
+   ;; %U - contents of $USER
+   ;; %b - buffer name
+   ;; %f - visited file name
+   ;; %F - frame name
+   ;; %s - process status
+   ;; %p - percent of buffer above top of window, or Top, Bot or All
+   ;; %P - percent of buffer above bottom of window, perhaps plus Top, or Bot or All
+   ;; %m - mode name
+   ;; %n - Narrow if appropriate
+   ;; %z - mnemonics of buffer, terminal, and keyboard coding systems
+   ;; %Z - like %z, but including the end-of-line format
+   ;; (default "%I@%S")
+   dotspacemacs-frame-title-format "%I@%S"
+
+   ;; Format specification for setting the icon title format
+   ;; (default nil - same as frame-title-format)
+   dotspacemacs-icon-title-format nil
+
+   ;; Delete whitespace while saving buffer. Possible values are `all'
+   ;; to aggressively delete empty line and long sequences of whitespace,
+   ;; `trailing' to delete only the whitespace at end of lines, `changed' to
+   ;; delete only whitespace for changed lines or `nil' to disable cleanup.
+   ;; (default nil)
+   dotspacemacs-whitespace-cleanup nil
+
+   ;; Run `spacemacs/prettify-org-buffer' when
+   ;; visiting README.org files of Spacemacs.
+   ;; (default nil)
+   dotspacemacs-pretty-docs nil))
 
 (defun dotspacemacs/user-env ()
   "Environment variables setup.
