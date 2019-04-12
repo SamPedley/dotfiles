@@ -76,3 +76,5 @@ brew cleanup
 # brew install vault
 # brew install awscli
 # brew install kubectl
+
+# brew install pass
