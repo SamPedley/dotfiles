@@ -41,10 +41,10 @@ window:
   # Values for `decorations` (macOS only):
   #     - buttonless: Title bar, transparent background and title bar buttons
   #     - transparent: Title bar, transparent background, but no title bar buttons
-  decorations: buttonless
+  decorations: full
 
   # When true, alacritty starts maximized.
-  start_maximized: true
+  start_maximized: false
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -303,7 +303,7 @@ cursor:
   #   - ▇ Block
   #   - _ Underline
   #   - | Beam
-  style: Block
+  style: Beam
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
@@ -434,13 +434,14 @@ key_bindings:
   #- { key: Subtract, mods: Control, action: DecreaseFontSize             }
 
   # (macOS only)
-  #- { key: Key0,     mods: Command, action: ResetFontSize                }
-  #- { key: Equals,   mods: Command, action: IncreaseFontSize             }
-  #- { key: Minus,    mods: Command, action: DecreaseFontSize             }
+  - { key: Key0,     mods: Command, action: ResetFontSize                }
+  - { key: Equals,   mods: Command, action: IncreaseFontSize             }
+  - { key: Minus,    mods: Command, action: DecreaseFontSize             }
   #- { key: K,        mods: Command, action: ClearHistory                 }
   #- { key: K,        mods: Command, chars: "\x0c"                        }
-  #- { key: V,        mods: Command, action: Paste                        }
-  #- { key: C,        mods: Command, action: Copy                         }
+  - { key: V,        mods: Command, action: Paste                        }
+  - { key: C,        mods: Command, action: Copy                         }
+  - { key: T,        mods: Command, chars: "\x02"                         }
   #- { key: H,        mods: Command, action: Hide                         }
   #- { key: Q,        mods: Command, action: Quit                         }
   #- { key: W,        mods: Command, action: Quit                         }
