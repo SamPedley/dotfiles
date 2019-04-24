@@ -9,6 +9,7 @@ This function should only modify configuration layer settings."
                                        yaml
                                        helm
                                        docker
+                                       pass
                                        xkcd
                                        (spell-checking :variables spell-checking-enable-by-default nil)
                                        ( restclient :variables restclient-use-org t)
@@ -349,7 +350,7 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  (setq org-startup-folded t)
+  ;; (setq org-startup-folded t)
   (setq org-journal-dir "~/Dropbox/Notes/journal/")
   (setq magit-repository-directories '("~/Projects"))
   ;; (add-hook 'js2-mode-hook 'prettier-js-mode)
@@ -359,21 +360,21 @@ before packages are loaded."
   ;;(setq-default evil-insert-state-cursor 'bar)
   ;;(setq-default evil-emacs-state-cursor 'bar)
 
-  ;;(setq evil-default-cursor (quote (t "#750000"))
-  ;;    evil-visual-state-cursor '("#880000" bar)
-  ;;   evil-normal-state-cursor '("#750000" bar)
-  ;;  evil-insert-state-cursor '("#e2e222" bar)
-  ;; )
-
   (setq evil-default-cursor (quote (t "#750000"))
-        evil-visual-state-cursor
-        'bar
-        evil-normal-state-cursor
-        'bar
-        evil-insert-state-cursor
-        'bar)
-  (add-hook 'text-mode-hook 'auto-fill-mode)
-  (setq-default fill-column 80)
+        evil-visual-state-cursor '("#63ba3c" bar)
+        evil-normal-state-cursor '("#FFFFFF" bar)
+        evil-insert-state-cursor '("#880000" bar)
+        )
+
+  ;; (setq evil-default-cursor (quote (t "#750000"))
+  ;;       evil-visual-state-cursor
+  ;;       'bar
+  ;;       evil-normal-state-cursor
+  ;;       'bar
+  ;;       evil-insert-state-cursor
+  ;;       'bar)
+  ;; (add-hook 'text-mode-hook 'auto-fill-mode)
+  ;; (setq-default fill-column 80)
   ;;
   ;; org mode config
   ;;
@@ -414,14 +415,14 @@ before packages are loaded."
                                        :clock-in t
                                        :clock-resume t))))
   ;; Enable flashing mode-line on errors
-  ;; (doom-themes-visual-bell-config)
+  (doom-themes-visual-bell-config)
 
   ;; or for treemacs users
   (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config)
   ;;
-  ;; (org-indent-mode)
+  (org-indent-mode)
   ;; (find-file "~/Dropbox/Notes")
   )
 
@@ -444,7 +445,7 @@ This function is called at the very end of Spacemacs initialization."
  '(jdee-db-spec-breakpoint-face-colors (cons "#10151C" "#384551"))
  '(package-selected-packages
    (quote
-    (helm-gtags godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc ggtags flycheck-gometalinter flycheck-golangci-lint counsel-gtags company-go go-mode yapfify pytest pyenv-mode py-isort plantuml-mode pippel pipenv pyvenv pip-requirements live-py-mode importmagic epc ctable concurrent deferred helm-pydoc cython-mode company-anaconda anaconda-mode pythonic adoc-mode markup-faces command-log-mode yatemplate copy-as-format org-journal insert-shebang flycheck-bashate fish-mode company-shell yaml-mode flycheck treemacs-projectile treemacs-evil treemacs ht pfuture yasnippet-snippets xterm-color ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit symon string-inflection stickyfunc-enhance srefactor spaceline-all-the-icons smeargle slim-mode shell-pop scss-mode sayid sass-mode rjsx-mode reveal-in-osx-finder restclient-helm restart-emacs rainbow-delimiters pug-mode prettier-js popwin persp-mode pcre2el password-generator parinfer paradox ox-reveal ox-gfm overseer osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file ob-restclient ob-http neotree nameless multi-term move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum livid-mode link-hint launchctl json-navigator json-mode js2-refactor js-doc indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag gruvbox-theme google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-helm flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish diff-hl counsel-projectile company-web company-tern company-statistics company-restclient column-enforce-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu centered-cursor-mode browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (helm-pass auth-source-pass password-store dockerfile-mode docker tablist docker-tramp helm-gtags godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc ggtags flycheck-gometalinter flycheck-golangci-lint counsel-gtags company-go go-mode yapfify pytest pyenv-mode py-isort plantuml-mode pippel pipenv pyvenv pip-requirements live-py-mode importmagic epc ctable concurrent deferred helm-pydoc cython-mode company-anaconda anaconda-mode pythonic adoc-mode markup-faces command-log-mode yatemplate copy-as-format org-journal insert-shebang flycheck-bashate fish-mode company-shell yaml-mode flycheck treemacs-projectile treemacs-evil treemacs ht pfuture yasnippet-snippets xterm-color ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit symon string-inflection stickyfunc-enhance srefactor spaceline-all-the-icons smeargle slim-mode shell-pop scss-mode sayid sass-mode rjsx-mode reveal-in-osx-finder restclient-helm restart-emacs rainbow-delimiters pug-mode prettier-js popwin persp-mode pcre2el password-generator parinfer paradox ox-reveal ox-gfm overseer osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file ob-restclient ob-http neotree nameless multi-term move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum livid-mode link-hint launchctl json-navigator json-mode js2-refactor js-doc indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag gruvbox-theme google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-helm flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish diff-hl counsel-projectile company-web company-tern company-statistics company-restclient column-enforce-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu centered-cursor-mode browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(vc-annotate-background "#1D252C")
  '(vc-annotate-color-map
    (list
