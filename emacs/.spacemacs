@@ -363,7 +363,7 @@ before packages are loaded."
   (setq evil-default-cursor (quote (t "#750000"))
         evil-visual-state-cursor '("#63ba3c" bar)
         evil-normal-state-cursor '("#FFFFFF" bar)
-        evil-insert-state-cursor '("#880000" bar)
+        evil-insert-state-cursor '("#e2e222" bar)
         )
 
   ;; (setq evil-default-cursor (quote (t "#750000"))
@@ -414,16 +414,10 @@ before packages are loaded."
                                        "* MEETING with %? :MEETING:\n%T"
                                        :clock-in t
                                        :clock-resume t))))
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-
   ;; or for treemacs users
   (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config)
-  ;;
-  (org-indent-mode)
-  ;; (find-file "~/Dropbox/Notes")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
