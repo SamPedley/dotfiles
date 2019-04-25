@@ -4,83 +4,84 @@
 This function should only modify configuration layer settings."
   (setq-default
 
-   ;; List of configuration layers to load.
-   dotspacemacs-configuration-layers '(go
-                                       yaml
-                                       helm
-                                       docker
-                                       pass
-                                       xkcd
-                                       (spell-checking :variables spell-checking-enable-by-default nil)
-                                       ( restclient :variables restclient-use-org t)
-                                       auto-completion
-                                       emacs-lisp
-                                       command-log
-                                       git
-                                       github
-                                       ( templates :variables templates-private-directory "~/.templates/" )
-                                       copy-as-format
-                                       osx
-                                       (ibuffer :variables ibuffer-group-buffers-by 'projects)
-                                       multiple-cursors
-                                       semantic
-                                       ;; ( neotree :variables neo-theme 'icons )
-                                       (treemacs :variables   treemacs-use-filewatch-mode t treemacs-use-follow-mode t)
-                                       (org :variables org-projectile-file "~/Dropbox/Notes/inbox.org"
-                                            org-want-todo-bindings t
-                                            org-enable-org-journal-support t
-                                            org-enable-reveal-js-support t
-                                            org-enable-github-support t)
-                                       shell-scripts
-                                       (shell :variables shell-default-term-shell "/usr/local/bin/bash"
-                                              shell-default-height 30
-                                              shell-default-position 'bottom)
-                                       (version-control :variables version-control-diff-tool'git-gutter+
-                                                        version-control-diff-side 'left version-control-global-margin t)
-                                       ;; editers
-                                       tern
-                                       parinfer
-                                       ;; Linters
-                                       prettier
-                                       ;; Languages
-                                       ( plantuml :variables plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.3/libexec/plantuml.jar"
-                                                  org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.3/libexec/plantuml.jar" )
-                                       themes-megapack
-                                       python
-                                       vimscript
-                                       asciidoc
-                                       (clojure :variables clojure-enable-sayid
-                                                t clojure-enable-clj-refactor t)
-                                       (json :variables json-fmt-tool 'prettier)
-                                       (html :variables web-fmt-tool 'prettier)
-                                       markdown
-                                       react
-                                       emacs-lisp
-                                       (javascript :variables javascript-fmt-tool 'prettier ))
+    ;; List of configuration layers to load.
+    dotspacemacs-configuration-layers '(go
+                                         yaml
+                                         helm
+                                         docker
+                                         pass
+                                         xkcd
+                                         (spell-checking :variables spell-checking-enable-by-default nil)
+                                         ( restclient :variables restclient-use-org t)
+                                         ( auto-completion :variables auto-completion-private-snippets-directory "~/.templates/"
+                                           auto-completion-enable-snippets-in-popup t)
+                                         emacs-lisp
+                                         command-log
+                                         git
+                                         github
+                                         ( templates :variables templates-private-directory "~/.templates/yatemplates/" )
+                                         copy-as-format
+                                         osx
+                                         (ibuffer :variables ibuffer-group-buffers-by 'projects)
+                                         multiple-cursors
+                                         semantic
+                                         ;; ( neotree :variables neo-theme 'icons )
+                                         (treemacs :variables   treemacs-use-filewatch-mode t treemacs-use-follow-mode t)
+                                         (org :variables org-projectile-file "~/Dropbox/Notes/inbox.org"
+                                           org-want-todo-bindings t
+                                           org-enable-org-journal-support t
+                                           org-enable-reveal-js-support t
+                                           org-enable-github-support t)
+                                         shell-scripts
+                                         (shell :variables shell-default-term-shell "/usr/local/bin/bash"
+                                           shell-default-height 30
+                                           shell-default-position 'bottom)
+                                         (version-control :variables version-control-diff-tool'git-gutter+
+                                           version-control-diff-side 'left version-control-global-margin t)
+                                         ;; editers
+                                         tern
+                                         parinfer
+                                         ;; Linters
+                                         prettier
+                                         ;; Languages
+                                         ( plantuml :variables plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.3/libexec/plantuml.jar"
+                                           org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.3/libexec/plantuml.jar" )
+                                         themes-megapack
+                                         python
+                                         vimscript
+                                         asciidoc
+                                         (clojure :variables clojure-enable-sayid
+                                           t clojure-enable-clj-refactor t)
+                                         (json :variables json-fmt-tool 'prettier)
+                                         (html :variables web-fmt-tool 'prettier)
+                                         markdown
+                                         react
+                                         emacs-lisp
+                                         (javascript :variables javascript-fmt-tool 'prettier ))
 
-   ;; List of additional packages that will be installed without being
-   ;; wrapped in a layer. If you need some configuration for these
-   ;; packages, then consider creating a layer. You can also put the
-   ;; configuration in `dotspacemacs/user-config'.
-   ;; To use a local version of a package, use the `:location' property:
-   ;; '(your-package :location "~/path/to/your-package/")
-   ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(doom-themes)
+    ;; List of additional packages that will be installed without being
+    ;; wrapped in a layer. If you need some configuration for these
+    ;; packages, then consider creating a layer. You can also put the
+    ;; configuration in `dotspacemacs/user-config'.
+    ;; To use a local version of a package, use the `:location' property:
+    ;; '(your-package :location "~/path/to/your-package/")
+    ;; Also include the dependencies as they will not be resolved automatically.
+    dotspacemacs-additional-packages '(doom-themes)
 
-   ;; A list of packages that cannot be updated.
-   dotspacemacs-frozen-packages '()
+    ;; A list of packages that cannot be updated.
+    dotspacemacs-frozen-packages '()
 
-   ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(adaptive-wrap)
+    ;; A list of packages that will not be installed and loaded.
+    dotspacemacs-excluded-packages '(adaptive-wrap)
 
-   ;; Defines the behaviour of Spacemacs when installing packages.
-   ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
-   ;; `used-only' installs only explicitly used packages and deletes any unused
-   ;; packages as well as their unused dependencies. `used-but-keep-unused'
-   ;; installs only the used packages but won't delete unused ones. `all'
-   ;; installs *all* packages supported by Spacemacs and never uninstalls them.
-   ;; (default is `used-only')
-   dotspacemacs-install-packages 'used-only))
+    ;; Defines the behaviour of Spacemacs when installing packages.
+    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
+    ;; `used-only' installs only explicitly used packages and deletes any unused
+    ;; packages as well as their unused dependencies. `used-but-keep-unused'
+    ;; installs only the used packages but won't delete unused ones. `all'
+    ;; installs *all* packages supported by Spacemacs and never uninstalls them.
+    ;; (default is `used-only')
+    dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
   "Initialization:
@@ -350,74 +351,76 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  ;; (setq org-startup-folded t)
-  (setq org-journal-dir "~/Dropbox/Notes/journal/")
   (setq magit-repository-directories '("~/Projects"))
-  ;; (add-hook 'js2-mode-hook 'prettier-js-mode)
-  ;; (add-hook 'web-mode-hook 'prettier-js-mode)
-  ;;  ((js2-mode (javascript-fmt-tool . prettier)))
-  ;;(setq-default cursor-type 'bar)
-  ;;(setq-default evil-insert-state-cursor 'bar)
-  ;;(setq-default evil-emacs-state-cursor 'bar)
+
+  (setq projectile-project-search-path '("~/Projects/"))
 
   (setq evil-default-cursor (quote (t "#750000"))
-        evil-visual-state-cursor '("#63ba3c" bar)
-        evil-normal-state-cursor '("#FFFFFF" bar)
-        evil-insert-state-cursor '("#e2e222" bar)
-        )
+    evil-visual-state-cursor '("#63ba3c" bar)
+    evil-normal-state-cursor '("#FFFFFF" bar)
+    evil-insert-state-cursor '("#e2e222" bar)
+    )
 
-  ;; (setq evil-default-cursor (quote (t "#750000"))
-  ;;       evil-visual-state-cursor
-  ;;       'bar
-  ;;       evil-normal-state-cursor
-  ;;       'bar
-  ;;       evil-insert-state-cursor
-  ;;       'bar)
-  ;; (add-hook 'text-mode-hook 'auto-fill-mode)
-  ;; (setq-default fill-column 80)
   ;;
   ;; org mode config
   ;;
+  (setq org-journal-dir "~/Dropbox/Notes/journal/")
+  (setq org-startup-indented t)
   (setq org-agenda-files (quote ("~/Dropbox/Notes")))
   ;; auto save agenda
   (add-hook 'org-agenda-mode-hook
-            (lambda ()
-              (add-hook 'auto-save-hook 'org-save-all-org-buffers
-                        nil t)
-              (auto-save-mode)))
+    (lambda ()
+      (add-hook 'auto-save-hook 'org-save-all-org-buffers
+        nil t)
+      (auto-save-mode)))
+  (setq org-todo-keywords
+    (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+             (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
+
+  (setq org-todo-keyword-faces
+    (quote (("TODO" :foreground "red" :weight bold)
+             ("NEXT" :foreground "blue" :weight bold)
+             ("DONE" :foreground "forest green" :weight bold)
+             ("WAITING" :foreground "orange" :weight bold)
+             ("HOLD" :foreground "magenta" :weight bold)
+             ("CANCELLED" :foreground "forest green" :weight bold)
+             ("MEETING" :foreground "forest green" :weight bold)
+             ("PHONE" :foreground "forest green" :weight bold))))
+
   ;; org-capture
   (setq org-directory "~/Dropbox/Notes")
   (setq org-default-notes-file "~/Dropbox/Notes/inbox.org")
   (setq org-default-work-notes-file "~/Dropbox/Notes/work.org")
   (setq org-capture-templates (quote (("t" "todo"
-                                       entry
-                                       (file "~/Dropbox/Notes/inbox.org")
-                                       "* TODO %?\n%T\n"
-                                       :clock-in t
-                                       :clock-resume t)
-                                      ("r" "respond"
-                                       entry
-                                       (file org-default-notes-file)
-                                       "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n"
-                                       :clock-in t
-                                       :clock-resume t
-                                       :immediate-finish t)
-                                      ("n" "note"
-                                       entry
-                                       (file org-default-notes-file)
-                                       "* %? :NOTE:\n%T\n"
-                                       :clock-in t
-                                       :clock-resume t)
-                                      ("m" "Meeting"
-                                       entry
-                                       (file org-default-work-notes-file)
-                                       "* MEETING with %? :MEETING:\n%T"
-                                       :clock-in t
-                                       :clock-resume t))))
+                                        entry
+                                        (file "~/Dropbox/Notes/inbox.org")
+                                        "* TODO %?\n%T\n"
+                                        :clock-in t
+                                        :clock-resume t)
+                                       ("r" "respond"
+                                         entry
+                                         (file org-default-notes-file)
+                                         "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n"
+                                         :clock-in t
+                                         :clock-resume t
+                                         :immediate-finish t)
+                                       ("n" "note"
+                                         entry
+                                         (file org-default-notes-file)
+                                         "* %? :NOTE:\n%T\n"
+                                         :clock-in t
+                                         :clock-resume t)
+                                       ("m" "Meeting"
+                                         entry
+                                         (file org-default-work-notes-file)
+                                         "* MEETING with %? :MEETING:\n%T"
+                                         :clock-in t
+                                         :clock-resume t))))
   ;; or for treemacs users
   (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config)
+  ;; (doom-themes-org-config)
+  ;; (org-indent-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
