@@ -1,0 +1,31 @@
+#-*- mode: org -*-
+#+TITLE: Dotfiles Setup
+#+STARTUP: overview
+
+* Setup
+** JavaScript
+*** Install Node Using [[https://github.com/tj/n][n]]
+#+Name: install-js-n
+#+BEGIN_SRC bash
+brew install n
+n lts
+#+END_SRC
+
+*** Fix brew/n permission issue on Mojave
+#+Name: fix-js-n-bash-permission
+#+BEGIN_SRC bash
+# make cache folder (if missing) and take ownership
+sudo mkdir -p /usr/local/n
+sudo chown -R $(whoami) /usr/local/n
+# take ownership of node install destination folders
+sudo chown -R $(whoami) /usr/local/bin /usr/local/lib /usr/local/include /usr/local/share
+#+END_SRC
+
+*** Add spacemacs js layer deps
+#+Name: spacemacs-js-layer-deps
+#+BEGIN_SRC bash
+npm i -g prettier
+npm install -g import-js
+
+npm install -g eslint
+#+END_SRC
