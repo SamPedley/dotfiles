@@ -4,92 +4,87 @@
 This function should only modify configuration layer settings."
   (setq-default
 
-   ;; List of configuration layers to load.
-   dotspacemacs-configuration-layers '(go
-                                       yaml
-                                       helm
-                                       docker
-                                       pass
-                                       (ranger :variables
-                                               ranger-enter-with-minus t
-                                               ranger-override-dired-mode t
-                                               ranger-max-preview-size 10
-                                               ranger-show-preview t
-                                               ranger-show-hidden t
-                                               ranger-cleanup-eagerly t
-                                               ranger-cleanup-on-disable t)
-                                       xkcd
-                                       (spell-checking :variables spell-checking-enable-by-default nil)
-                                       ( restclient :variables restclient-use-org t)
-                                       ( auto-completion :variables auto-completion-private-snippets-directory "~/.templates/"
-                                                         auto-completion-enable-snippets-in-popup t)
-                                       emacs-lisp
-                                       command-log
-                                       git
-                                       github
-                                       ( templates :variables templates-private-directory "~/.templates/yatemplates/" )
-                                       copy-as-format
-                                       osx
-                                       (ibuffer :variables ibuffer-group-buffers-by 'projects)
-                                       multiple-cursors
-                                       semantic
-                                       ;; ( neotree :variables neo-theme 'icons )
-                                       (treemacs :variables   treemacs-use-filewatch-mode t treemacs-use-follow-mode t)
-                                       (org :variables org-projectile-file "~/Dropbox/Notes/inbox.org"
-                                            org-want-todo-bindings t
-                                            org-enable-org-journal-support t
-                                            org-enable-reveal-js-support t
-                                            org-enable-github-support t)
-                                       shell-scripts
-                                       (shell :variables shell-default-term-shell "/usr/local/bin/bash"
-                                              shell-default-height 30
-                                              shell-default-position 'bottom)
-                                       (version-control :variables version-control-diff-tool'git-gutter+
-                                                        version-control-diff-side 'left version-control-global-margin t)
-                                       ;; editers
-                                       tern
-                                       parinfer
-                                       ;; Linters
-                                       prettier
-                                       ;; Languages
-                                       ( plantuml :variables plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.3/libexec/plantuml.jar"
-                                                  org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.3/libexec/plantuml.jar" )
-                                       themes-megapack
-                                       python
-                                       vimscript
-                                       asciidoc
-                                       (clojure :variables clojure-enable-sayid
-                                                t clojure-enable-clj-refactor t)
-                                       (json :variables json-fmt-tool 'prettier)
-                                       (html :variables web-fmt-tool 'prettier)
-                                       markdown
-                                       react
-                                       emacs-lisp
-                                       (javascript :variables javascript-fmt-tool 'prettier ))
+    ;; List of configuration layers to load.
+    dotspacemacs-configuration-layers '(go
+                                         yaml
+                                         helm
+                                         docker
+                                         (ranger :variables
+                                           ranger-enter-with-minus t
+                                           ranger-override-dired-mode t
+                                           ranger-max-preview-size 10
+                                           ranger-show-preview t
+                                           ranger-show-hidden t
+                                           ranger-cleanup-eagerly t
+                                           ranger-cleanup-on-disable t)
+                                         xkcd
+                                         (spell-checking :variables spell-checking-enable-by-default nil)
+                                         ( restclient :variables restclient-use-org t)
+                                         auto-completion
+                                         emacs-lisp
+                                         command-log
+                                         git
+                                         github
+                                         copy-as-format
+                                         osx
+                                         (ibuffer :variables ibuffer-group-buffers-by 'projects)
+                                         multiple-cursors
+                                         semantic
+                                         (org :variables org-projectile-file "~/Dropbox/Notes/inbox.org"
+                                           org-want-todo-bindings t
+                                           org-enable-org-journal-support t
+                                           org-enable-reveal-js-support t
+                                           org-enable-github-support t)
+                                         shell-scripts
+                                         (shell :variables shell-default-term-shell "/usr/local/bin/bash"
+                                           shell-default-height 30
+                                           shell-default-position 'bottom)
+                                         (version-control :variables version-control-diff-tool'git-gutter+
+                                           version-control-diff-side 'left version-control-global-margin t)
+                                         ;; editers
+                                         tern
+                                         parinfer
+                                         ;; Linters
+                                         prettier
+                                         ;; Languages
+                                         ( plantuml :variables plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.3/libexec/plantuml.jar"
+                                           org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.3/libexec/plantuml.jar" )
+                                         themes-megapack
+                                         python
+                                         vimscript
+                                         asciidoc
+                                         (clojure :variables clojure-enable-sayid
+                                           t clojure-enable-clj-refactor t)
+                                         (json :variables json-fmt-tool 'prettier)
+                                         (html :variables web-fmt-tool 'prettier)
+                                         markdown
+                                         react
+                                         emacs-lisp
+                                         (javascript :variables javascript-fmt-tool 'prettier ))
 
-   ;; List of additional packages that will be installed without being
-   ;; wrapped in a layer. If you need some configuration for these
-   ;; packages, then consider creating a layer. You can also put the
-   ;; configuration in `dotspacemacs/user-config'.
-   ;; To use a local version of a package, use the `:location' property:
-   ;; '(your-package :location "~/path/to/your-package/")
-   ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(doom-themes)
+    ;; List of additional packages that will be installed without being
+    ;; wrapped in a layer. If you need some configuration for these
+    ;; packages, then consider creating a layer. You can also put the
+    ;; configuration in `dotspacemacs/user-config'.
+    ;; To use a local version of a package, use the `:location' property:
+    ;; '(your-package :location "~/path/to/your-package/")
+    ;; Also include the dependencies as they will not be resolved automatically.
+    dotspacemacs-additional-packages '(doom-themes)
 
-   ;; A list of packages that cannot be updated.
-   dotspacemacs-frozen-packages '()
+    ;; A list of packages that cannot be updated.
+    dotspacemacs-frozen-packages '()
 
-   ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(adaptive-wrap)
+    ;; A list of packages that will not be installed and loaded.
+    dotspacemacs-excluded-packages '(adaptive-wrap)
 
-   ;; Defines the behaviour of Spacemacs when installing packages.
-   ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
-   ;; `used-only' installs only explicitly used packages and deletes any unused
-   ;; packages as well as their unused dependencies. `used-but-keep-unused'
-   ;; installs only the used packages but won't delete unused ones. `all'
-   ;; installs *all* packages supported by Spacemacs and never uninstalls them.
-   ;; (default is `used-only')
-   dotspacemacs-install-packages 'used-only))
+    ;; Defines the behaviour of Spacemacs when installing packages.
+    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
+    ;; `used-only' installs only explicitly used packages and deletes any unused
+    ;; packages as well as their unused dependencies. `used-but-keep-unused'
+    ;; installs only the used packages but won't delete unused ones. `all'
+    ;; installs *all* packages supported by Spacemacs and never uninstalls them.
+    ;; (default is `used-only')
+    dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
   "Initialization:
@@ -99,234 +94,122 @@ It should only modify the values of Spacemacs settings."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
   (setq-default
-   ;; If non-nil ELPA repositories are contacted via HTTPS whenever it's
-   ;; possible. Set it to nil if you have no way to use HTTPS in your
-   ;; environment, otherwise it is strongly recommended to let it set to t.
-   ;; This variable has no effect if Emacs is launched with the parameter
-   ;; `--insecure' which forces the value of this variable to nil.
-   ;; (default t)
-   dotspacemacs-elpa-https t
+    dotspacemacs-elpa-https t
+    dotspacemacs-elpa-timeout 10
+    dotspacemacs-enable-emacs-pdumper nil
+    dotspacemacs-emacs-pdumper-executable-file "emacs-27.0.50"
+    dotspacemacs-emacs-dumper-dump-file "spacemacs.pdmp"
+    dotspacemacs-gc-cons '(100000000 0.1)
+    dotspacemacs-use-spacelpa nil
+    dotspacemacs-verify-spacelpa-archives nil
+    dotspacemacs-check-for-update nil
+    dotspacemacs-elpa-subdirectory 'emacs-version
+    dotspacemacs-editing-style 'vim
+    dotspacemacs-verbose-loading nil
+    dotspacemacs-startup-buffer-responsive t
+    dotspacemacs-initial-scratch-message nil
+    dotspacemacs-colorize-cursor-according-to-state t
+    dotspacemacs-leader-key "SPC"
+    dotspacemacs-emacs-command-key "SPC"
+    dotspacemacs-ex-command-key ":"
+    dotspacemacs-emacs-leader-key "M-m"
+    dotspacemacs-major-mode-leader-key ","
+    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
+    dotspacemacs-distinguish-gui-tab nil
+    dotspacemacs-large-file-size 1
+    dotspacemacs-auto-save-file-location 'cache
+    dotspacemacs-max-rollback-slots 5
+    dotspacemacs-which-key-position 'bottom
+    dotspacemacs-loading-progress-bar t
+    dotspacemacs-active-transparency 90
+    dotspacemacs-inactive-transparency 90
+    dotspacemacs-show-transient-state-title t
+    dotspacemacs-show-transient-state-color-guide t
+    dotspacemacs-mode-line-unicode-symbols t
+    dotspacemacs-smooth-scrolling t
+    dotspacemacs-line-numbers nil
+    dotspacemacs-folding-method 'evil
+    dotspacemacs-zone-out-when-idle nil
+    dotspacemacs-startup-banner 0
+    dotspacemacs-startup-lists '((todos . 10)
+                                  (projects . 40)
+                                  (recents . 5))
 
-   ;; Maximum allowed time in seconds to contact an ELPA repository.
-   ;; (default 5)
-   dotspacemacs-elpa-timeout 10
-   dotspacemacs-enable-emacs-pdumper nil
-   dotspacemacs-emacs-pdumper-executable-file "emacs-27.0.50"
-   dotspacemacs-emacs-dumper-dump-file "spacemacs.pdmp"
-   dotspacemacs-gc-cons '(100000000 0.1)
-   dotspacemacs-use-spacelpa nil
-   dotspacemacs-verify-spacelpa-archives nil
-   dotspacemacs-check-for-update nil
-   dotspacemacs-elpa-subdirectory 'emacs-version
-   dotspacemacs-editing-style 'vim
-   dotspacemacs-verbose-loading nil
-   dotspacemacs-startup-buffer-responsive t
-   dotspacemacs-initial-scratch-message nil
-   dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-leader-key "SPC"
-   dotspacemacs-emacs-command-key "SPC"
-   dotspacemacs-ex-command-key ":"
-   dotspacemacs-emacs-leader-key "M-m"
-   dotspacemacs-major-mode-leader-key ","
-   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
-   dotspacemacs-distinguish-gui-tab nil
-   dotspacemacs-large-file-size 1
-   dotspacemacs-auto-save-file-location 'cache
-   dotspacemacs-max-rollback-slots 5
-   dotspacemacs-which-key-position 'bottom
-   dotspacemacs-loading-progress-bar t
-   dotspacemacs-active-transparency 90
-   dotspacemacs-inactive-transparency 90
-   dotspacemacs-show-transient-state-title t
-   dotspacemacs-show-transient-state-color-guide t
-   dotspacemacs-mode-line-unicode-symbols t
-   dotspacemacs-smooth-scrolling t
-   dotspacemacs-line-numbers nil
-   dotspacemacs-folding-method 'evil
-   dotspacemacs-zone-out-when-idle nil
+    dotspacemacs-scratch-mode 'org-mode
 
-   ;; Specify the startup banner. Default value is `official', it displays
-   ;; the official spacemacs logo. An integer value is the index of text
-   ;; banner, `random' chooses a random text banner in `core/banners'
-   ;; directory. A string value must be a path to an image format supported
-   ;; by your Emacs build.
-   ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 0
+    dotspacemacs-themes '(gruvbox-dark-hard
+                           ;;
+                           ;; Doom Themes : https://github.com/hlissner/emacs-doom-themes
+                           ;;
+                           doom-vibrant
+                           doom-molokai
+                           doom-one
+                           doom-one-light
+                           doom-city-lights
+                           doom-dracula
+                           ;;doom-Iosvkem
+                           doom-molokai
+                           doom-nord
+                           doom-nord-light
+                           doom-opera
+                           doom-opera-light
+                           doom-nova
+                           doom-peacock
+                           doom-solarized-light
+                           ;;doom-sourcerer
+                           doom-spacegrey
+                           doom-tomorrow-night
+                           doom-tomorrow-day
+                           ;;
+                           ;; General Themes
+                           ;;
 
-   ;; List of items to show in startup buffer or an association list of
-   ;; the form `(list-type . list-size)`. If nil then it is disabled.
-   ;; Possible values for list-type are:
-   ;; `recents' `bookmarks' `projects' `agenda' `todos'.
-   ;; List sizes may be nil, in which case
-   ;; `spacemacs-buffer-startup-lists-length' takes effect.
-   dotspacemacs-startup-lists '((todos . 10)
-                                (projects . 40)
-                                (recents . 5))
+                           spacemacs-dark
+                           spacemacs-light)
+    dotspacemacs-mode-line-theme 'doom
+    dotspacemacs-default-font '("Source Code Pro"
+                                 :size 15
+                                 :weight normal
+                                 :width normal)
+    dotspacemacs-default-layout-name "Default"
+    dotspacemacs-display-default-layout nil
+    dotspacemacs-auto-resume-layouts t
+    dotspacemacs-auto-generate-layout-names nil
+    dotspacemacs-enable-paste-transient-state nil
+    dotspacemacs-which-key-delay 0.4
+    dotspacemacs-switch-to-buffer-prefers-purpose nil
+    dotspacemacs-fullscreen-at-startup nil
+    dotspacemacs-fullscreen-use-non-native nil
+    dotspacemacs-maximized-at-startup t
+    dotspacemacs-smartparens-strict-mode nil
+    dotspacemacs-smart-closing-parenthesis nil
+    dotspacemacs-highlight-delimiters 'all
+    dotspacemacs-enable-server nil
+    dotspacemacs-server-socket-dir nil
+    dotspacemacs-persistent-server nil
+    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
 
-   ;; Default major mode of the scratch buffer (default `text-mode')
-   dotspacemacs-scratch-mode 'org-mode
-
-   dotspacemacs-themes '(gruvbox-dark-hard
-                         ;;
-                         ;; Doom Themes : https://github.com/hlissner/emacs-doom-themes
-                         ;;
-                         doom-vibrant
-                         doom-molokai
-                         doom-one
-                         doom-one-light
-                         doom-city-lights
-                         doom-dracula
-                         ;;doom-Iosvkem
-                         doom-molokai
-                         doom-nord
-                         doom-nord-light
-                         doom-opera
-                         doom-opera-light
-                         doom-nova
-                         doom-peacock
-                         doom-solarized-light
-                         ;;doom-sourcerer
-                         doom-spacegrey
-                         doom-tomorrow-night
-                         doom-tomorrow-day
-                         ;;
-                         ;; General Themes
-                         ;;
-
-                         spacemacs-dark
-                         spacemacs-light)
-
-   ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
-   ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
-   ;; first three are spaceline themes. `doom' is the doom-emacs mode-line.
-   ;; `vanilla' is default Emacs mode-line. `custom' is a user defined themes,
-   ;; refer to the DOCUMENTATION.org for more info on how to create your own
-   ;; spaceline theme. Value can be a symbol or list with additional properties.
-   ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   ;; dotspacemacs-mode-line-theme '(all-the-icons :separator arrow)
-   dotspacemacs-mode-line-theme 'doom
-
-
-   ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
-   ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 15
-                               :weight normal
-                               :width normal)
-
-   ;; Name of the default layout (default "Default")
-   dotspacemacs-default-layout-name "Default"
-
-   ;; If non-nil the default layout name is displayed in the mode-line.
-   ;; (default nil)
-   dotspacemacs-display-default-layout nil
-
-   ;; If non-nil then the last auto saved layouts are resumed automatically upon
-   ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts nil
-
-   ;; If non-nil, auto-generate layout name when creating new layouts. Only has
-   ;; effect when using the "jump to layout by number" commands. (default nil)
-   dotspacemacs-auto-generate-layout-names nil
-
-   ;; If non-nil, the paste transient-state is enabled. While enabled, after you
-   ;; paste something, pressing `C-j' and `C-k' several times cycles through the
-   ;; elements in the `kill-ring'. (default nil)
-   dotspacemacs-enable-paste-transient-state nil
-
-   ;; Which-key delay in seconds. The which-key buffer is the popup listing
-   ;; the commands bound to the current keystroke sequence. (default 0.4)
-   dotspacemacs-which-key-delay 0.4
-
-   ;; Control where `switch-to-buffer' displays the buffer. If nil,
-   ;; `switch-to-buffer' displays the buffer in the current window even if
-   ;; another same-purpose window is available. If non-nil, `switch-to-buffer'
-   ;; displays the buffer in a same-purpose window even if the buffer can be
-   ;; displayed in the current window. (default nil)
-   dotspacemacs-switch-to-buffer-prefers-purpose nil
-
-
-   ;; If non-nil the frame is fullscreen when Emacs starts up. (default nil)
-   ;; (Emacs 24.4+ only)
-   dotspacemacs-fullscreen-at-startup nil
-
-   ;; If non-nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
-   ;; Use to disable fullscreen animations in OSX. (default nil)
-   dotspacemacs-fullscreen-use-non-native nil
-
-   ;; If non-nil the frame is maximized when Emacs starts up.
-   ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
-   ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup t
-
-   ;; If non-nil `smartparens-strict-mode' will be enabled in programming modes.
-   ;; (default nil)
-   dotspacemacs-smartparens-strict-mode nil
-
-   ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
-   ;; over any automatically added closing parenthesis, bracket, quote, etc…
-   ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
-   dotspacemacs-smart-closing-parenthesis nil
-
-   ;; Select a scope to highlight delimiters. Possible values are `any',
-   ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
-   ;; emphasis the current one). (default 'all)
-   dotspacemacs-highlight-delimiters 'all
-
-   ;; If non-nil, start an Emacs server if one is not already running.
-   ;; (default nil)
-   dotspacemacs-enable-server nil
-
-   ;; Set the emacs server socket location.
-   ;; If nil, uses whatever the Emacs default is, otherwise a directory path
-   ;; like \"~/.emacs.d/server\". It has no effect if
-   ;; `dotspacemacs-enable-server' is nil.
-   ;; (default nil)
-   dotspacemacs-server-socket-dir nil
-
-   ;; If non-nil, advise quit functions to keep server open when quitting.
-   ;; (default nil)
-   dotspacemacs-persistent-server nil
-
-   ;; List of search tool executable names. Spacemacs uses the first installed
-   ;; tool of the list. Supported tools are `rg', `ag', `pt', `ack' and `grep'.
-   ;; (default '("rg" "ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
-
-   ;; Format specification for setting the frame title.
-   ;; %a - the `abbreviated-file-name', or `buffer-name'
-   ;; %t - `projectile-project-name'
-   ;; %I - `invocation-name'
-   ;; %S - `system-name'
-   ;; %U - contents of $USER
-   ;; %b - buffer name
-   ;; %f - visited file name
-   ;; %F - frame name
-   ;; %s - process status
-   ;; %p - percent of buffer above top of window, or Top, Bot or All
-   ;; %P - percent of buffer above bottom of window, perhaps plus Top, or Bot or All
-   ;; %m - mode name
-   ;; %n - Narrow if appropriate
-   ;; %z - mnemonics of buffer, terminal, and keyboard coding systems
-   ;; %Z - like %z, but including the end-of-line format
-   ;; (default "%I@%S")
-   dotspacemacs-frame-title-format "%I@%S"
-
-   ;; Format specification for setting the icon title format
-   ;; (default nil - same as frame-title-format)
-   dotspacemacs-icon-title-format nil
-
-   ;; Delete whitespace while saving buffer. Possible values are `all'
-   ;; to aggressively delete empty line and long sequences of whitespace,
-   ;; `trailing' to delete only the whitespace at end of lines, `changed' to
-   ;; delete only whitespace for changed lines or `nil' to disable cleanup.
-   ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
-
-   ;; Run `spacemacs/prettify-org-buffer' when
-   ;; visiting README.org files of Spacemacs.
-   ;; (default nil)
-   dotspacemacs-pretty-docs nil))
+    ;; Format specification for setting the frame title.
+    ;; %a - the `abbreviated-file-name', or `buffer-name'
+    ;; %t - `projectile-project-name'
+    ;; %I - `invocation-name'
+    ;; %S - `system-name'
+    ;; %U - contents of $USER
+    ;; %b - buffer name
+    ;; %f - visited file name
+    ;; %F - frame name
+    ;; %s - process status
+    ;; %p - percent of buffer above top of window, or Top, Bot or All
+    ;; %P - percent of buffer above bottom of window, perhaps plus Top, or Bot or All
+    ;; %m - mode name
+    ;; %n - Narrow if appropriate
+    ;; %z - mnemonics of buffer, terminal, and keyboard coding systems
+    ;; %Z - like %z, but including the end-of-line format
+    ;; (default "%I@%S")
+    dotspacemacs-frame-title-format "%I@%S"
+    dotspacemacs-icon-title-format nil
+    dotspacemacs-whitespace-cleanup nil
+    dotspacemacs-pretty-docs nil))
 
 (defun dotspacemacs/user-env ()
   "Environment variables setup.
@@ -342,16 +225,13 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  (setq javascript-fmt-tool 'prettier)
   (setq-default git-magit-status-fullscreen t))
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
 This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
-dump."
-;;  (setq javascript-fmt-tool 'prettier)
-  )
+dump.")
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
@@ -424,11 +304,6 @@ before packages are loaded."
                                          "* MEETING with %? :MEETING:\n%T"
                                          :clock-in t
                                          :clock-resume t))))
-  ;; or for treemacs users
-  (doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  ;; (doom-themes-org-config)
-  ;; (org-indent-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

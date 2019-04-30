@@ -6,6 +6,28 @@
 [[docs/screenshot.png]]
 
 * Setup
+** Helpers
+*** Homebrew Update/cleanup
+#+name: copy-spacemacs-to-dotfiles
+#+begin_src sh
+brew update
+brew cleanup
+#+end_src
+
+*** Copy Local to Repo
+#+name: copy-spacemacs-to-dotfiles
+#+begin_src sh
+cp ~/.spacemacs ~/Projects/dotfiles/emacs/.spacemacs
+#+end_src
+
+#+RESULTS: copy-spacemacs-to-dotfiles
+
+*** Copy Repo to Local
+#+name: copy-dotfiles-to-spacemacs
+#+begin_src sh
+cp ~/Projects/dotfiles/emacs/.spacemacs ~/.spacemacs
+#+end_src
+
 ** JavaScript
 *** Install Node Using [[https://github.com/tj/n][n]]
 #+Name: install-js-n
