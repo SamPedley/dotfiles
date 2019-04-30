@@ -2,6 +2,9 @@
 #+STARTUP: overview
 
 
+<p align="center">
+  <img src="docs/screenshot.png" style="max-width:80%;" border="0" />
+</p>
 
 * Setup
 ** JavaScript
