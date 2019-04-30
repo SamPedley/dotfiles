@@ -1,10 +1,9 @@
 #+TITLE: Dotfiles Setup
 #+STARTUP: overview
 
-
-<p align="center">
-  <img src="docs/screenshot.png" style="max-width:80%;" border="0" />
-</p>
+#+CAPTION: Screenshot
+#+ATTR_HTML: :align center :style max-width:80%;
+[[docs/screenshot.png]]
 
 * Setup
 ** JavaScript
