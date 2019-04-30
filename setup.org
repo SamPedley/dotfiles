@@ -1,6 +1,7 @@
-#-*- mode: org -*-
 #+TITLE: Dotfiles Setup
 #+STARTUP: overview
+
+
 
 * Setup
 ** JavaScript
@@ -29,3 +30,77 @@ npm install -g import-js
 
 npm install -g eslint
 #+END_SRC
+
+** Java
+*** Install latest
+#+name: java-install-latest
+#+begin_src bash
+# Install the latest java version
+brew cask install java
+#+end_src
+
+*** Install OpenJDK versions
+#+name: java-install-opensdk
+#+begin_src bash
+# Install open JDK 8,9 & 10
+brew cask install adoptopenjdk8
+brew cask install adoptopenjdk9
+brew cask install adoptopenjdk10
+#+end_src
+
+*** Set Java version
+#+name: set-java-version
+#+begin_src bash
+# Set the java version to openJDK 1.8
+# Best to keep this in the bas_profile to set as default
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+#+end_src
+
+** Go
+*** Install
+#+name: install-go
+#+begin_src bash
+
+#+end_src
+
+** Rust
+*** Install
+#+name: install-rust
+#+begin_src bash
+
+#+end_src
+
+** Clojure
+*** Install
+#+name: install-rust
+#+begin_src bash
+
+#+end_src
+
+** Vim
+*** Install
+#+name: install-vim
+#+begin_src bash
+
+#+end_src
+
+** Tmux
+*** Install
+#+name: install-tmux
+#+begin_src bash
+
+#+end_src
+
+** Emacs
+*** Install
+#+name: install-emacs
+#+begin_src bash
+
+#+end_src
+
+** VS Code
+*** Install
+#+name: install-vs-code
+#+begin_src bash
+
+#+end_src
