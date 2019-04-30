@@ -62,7 +62,7 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 *** Install
 #+name: install-go
 #+begin_src bash
-
+brew install go
 #+end_src
 
 ** Rust
@@ -76,7 +76,9 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 *** Install
 #+name: install-rust
 #+begin_src bash
-
+# # Install other languages
+brew install clojure
+brew install leiningen
 #+end_src
 
 ** Vim
@@ -90,19 +92,24 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 *** Install
 #+name: install-tmux
 #+begin_src bash
+#install tmux
+brew install tmux
 
+# install tmp - tmux package manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm/
 #+end_src
 
 ** Emacs
-*** Install
+*** Install Deps
 #+name: install-emacs
 #+begin_src bash
+brew install ispell --with-lang-en
 
+# installed by pointing spacemacs config to jar file added by plantuml
+brew install plantuml
+brew install graphviz
 #+end_src
 
 ** VS Code
 *** Install
-#+name: install-vs-code
-#+begin_src bash
-
-#+end_src
+[[https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync][vscode sync settings plugin]]
