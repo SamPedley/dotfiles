@@ -142,28 +142,10 @@ It should only modify the values of Spacemacs settings."
                            ;; Doom Themes : https://github.com/hlissner/emacs-doom-themes
                            ;;
                            doom-vibrant
-                           doom-molokai
-                           doom-one
-                           doom-one-light
-                           doom-city-lights
-                           doom-dracula
-                           ;;doom-Iosvkem
-                           doom-molokai
-                           doom-nord
-                           doom-nord-light
-                           doom-opera
-                           doom-opera-light
-                           doom-nova
-                           doom-peacock
                            doom-solarized-light
-                           ;;doom-sourcerer
-                           doom-spacegrey
-                           doom-tomorrow-night
-                           doom-tomorrow-day
                            ;;
                            ;; General Themes
                            ;;
-
                            spacemacs-dark
                            spacemacs-light)
     dotspacemacs-mode-line-theme 'doom
@@ -173,7 +155,7 @@ It should only modify the values of Spacemacs settings."
                                  :width normal)
     dotspacemacs-default-layout-name "Default"
     dotspacemacs-display-default-layout nil
-    dotspacemacs-auto-resume-layouts t
+    dotspacemacs-auto-resume-layouts nil
     dotspacemacs-auto-generate-layout-names nil
     dotspacemacs-enable-paste-transient-state nil
     dotspacemacs-which-key-delay 0.4
@@ -246,8 +228,7 @@ before packages are loaded."
   (setq evil-default-cursor (quote (t "#750000"))
     evil-visual-state-cursor '("#63ba3c" bar)
     evil-normal-state-cursor '("#FFFFFF" bar)
-    evil-insert-state-cursor '("#e2e222" bar)
-    )
+    evil-insert-state-cursor '("#e2e222" bar))
 
   ;;
   ;; org mode config

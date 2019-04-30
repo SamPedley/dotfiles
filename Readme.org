@@ -20,10 +20,8 @@ brew cleanup
 cp ~/.spacemacs ~/Projects/dotfiles/emacs/.spacemacs
 #+end_src
 
-#+RESULTS: copy-spacemacs-to-dotfiles
-
 *** Copy Repo to Local
-#+name: copy-dotfiles-to-spacemacs
+#+name: copy-dotfiles-to-dotfiles
 #+begin_src sh
 cp ~/Projects/dotfiles/emacs/.spacemacs ~/.spacemacs
 #+end_src
