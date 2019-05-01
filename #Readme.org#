@@ -1,0 +1,135 @@
+#+TITLE: Dotfiles Setup
+#+STARTUP: oveqrview
+
+#+CAPTION: Screenshot
+#+ATTR_HTML: :align center :style max-width:80%;
+[[docs/screenshot.png]]
+
+* Setup
+** Helpers
+*** Homebrew Update/cleanup
+#+name: copy-spacemacs-to-dotfiles
+#+begin_src sh
+brew update
+brew cleanup
+#+end_src
+
+*** Copy Local to Repo
+#+name: copy-spacemacs-to-dotfiles
+#+begin_src sh
+cp ~/.spacemacs ~/Projects/dotfiles/emacs/.spacemacs
+#+end_src
+
+*** Copy Repo to Local
+#+name: copy-dotfiles-to-dotfiles
+#+begin_src sh
+cp ~/Projects/dotfiles/emacs/.spacemacs ~/.spacemacs
+#+end_src
+
+** JavaScript
+*** Install Node Using [[https://github.com/tj/n][n]]
+#+Name: install-js-n
+#+BEGIN_SRC bash
+brew install n
+n lts
+#+END_SRC
+
+*** Fix brew/n permission issue on Mojave
+#+Name: fix-js-n-bash-permission
+#+BEGIN_SRC bash
+# make cache folder (if missing) and take ownership
+sudo mkdir -p /usr/local/n
+sudo chown -R $(whoami) /usr/local/n
+# take ownership of node install destination folders
+sudo chown -R $(whoami) /usr/local/bin /usr/local/lib /usr/local/include /usr/local/share
+#+END_SRC
+
+*** Add spacemacs js layer deps
+#+Name: spacemacs-js-layer-deps
+#+BEGIN_SRC bash
+npm i -g prettier
+npm install -g import-js
+
+npm install -g eslint
+#+END_SRC
+
+** Java
+*** Install latest
+#+name: java-install-latest
+#+begin_src bash
+# Install the latest java version
+brew cask install java
+#+end_src
+
+*** Install OpenJDK versions
+#+name: java-install-opensdk
+#+begin_src bash
+# Install open JDK 8,9 & 10
+brew cask install adoptopenjdk8
+brew cask install adoptopenjdk9
+brew cask install adoptopenjdk10
+#+end_src
+
+*** Set Java version
+#+name: set-java-version
+#+begin_src bash
+# Set the java version to openJDK 1.8
+# Best to keep this in the bas_profile to set as default
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+#+end_src
+
+** Go
+*** Install
+#+name: install-go
+#+begin_src bash
+brew install go
+#+end_src
+
+** Rust
+*** Install
+#+name: install-rust
+#+begin_src bash
+
+#+end_src
+
+** Clojure
+*** Install
+#+name: install-rust
+#+begin_src bash
+# # Install other languages
+brew install clojure
+brew install leiningen
+#+end_src
+
+** Vim
+*** Install
+#+name: install-vim
+#+begin_src bash
+
+#+end_src
+
+** Tmux
+*** Install
+#+name: install-tmux
+#+begin_src bash
+#install tmux
+brew install tmux
+
+# install tmp - tmux package manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm/
+#+end_src
+
+** Emacs
+*** Install Deps
+#+name: install-emacs
+#+begin_src bash
+brew install ispell --with-lang-en
+
+# installed by pointing spacemacs config to jar file added by plantuml
+brew install plantuml
+brew install graphviz
+#+end_src
+
+** VS Code
+*** Install
+[[https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync][vscode sync settings plugin]]
