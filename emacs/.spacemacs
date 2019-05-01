@@ -226,14 +226,16 @@ before packages are loaded."
   (global-set-key (kbd "H-g") 'magit-status)
   (global-set-key (kbd "H-b") 'ibuffer)
 
+  (setq ranger-show-literal nil) ;; preview with syntax highlighting - toggle with "zi" in ranger mode
+
   (setq magit-repository-directories '("~/Projects"))
 
   (setq projectile-project-search-path '("~/Projects/"))
 
   (setq evil-default-cursor (quote (t "#750000"))
-    evil-visual-state-cursor '("#63ba3c" bar)
-    evil-normal-state-cursor '("#FFFFFF" bar)
-    evil-insert-state-cursor '("#e2e222" bar))
+        evil-visual-state-cursor '("#63ba3c" bar)
+        evil-normal-state-cursor '("#FFFFFF" bar)
+        evil-insert-state-cursor '("#e2e222" bar))
 
   ;;
   ;; org mode config
@@ -243,54 +245,54 @@ before packages are loaded."
   (setq org-agenda-files (quote ("~/Dropbox/Notes")))
   ;; auto save agenda
   (add-hook 'org-agenda-mode-hook
-    (lambda ()
-      (add-hook 'auto-save-hook 'org-save-all-org-buffers
-        nil t)
-      (auto-save-mode)))
+            (lambda ()
+              (add-hook 'auto-save-hook 'org-save-all-org-buffers
+                        nil t)
+              (auto-save-mode)))
   (setq org-todo-keywords
-    (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-             (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
+        (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+                (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
 
   (setq org-todo-keyword-faces
-    (quote (("TODO" :foreground "red" :weight bold)
-             ("NEXT" :foreground "blue" :weight bold)
-             ("DONE" :foreground "forest green" :weight bold)
-             ("WAITING" :foreground "orange" :weight bold)
-             ("HOLD" :foreground "magenta" :weight bold)
-             ("CANCELLED" :foreground "forest green" :weight bold)
-             ("MEETING" :foreground "forest green" :weight bold)
-             ("PHONE" :foreground "forest green" :weight bold))))
+        (quote (("TODO" :foreground "red" :weight bold)
+                ("NEXT" :foreground "blue" :weight bold)
+                ("DONE" :foreground "forest green" :weight bold)
+                ("WAITING" :foreground "orange" :weight bold)
+                ("HOLD" :foreground "magenta" :weight bold)
+                ("CANCELLED" :foreground "forest green" :weight bold)
+                ("MEETING" :foreground "forest green" :weight bold)
+                ("PHONE" :foreground "forest green" :weight bold))))
 
   ;; org-capture
   (setq org-directory "~/Dropbox/Notes")
   (setq org-default-notes-file "~/Dropbox/Notes/inbox.org")
   (setq org-default-work-notes-file "~/Dropbox/Notes/work.org")
   (setq org-capture-templates (quote (("t" "todo"
-                                        entry
-                                        (file "~/Dropbox/Notes/inbox.org")
-                                        "* TODO %?\n%T\n"
-                                        :clock-in t
-                                        :clock-resume t)
-                                       ("r" "respond"
-                                         entry
-                                         (file org-default-notes-file)
-                                         "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n"
-                                         :clock-in t
-                                         :clock-resume t
-                                         :immediate-finish t)
-                                       ("n" "note"
-                                         entry
-                                         (file org-default-notes-file)
-                                         "* %? :NOTE:\n%T\n"
-                                         :clock-in t
-                                         :clock-resume t)
-                                       ("m" "Meeting"
-                                         entry
-                                         (file org-default-work-notes-file)
-                                         "* MEETING with %? :MEETING:\n%T"
-                                         :clock-in t
-                                         :clock-resume t))))
-  )
+                                       entry
+                                       (file "~/Dropbox/Notes/inbox.org")
+                                       "* TODO %?\n%T\n"
+                                       :clock-in t
+                                       :clock-resume t)
+                                      ("r" "respond"
+                                       entry
+                                       (file org-default-notes-file)
+                                       "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n"
+                                       :clock-in t
+                                       :clock-resume t
+                                       :immediate-finish t)
+                                      ("n" "note"
+                                       entry
+                                       (file org-default-notes-file)
+                                       "* %? :NOTE:\n%T\n"
+                                       :clock-in t
+                                       :clock-resume t)
+                                      ("m" "Meeting"
+                                       entry
+                                       (file org-default-work-notes-file)
+                                       "* MEETING with %? :MEETING:\n%T"
+                                       :clock-in t
+                                       :clock-resume t)))))
+  
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
