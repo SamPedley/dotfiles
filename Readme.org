@@ -89,7 +89,9 @@ brew install go
 *** Install
 #+name: install-rust
 #+begin_src bash
-
+curl https://sh.rustup.rs -sSf | sh
+rustup component add clippy
+rustup component add rustfmt
 #+end_src
 
 ** Clojure

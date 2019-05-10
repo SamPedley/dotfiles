@@ -6,12 +6,13 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'morhetz/gruvbox'
+Plugin 'jreybert/vimagit'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fireplace'
 Plugin 'luochen1990/rainbow'
 Plugin 'guns/vim-clojure-static'
@@ -33,7 +34,20 @@ let NERDTreeDirArrows = 1
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 set termguicolors
-colorscheme deus
+colorscheme gruvbox
+set background=dark    " Setting dark mode
+
+
+" set termguicolors
+" colorscheme deus
+
+" set t_Co=256
+" set termguicolors
+" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" set background=dark " Setting dark mode
+" colorscheme deus
+" let g:deus_termcolors=256
 
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
