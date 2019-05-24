@@ -4,90 +4,92 @@
 This function should only modify configuration layer settings."
   (setq-default
 
-    ;; List of configuration layers to load.
+   ;; List of configuration layers to load.
    dotspacemacs-configuration-layers '(csv
                                        go
                                        rust
-                                         sql
-                                         yaml
-                                         helm
-                                         docker
-                                         (ranger :variables
-                                           ranger-enter-with-minus t
-                                           ranger-override-dired-mode t
-                                           ranger-max-preview-size 10
-                                           ranger-show-preview t
-                                           ranger-show-hidden t
-                                           ranger-cleanup-eagerly t
-                                           ranger-cleanup-on-disable t)
-                                         xkcd
-                                         (spell-checking :variables spell-checking-enable-by-default nil)
-                                         ( restclient :variables restclient-use-org t)
-                                         auto-completion
-                                         emacs-lisp
-                                         command-log
-                                         git
-                                         github
-                                         copy-as-format
-                                         osx
-                                         (ibuffer :variables ibuffer-group-buffers-by 'projects)
-                                         multiple-cursors
-                                         semantic
-                                         (org :variables org-projectile-file "~/Dropbox/Notes/inbox.org"
-                                           org-want-todo-bindings t
-                                           org-enable-org-journal-support t
-                                           org-enable-reveal-js-support t
-                                           org-enable-github-support t)
-                                         shell-scripts
-                                         (shell :variables shell-default-term-shell "/usr/local/bin/bash"
-                                           shell-default-height 30
-                                           shell-default-position 'bottom)
-                                         (version-control :variables version-control-diff-tool'git-gutter+
-                                           version-control-diff-side 'left version-control-global-margin t)
-                                         ;; editers
-                                         tern
-                                         parinfer
-                                         ;; Linters
-                                         prettier
-                                         ;; Languages
-                                         ( plantuml :variables plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.3/libexec/plantuml.jar"
-                                           org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.3/libexec/plantuml.jar" )
-                                         themes-megapack
-                                         python
-                                         vimscript
-                                         asciidoc
-                                         (clojure :variables clojure-enable-sayid
-                                           t clojure-enable-clj-refactor t)
-                                         (json :variables json-fmt-tool 'prettier)
-                                         (html :variables web-fmt-tool 'prettier)
-                                         markdown
-                                         react
-                                         emacs-lisp
-                                         (javascript :variables javascript-fmt-tool 'prettier ))
+                                       sql
+                                       yaml
+                                       helm
+                                       spacemacs-purpose
+                                       (terraform :variables terraform-auto-format-on-save t)
+                                       docker
+                                       (ranger :variables
+                                               ranger-enter-with-minus t
+                                               ranger-override-dired-mode t
+                                               ranger-max-preview-size 10
+                                               ranger-show-preview t
+                                               ranger-show-hidden t
+                                               ranger-cleanup-eagerly t
+                                               ranger-cleanup-on-disable t)
+                                       xkcd
+                                       (spell-checking :variables spell-checking-enable-by-default nil)
+                                       ( restclient :variables restclient-use-org t)
+                                       auto-completion
+                                       emacs-lisp
+                                       command-log
+                                       git
+                                       github
+                                       copy-as-format
+                                       osx
+                                       (ibuffer :variables ibuffer-group-buffers-by 'projects)
+                                       multiple-cursors
+                                       semantic
+                                       (org :variables org-projectile-file "~/Dropbox/Notes/inbox.org"
+                                            org-want-todo-bindings t
+                                            org-enable-org-journal-support t
+                                            org-enable-reveal-js-support t
+                                            org-enable-github-support t)
+                                       shell-scripts
+                                       (shell :variables shell-default-term-shell "/usr/local/bin/bash"
+                                              shell-default-height 30
+                                              shell-default-position 'bottom)
+                                       (version-control :variables version-control-diff-tool 'diff-hl
+                                                        version-control-diff-side 'left version-control-global-margin t)
+                                       ;; editers
+                                       tern
+                                       ;; parinfer
+                                       ;; Linters
+                                       prettier
+                                       ;; Languages
+                                       ( plantuml :variables plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.3/libexec/plantuml.jar"
+                                                  org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.3/libexec/plantuml.jar" )
+                                       themes-megapack
+                                       python
+                                       vimscript
+                                       asciidoc
+                                       (clojure :variables clojure-enable-sayid
+                                                t clojure-enable-clj-refactor t)
+                                       (json :variables json-fmt-tool 'prettier)
+                                       (html :variables web-fmt-tool 'prettier)
+                                       markdown
+                                       react
+                                       emacs-lisp
+                                       (javascript :variables javascript-fmt-tool 'prettier ))
 
-    ;; List of additional packages that will be installed without being
-    ;; wrapped in a layer. If you need some configuration for these
-    ;; packages, then consider creating a layer. You can also put the
-    ;; configuration in `dotspacemacs/user-config'.
-    ;; To use a local version of a package, use the `:location' property:
-    ;; '(your-package :location "~/path/to/your-package/")
-    ;; Also include the dependencies as they will not be resolved automatically.
-    dotspacemacs-additional-packages '(doom-themes)
+   ;; List of additional packages that will be installed without being
+   ;; wrapped in a layer. If you need some configuration for these
+   ;; packages, then consider creating a layer. You can also put the
+   ;; configuration in `dotspacemacs/user-config'.
+   ;; To use a local version of a package, use the `:location' property:
+   ;; '(your-package :location "~/path/to/your-package/")
+   ;; Also include the dependencies as they will not be resolved automatically.
+   dotspacemacs-additional-packages '(doom-themes)
 
-    ;; A list of packages that cannot be updated.
-    dotspacemacs-frozen-packages '()
+   ;; A list of packages that cannot be updated.
+   dotspacemacs-frozen-packages '()
 
-    ;; A list of packages that will not be installed and loaded.
-    dotspacemacs-excluded-packages '(adaptive-wrap)
+   ;; A list of packages that will not be installed and loaded.
+   dotspacemacs-excluded-packages '(adaptive-wrap)
 
-    ;; Defines the behaviour of Spacemacs when installing packages.
-    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
-    ;; `used-only' installs only explicitly used packages and deletes any unused
-    ;; packages as well as their unused dependencies. `used-but-keep-unused'
-    ;; installs only the used packages but won't delete unused ones. `all'
-    ;; installs *all* packages supported by Spacemacs and never uninstalls them.
-    ;; (default is `used-only')
-    dotspacemacs-install-packages 'used-only))
+   ;; Defines the behaviour of Spacemacs when installing packages.
+   ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
+   ;; `used-only' installs only explicitly used packages and deletes any unused
+   ;; packages as well as their unused dependencies. `used-but-keep-unused'
+   ;; installs only the used packages but won't delete unused ones. `all'
+   ;; installs *all* packages supported by Spacemacs and never uninstalls them.
+   ;; (default is `used-only')
+   dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
   "Initialization:
@@ -124,15 +126,16 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-max-rollback-slots 5
    dotspacemacs-which-key-position 'bottom
    dotspacemacs-loading-progress-bar t
-   dotspacemacs-active-transparency 90
-   dotspacemacs-inactive-transparency 90
+   dotspacemacs-active-transparency 100
+   dotspacemacs-inactive-transparency 100
    dotspacemacs-show-transient-state-title t
    dotspacemacs-show-transient-state-color-guide t
    dotspacemacs-mode-line-unicode-symbols t
    dotspacemacs-smooth-scrolling t
-   dotspacemacs-line-numbers '(:disabled-for-modes
-                               text-mode
-                               :relative t)
+   dotspacemacs-line-numbers nil
+   ;; '(:disabled-for-modes
+   ;;   text-mode
+   ;;   :relative t)
    dotspacemacs-folding-method 'evil
    dotspacemacs-zone-out-when-idle nil
    dotspacemacs-startup-banner 0
@@ -143,6 +146,9 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-scratch-mode 'org-mode
 
    dotspacemacs-themes '(gruvbox-dark-hard
+                         ;; Light Themes
+                         leuven
+                         flatui
                          ;;
                          ;; Doom Themes : https://github.com/hlissner/emacs-doom-themes
                          ;;
@@ -221,18 +227,35 @@ This function is called only while dumping Spacemacs configuration. You can
 dump.")
 
 (defun dotspacemacs/user-config ()
-  "Configuration for user code:
-This function is called at the very end of Spacemacs startup, after layer
-configuration.
-Put your configuration code here, except for variables that should be set
-before packages are loaded."
+  ;; -------------------------------
+  ;; Hotkeys -----------------------
+
   (global-set-key (kbd "H-p") 'helm-projectile-find-file)
   (global-set-key (kbd "H--") 'ranger)
   (global-set-key (kbd "H-g") 'magit-status)
   (global-set-key (kbd "H-b") 'ibuffer)
 
-  (setq ranger-show-literal nil) ;; preview with syntax highlighting - toggle with "zi" in ranger mode
+  ;; -------------------------------
+  ;; Clojure -----------------------
 
+  (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks)
+  (setq clojure-enable-fancify-symbols t)
+
+  ;; -------------------------------
+  ;; Visual  -----------------------
+
+  (setq diff-hl-flydiff-mode t)
+
+  (spacemacs/toggle-vi-tilde-fringe-off)
+
+  (setq ns-use-proxy-icon nil)
+  (setq frame-title-format nil)
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+  (add-to-list 'default-frame-alist '(ns-appearance . dark))
+  ;; -------------------------------
+  ;; Org Mode
+  ;; -------------------------------
+  (setq ranger-show-literal nil) ;; preview with syntax highlighting - toggle with "zi" in ranger mode
   (setq magit-repository-directories '("~/Projects"))
 
   (setq projectile-project-search-path '("~/Projects/"))
