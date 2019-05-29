@@ -138,7 +138,7 @@ It should only modify the values of Spacemacs settings."
    ;;   :relative t)
    dotspacemacs-folding-method 'evil
    dotspacemacs-zone-out-when-idle nil
-   dotspacemacs-startup-banner 0
+   dotspacemacs-startup-banner 100
    dotspacemacs-startup-lists '((recents . 5)
                                 (projects . 10)
                                 (todos . 10))
@@ -154,6 +154,8 @@ It should only modify the values of Spacemacs settings."
                          ;;
                          doom-vibrant
                          doom-solarized-light
+                         doom-peacock
+												 doom-molokai
                          ;;
                          ;; General Themes
                          ;;
