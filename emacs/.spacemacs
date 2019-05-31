@@ -206,9 +206,12 @@ This function should only modify configuration layer settings."
 
   (spacemacs/set-leader-keys "ESC" 'keyboard-quit)
   (spacemacs/set-leader-keys "oc" 'org-capture)
-  (spacemacs/set-leader-keys "TAB" 'eyebrowse-last-window-config)
+  (spacemacs/set-leader-keys "TAB" 'spacemacs/layouts-transient-state/spacemacs/jump-to-last-layout)
   (spacemacs/set-leader-keys "L" 'spacemacs/workspaces-transient-state/body)
   (spacemacs/set-leader-keys "W" 'spacemacs/window-manipulation-transient-state/body)
+  (spacemacs/set-leader-keys "o1" 'spacemacs/custom-layouts-transient-state/spacemacs/custom-perspective-@Org-and-exit)
+  (spacemacs/set-leader-keys "o2" 'spacemacs/custom-layouts-transient-state/spacemacs/custom-perspective-@Rest-and-exit)
+  (spacemacs/set-leader-keys "o9" 'spacemacs/custom-layouts-transient-state/spacemacs/custom-perspective-@Spacemacs-and-exit)
   (spacemacs/set-leader-keys-for-major-mode 'org-mode
     "of" 'org-babel-execute-src-block
     "of" 'org-edit-src-code
@@ -231,7 +234,7 @@ lines downward first."
   (define-key evil-motion-state-map "g$" 'evil-end-of-line)
   (define-key evil-motion-state-map "$" 'evil-last-non-blank)
 
-    ;; Evil-goggles setup
+  ;; Evil-goggles setup
   ;; (evil-goggles-mode)
   ;; (evil-goggles-use-diff-faces)
   ;; (setq evil-goggles-pulse t)
@@ -282,48 +285,52 @@ lines downward first."
               (auto-save-mode)))
   (setq org-todo-keywords
         (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-                (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING")))))
+                (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
 
-(setq org-todo-keyword-faces
-      (quote (("TODO" :foreground "red" :weight bold)
-              ("NEXT" :foreground "blue" :weight bold)
-              ("DONE" :foreground "forest green" :weight bold)
-              ("WAITING" :foreground "orange" :weight bold)
-              ("HOLD" :foreground "magenta" :weight bold)
-              ("CANCELLED" :foreground "forest green" :weight bold)
-              ("MEETING" :foreground "forest green" :weight bold)
-              ("PHONE" :foreground "forest green" :weight bold))))
+  (setq org-todo-keyword-faces
+        (quote (("TODO" :foreground "red" :weight bold)
+                ("NEXT" :foreground "blue" :weight bold)
+                ("DONE" :foreground "forest green" :weight bold)
+                ("WAITING" :foreground "orange" :weight bold)
+                ("HOLD" :foreground "magenta" :weight bold)
+                ("CANCELLED" :foreground "forest green" :weight bold)
+                ("MEETING" :foreground "forest green" :weight bold)
+                ("PHONE" :foreground "forest green" :weight bold))))
 
-;; org-capture
-(setq org-directory "~/Dropbox/Notes")
-(setq org-default-notes-file "~/Dropbox/Notes/inbox.org")
-(setq org-default-work-notes-file "~/Dropbox/Notes/work.org")
-(setq org-capture-templates (quote (("t" "todo"
-                                     entry
-                                     (file "~/Dropbox/Notes/inbox.org")
-                                     "* TODO %?\n%T\n"
-                                     :clock-in t
-                                     :clock-resume t)
-                                    ("r" "respond"
-                                     entry
-                                     (file org-default-notes-file)
-                                     "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n"
-                                     :clock-in t
-                                     :clock-resume t
-                                     :immediate-finish t)
-                                    ("n" "note"
-                                     entry
-                                     (file org-default-notes-file)
-                                     "* %? :NOTE:\n%T\n"
-                                     :clock-in t
-                                     :clock-resume t)
-                                    ("m" "Meeting"
-                                     entry
-                                     (file org-default-work-notes-file)
-                                     "* MEETING with %? :MEETING:\n%T"
-                                     :clock-in t
-                                     :clock-resume t))))
-  
+  ;; org-capture
+  (setq org-directory "~/Dropbox/Notes")
+  (setq org-default-notes-file "~/Dropbox/Notes/inbox.org")
+  (setq org-default-work-notes-file "~/Dropbox/Notes/work.org")
+  (setq org-capture-templates (quote (("t" "todo"
+                                       entry
+                                       (file "~/Dropbox/Notes/inbox.org")
+                                       "* TODO %?\n%T\n"
+                                       :clock-in t
+                                       :clock-resume t)
+                                      ("r" "respond"
+                                       entry
+                                       (file org-default-notes-file)
+                                       "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n"
+                                       :clock-in t
+                                       :clock-resume t
+                                       :immediate-finish t)
+                                      ("n" "note"
+                                       entry
+                                       (file org-default-notes-file)
+                                       "* %? :NOTE:\n%T\n"
+                                       :clock-in t
+                                       :clock-resume t)
+                                      ("m" "Meeting"
+                                       entry
+                                       (file org-default-work-notes-file)
+                                       "* MEETING with %? :MEETING:\n%T"
+                                       :clock-in t
+                                       :clock-resume t))))
+
+  (spacemacs|define-custom-layout "@Rest"
+    :binding "r"
+    :body
+    (find-file "~/Dropbox/Rest/endpoints.http")))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
