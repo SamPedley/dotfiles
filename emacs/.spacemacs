@@ -49,6 +49,7 @@ This function should only modify configuration layer settings."
                                        (version-control :variables version-control-diff-tool 'diff-hl
                                                         version-control-diff-side 'left version-control-global-margin t)
                                        ;; editers
+                                       import-js
                                        tern
                                        ;; parinfer
                                        ;; Linters
@@ -67,7 +68,9 @@ This function should only modify configuration layer settings."
                                        markdown
                                        react
                                        emacs-lisp
-                                       (javascript :variables javascript-fmt-tool 'prettier ))
+                                       (javascript :variables javascript-fmt-tool 'prettier
+                                                   javascript-import-tool 'import-js
+                                                   javascript-backend 'tern))
 
    dotspacemacs-additional-packages '(doom-themes evil-goggles)
    dotspacemacs-frozen-packages '()
