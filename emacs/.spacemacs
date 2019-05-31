@@ -70,29 +70,11 @@ This function should only modify configuration layer settings."
                                        (javascript :variables javascript-fmt-tool 'prettier ))
 
    dotspacemacs-additional-packages '(doom-themes evil-goggles)
-
-   ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
-
-   ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '(adaptive-wrap)
-
-   ;; Defines the behaviour of Spacemacs when installing packages.
-   ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
-   ;; `used-only' installs only explicitly used packages and deletes any unused
-   ;; packages as well as their unused dependencies. `used-but-keep-unused'
-   ;; installs only the used packages but won't delete unused ones. `all'
-   ;; installs *all* packages supported by Spacemacs and never uninstalls them.
-   ;; (default is `used-only')
    dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
-  "Initialization:
-This function is called at the very beginning of Spacemacs startup,
-before layer configuration.
-It should only modify the values of Spacemacs settings."
-  ;; This setq-default sexp is an exhaustive list of all the supported
-  ;; spacemacs settings.
   (setq-default
    dotspacemacs-elpa-https t
    dotspacemacs-elpa-timeout 10
@@ -164,16 +146,16 @@ It should only modify the values of Spacemacs settings."
                                :width normal)
    dotspacemacs-default-layout-name "Default"
    dotspacemacs-display-default-layout nil
-   dotspacemacs-auto-resume-layouts nil
+   dotspacemacs-auto-resume-layouts t
    dotspacemacs-auto-generate-layout-names nil
    dotspacemacs-enable-paste-transient-state nil
    dotspacemacs-which-key-delay 0.4
-   dotspacemacs-switch-to-buffer-prefers-purpose nil
+   dotspacemacs-switch-to-buffer-prefers-purpose t
    dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native nil
    dotspacemacs-maximized-at-startup t
-   dotspacemacs-smartparens-strict-mode nil
-   dotspacemacs-smart-closing-parenthesis nil
+   dotspacemacs-smartparens-strict-mode t
+   dotspacemacs-smart-closing-parenthesis t
    dotspacemacs-highlight-delimiters 'all
    dotspacemacs-enable-server nil
    dotspacemacs-server-socket-dir nil
@@ -221,12 +203,12 @@ It should only modify the values of Spacemacs settings."
 
   (spacemacs/set-leader-keys "ESC" 'keyboard-quit)
   (spacemacs/set-leader-keys "oc" 'org-capture)
-  (spacemacs/set-leader-keys "W" 'spacemacs/workspaces-transient-state/body
-    "[" 'eyebrowse-prev-window-config
-    "]" 'eyebrowse-next-window-config)
+  (spacemacs/set-leader-keys "TAB" 'eyebrowse-last-window-config)
+  (spacemacs/set-leader-keys "L" 'spacemacs/workspaces-transient-state/body)
+  (spacemacs/set-leader-keys "W" 'spacemacs/window-manipulation-transient-state/body)
   (spacemacs/set-leader-keys-for-major-mode 'org-mode
-    "op" 'org-mobile-push
-    "of" 'org-mobile-pull
+    "of" 'org-babel-execute-src-block
+    "of" 'org-edit-src-code
     "k" 'org-backward-heading-same-level
     "j" 'org-forward-heading-same-level)
   ;; -------------------------------
@@ -247,8 +229,9 @@ lines downward first."
   (define-key evil-motion-state-map "$" 'evil-last-non-blank)
 
     ;; Evil-goggles setup
-  (evil-goggles-mode)
-  (evil-goggles-use-diff-faces)
+  ;; (evil-goggles-mode)
+  ;; (evil-goggles-use-diff-faces)
+  ;; (setq evil-goggles-pulse t)
 
   ;; -------------------------------
   ;; Clojure -----------------------
@@ -387,5 +370,4 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(doom-modeline-bar ((t (:inherit highlight)))))
-)
+ '(doom-modeline-bar ((t (:inherit highlight))))))
