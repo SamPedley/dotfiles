@@ -10,6 +10,8 @@ This function should only modify configuration layer settings."
                                        rust
                                        sql
                                        yaml
+                                       colors
+                                       ;; (colors :variables colors-enable-nyan-cat-progress-bar t)
                                        helm
                                        spacemacs-purpose
                                        (terraform :variables terraform-auto-format-on-save t)
@@ -52,8 +54,8 @@ This function should only modify configuration layer settings."
                                        ;; Linters
                                        prettier
                                        ;; Languages
-                                       ( plantuml :variables plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.3/libexec/plantuml.jar"
-                                                  org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.3/libexec/plantuml.jar" )
+                                       ( plantuml :variables plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.5/libexec/plantuml.jar"
+                                                  org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.5/libexec/plantuml.jar" )
                                        themes-megapack
                                        python
                                        vimscript
@@ -67,14 +69,7 @@ This function should only modify configuration layer settings."
                                        emacs-lisp
                                        (javascript :variables javascript-fmt-tool 'prettier ))
 
-   ;; List of additional packages that will be installed without being
-   ;; wrapped in a layer. If you need some configuration for these
-   ;; packages, then consider creating a layer. You can also put the
-   ;; configuration in `dotspacemacs/user-config'.
-   ;; To use a local version of a package, use the `:location' property:
-   ;; '(your-package :location "~/path/to/your-package/")
-   ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(doom-themes)
+   dotspacemacs-additional-packages '(doom-themes evil-goggles)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -162,6 +157,7 @@ It should only modify the values of Spacemacs settings."
                          spacemacs-dark
                          spacemacs-light)
    dotspacemacs-mode-line-theme 'doom
+   ;; dotspacemacs-mode-line-theme '(all-the-icons :separator none)
    dotspacemacs-default-font '("Source Code Pro"
                                :size 15
                                :weight normal
@@ -207,26 +203,12 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-pretty-docs nil))
 
 (defun dotspacemacs/user-env ()
-  "Environment variables setup.
-This function defines the environment variables for your Emacs session. By
-default it calls `spacemacs/load-spacemacs-env' which loads the environment
-variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
-See the header of this file for more information."
   (spacemacs/load-spacemacs-env))
 
 (defun dotspacemacs/user-init ()
-  "Initialization for user code:
-This function is called immediately after `dotspacemacs/init', before layer
-configuration.
-It is mostly for variables that should be set before packages are loaded.
-If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq-default git-magit-status-fullscreen t))
 
-(defun dotspacemacs/user-load ()
-  "Library to load while dumping.
-This function is called only while dumping Spacemacs configuration. You can
-`require' or `load' the libraries of your choice that will be included in the
-dump.")
+(defun dotspacemacs/user-load ())
 
 (defun dotspacemacs/user-config ()
   ;; -------------------------------
@@ -237,6 +219,37 @@ dump.")
   (global-set-key (kbd "H-g") 'magit-status)
   (global-set-key (kbd "H-b") 'ibuffer)
 
+  (spacemacs/set-leader-keys "ESC" 'keyboard-quit)
+  (spacemacs/set-leader-keys "oc" 'org-capture)
+  (spacemacs/set-leader-keys "W" 'spacemacs/workspaces-transient-state/body
+    "[" 'eyebrowse-prev-window-config
+    "]" 'eyebrowse-next-window-config)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "op" 'org-mobile-push
+    "of" 'org-mobile-pull
+    "k" 'org-backward-heading-same-level
+    "j" 'org-forward-heading-same-level)
+  ;; -------------------------------
+  ;; Vim -----------------------
+  ;; Pulled from -> https://github.com/vatrat/dotfiles/blob/master/.spacemacs#L542
+  (setq evil-move-cursor-back nil)
+  (setq evil-move-beyond-eol nil)
+
+  (evil-define-motion evil-last-non-blank (count)
+    "Move the cursor to the last non-blank character
+on the current line. If COUNT is given, move COUNT - 1
+lines downward first."
+    :type inclusive
+    (evil-end-of-line count)
+    (re-search-backward "^\\|[^[:space:]]")
+    (setq evil-this-type (if (eolp) 'exclusive 'inclusive)))
+  (define-key evil-motion-state-map "g$" 'evil-end-of-line)
+  (define-key evil-motion-state-map "$" 'evil-last-non-blank)
+
+    ;; Evil-goggles setup
+  (evil-goggles-mode)
+  (evil-goggles-use-diff-faces)
+
   ;; -------------------------------
   ;; Clojure -----------------------
 
@@ -246,6 +259,8 @@ dump.")
   ;; -------------------------------
   ;; Visual  -----------------------
 
+  (global-visual-line-mode 1)
+  (setq doom-modeline-height 10)
   (setq diff-hl-flydiff-mode t)
 
   (spacemacs/toggle-vi-tilde-fringe-off)
@@ -281,47 +296,47 @@ dump.")
               (auto-save-mode)))
   (setq org-todo-keywords
         (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-                (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
+                (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING")))))
 
-  (setq org-todo-keyword-faces
-        (quote (("TODO" :foreground "red" :weight bold)
-                ("NEXT" :foreground "blue" :weight bold)
-                ("DONE" :foreground "forest green" :weight bold)
-                ("WAITING" :foreground "orange" :weight bold)
-                ("HOLD" :foreground "magenta" :weight bold)
-                ("CANCELLED" :foreground "forest green" :weight bold)
-                ("MEETING" :foreground "forest green" :weight bold)
-                ("PHONE" :foreground "forest green" :weight bold))))
+(setq org-todo-keyword-faces
+      (quote (("TODO" :foreground "red" :weight bold)
+              ("NEXT" :foreground "blue" :weight bold)
+              ("DONE" :foreground "forest green" :weight bold)
+              ("WAITING" :foreground "orange" :weight bold)
+              ("HOLD" :foreground "magenta" :weight bold)
+              ("CANCELLED" :foreground "forest green" :weight bold)
+              ("MEETING" :foreground "forest green" :weight bold)
+              ("PHONE" :foreground "forest green" :weight bold))))
 
-  ;; org-capture
-  (setq org-directory "~/Dropbox/Notes")
-  (setq org-default-notes-file "~/Dropbox/Notes/inbox.org")
-  (setq org-default-work-notes-file "~/Dropbox/Notes/work.org")
-  (setq org-capture-templates (quote (("t" "todo"
-                                       entry
-                                       (file "~/Dropbox/Notes/inbox.org")
-                                       "* TODO %?\n%T\n"
-                                       :clock-in t
-                                       :clock-resume t)
-                                      ("r" "respond"
-                                       entry
-                                       (file org-default-notes-file)
-                                       "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n"
-                                       :clock-in t
-                                       :clock-resume t
-                                       :immediate-finish t)
-                                      ("n" "note"
-                                       entry
-                                       (file org-default-notes-file)
-                                       "* %? :NOTE:\n%T\n"
-                                       :clock-in t
-                                       :clock-resume t)
-                                      ("m" "Meeting"
-                                       entry
-                                       (file org-default-work-notes-file)
-                                       "* MEETING with %? :MEETING:\n%T"
-                                       :clock-in t
-                                       :clock-resume t)))))
+;; org-capture
+(setq org-directory "~/Dropbox/Notes")
+(setq org-default-notes-file "~/Dropbox/Notes/inbox.org")
+(setq org-default-work-notes-file "~/Dropbox/Notes/work.org")
+(setq org-capture-templates (quote (("t" "todo"
+                                     entry
+                                     (file "~/Dropbox/Notes/inbox.org")
+                                     "* TODO %?\n%T\n"
+                                     :clock-in t
+                                     :clock-resume t)
+                                    ("r" "respond"
+                                     entry
+                                     (file org-default-notes-file)
+                                     "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n"
+                                     :clock-in t
+                                     :clock-resume t
+                                     :immediate-finish t)
+                                    ("n" "note"
+                                     entry
+                                     (file org-default-notes-file)
+                                     "* %? :NOTE:\n%T\n"
+                                     :clock-in t
+                                     :clock-resume t)
+                                    ("m" "Meeting"
+                                     entry
+                                     (file org-default-work-notes-file)
+                                     "* MEETING with %? :MEETING:\n%T"
+                                     :clock-in t
+                                     :clock-resume t))))
   
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -336,6 +351,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(doom-modeline-mode t)
  '(evil-want-Y-yank-to-eol nil)
  '(fci-rule-color "#56697A")
  '(jdee-db-active-breakpoint-face-colors (cons "#10151C" "#5EC4FF"))
@@ -343,7 +359,7 @@ This function is called at the very end of Spacemacs initialization."
  '(jdee-db-spec-breakpoint-face-colors (cons "#10151C" "#384551"))
  '(package-selected-packages
    (quote
-    (csv-mode ranger helm-pass auth-source-pass password-store dockerfile-mode docker tablist docker-tramp helm-gtags godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc ggtags flycheck-gometalinter flycheck-golangci-lint counsel-gtags company-go go-mode yapfify pytest pyenv-mode py-isort plantuml-mode pippel pipenv pyvenv pip-requirements live-py-mode importmagic epc ctable concurrent deferred helm-pydoc cython-mode company-anaconda anaconda-mode pythonic adoc-mode markup-faces command-log-mode yatemplate copy-as-format org-journal insert-shebang flycheck-bashate fish-mode company-shell yaml-mode flycheck treemacs-projectile treemacs-evil treemacs ht pfuture yasnippet-snippets xterm-color ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit symon string-inflection stickyfunc-enhance srefactor spaceline-all-the-icons smeargle slim-mode shell-pop scss-mode sayid sass-mode rjsx-mode reveal-in-osx-finder restclient-helm restart-emacs rainbow-delimiters pug-mode prettier-js popwin persp-mode pcre2el password-generator parinfer paradox ox-reveal ox-gfm overseer osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file ob-restclient ob-http neotree nameless multi-term move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum livid-mode link-hint launchctl json-navigator json-mode js2-refactor js-doc indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag gruvbox-theme google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-helm flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish diff-hl counsel-projectile company-web company-tern company-statistics company-restclient column-enforce-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu centered-cursor-mode browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (rainbow-mode rainbow-identifiers color-identifiers-mode csv-mode ranger helm-pass auth-source-pass password-store dockerfile-mode docker tablist docker-tramp helm-gtags godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc ggtags flycheck-gometalinter flycheck-golangci-lint counsel-gtags company-go go-mode yapfify pytest pyenv-mode py-isort plantuml-mode pippel pipenv pyvenv pip-requirements live-py-mode importmagic epc ctable concurrent deferred helm-pydoc cython-mode company-anaconda anaconda-mode pythonic adoc-mode markup-faces command-log-mode yatemplate copy-as-format org-journal insert-shebang flycheck-bashate fish-mode company-shell yaml-mode flycheck treemacs-projectile treemacs-evil treemacs ht pfuture yasnippet-snippets xterm-color ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit symon string-inflection stickyfunc-enhance srefactor spaceline-all-the-icons smeargle slim-mode shell-pop scss-mode sayid sass-mode rjsx-mode reveal-in-osx-finder restclient-helm restart-emacs rainbow-delimiters pug-mode prettier-js popwin persp-mode pcre2el password-generator parinfer paradox ox-reveal ox-gfm overseer osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file ob-restclient ob-http neotree nameless multi-term move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum livid-mode link-hint launchctl json-navigator json-mode js2-refactor js-doc indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag gruvbox-theme google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-helm flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish diff-hl counsel-projectile company-web company-tern company-statistics company-restclient column-enforce-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu centered-cursor-mode browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(vc-annotate-background "#1D252C")
  '(vc-annotate-color-map
    (list
@@ -371,5 +387,5 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(doom-modeline-bar ((t (:inherit highlight)))))
 )
