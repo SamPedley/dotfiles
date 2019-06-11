@@ -70,7 +70,7 @@ This function should only modify configuration layer settings."
                                        emacs-lisp
                                        (javascript :variables javascript-fmt-tool 'prettier
                                                    javascript-import-tool 'import-js
-                                                   javascript-backend 'tern))
+                                                   javascript-backend 'lsp))
 
    dotspacemacs-additional-packages '(doom-themes evil-goggles)
    dotspacemacs-frozen-packages '()
@@ -149,15 +149,15 @@ This function should only modify configuration layer settings."
                                :width normal)
    dotspacemacs-default-layout-name "Default"
    dotspacemacs-display-default-layout nil
-   dotspacemacs-auto-resume-layouts t
+   dotspacemacs-auto-resume-layouts nil
    dotspacemacs-auto-generate-layout-names nil
    dotspacemacs-enable-paste-transient-state nil
    dotspacemacs-which-key-delay 0.4
-   dotspacemacs-switch-to-buffer-prefers-purpose t
+   dotspacemacs-switch-to-buffer-prefers-purpose nil
    dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native nil
    dotspacemacs-maximized-at-startup t
-   dotspacemacs-smartparens-strict-mode t
+   dotspacemacs-smartparens-strict-mode nil
    dotspacemacs-smart-closing-parenthesis t
    dotspacemacs-highlight-delimiters 'all
    dotspacemacs-enable-server nil
@@ -212,7 +212,7 @@ This function should only modify configuration layer settings."
 
   (spacemacs/set-leader-keys "ESC" 'keyboard-quit)
   (spacemacs/set-leader-keys "oc" 'org-capture)
-  (spacemacs/set-leader-keys "TAB" 'spacemacs/layouts-transient-state/body)
+  ;; (spacemacs/set-leader-keys "TAB" 'spacemacs/layouts-transient-state/body)
   (spacemacs/set-leader-keys "L" 'spacemacs/workspaces-transient-state/body)
   (spacemacs/set-leader-keys "W" 'spacemacs/window-manipulation-transient-state/body)
   (spacemacs/set-leader-keys "o1" 'spacemacs/custom-layouts-transient-state/spacemacs/custom-perspective-@Org-and-exit)
@@ -250,7 +250,7 @@ lines downward first."
   ;; Clojure -----------------------
 
   (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks)
-  (setq clojure-enable-fancify-symbols t)
+  ;; (setq clojure-enable-fancify-symbols t)
 
   ;; -------------------------------
   ;; Visual  -----------------------
@@ -273,10 +273,10 @@ lines downward first."
 
   (setq projectile-project-search-path '("~/Projects/"))
 
-  (setq evil-default-cursor (quote (t "#750000"))
-        evil-visual-state-cursor '("#63ba3c" bar)
-        evil-normal-state-cursor '("#FFFFFF" bar)
-        evil-insert-state-cursor '("#e2e222" bar))
+  ;; (setq evil-default-cursor (quote (t "#750000"))
+  ;;       evil-visual-state-cursor '("#63ba3c" bar)
+  ;;       evil-normal-state-cursor '("#FFFFFF" bar)
+  ;;       evil-insert-state-cursor '("#e2e222" bar))
 
   ;;
   ;; org mode config
