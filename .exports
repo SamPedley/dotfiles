@@ -34,4 +34,4 @@ export MANPAGER='less -X';
 export GPG_TTY=$(tty);
 
 # Set default java version to openJDK 1.8 - use jswap -v X to temp switch
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export JAVA_HOME=`/usr/libexec/java_home -v 9`
