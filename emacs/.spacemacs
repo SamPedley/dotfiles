@@ -13,7 +13,8 @@ This function should only modify configuration layer settings."
                                        colors
                                        ;; (colors :variables colors-enable-nyan-cat-progress-bar t)
                                        helm
-                                       spacemacs-purpose
+                                       ;; spacemacs-purpose
+                                       ;; spacemacs-navigation
                                        (terraform :variables terraform-auto-format-on-save t)
                                        docker
                                        (ranger :variables
@@ -198,9 +199,13 @@ This function should only modify configuration layer settings."
 
 
 (defun dotspacemacs/user-config ()
-  (defun sam/split-and-open ()
+  ;; (add-to-list 'golden-ratio-exclude-modes '( "ranger-mode"))
+
+  ;; (setq golden-ratio-mode 1)
+
+  (defun sam/split-below-and-open ()
     (interactive)
-    (split-window-right-and-focus)
+    (split-window-below-and-focus)
     (helm-projectile-find-file))
   ;; -------------------------------
   ;; Hotkeys -----------------------
@@ -218,7 +223,8 @@ This function should only modify configuration layer settings."
   (spacemacs/set-leader-keys "o1" 'spacemacs/custom-layouts-transient-state/spacemacs/custom-perspective-@Org-and-exit)
   (spacemacs/set-leader-keys "o2" 'spacemacs/custom-layouts-transient-state/spacemacs/custom-perspective-@Rest-and-exit)
   (spacemacs/set-leader-keys "o9" 'spacemacs/custom-layouts-transient-state/spacemacs/custom-perspective-@Spacemacs-and-exit)
-  (spacemacs/set-leader-keys "o\\" 'sam/split-and-open)
+  (spacemacs/set-leader-keys "ov" 'sam/split-right-and-open)
+  (spacemacs/set-leader-keys "os" 'sam/split-below-and-open)
   (spacemacs/set-leader-keys-for-major-mode 'org-mode
     "of" 'org-babel-execute-src-block
     "of" 'org-edit-src-code
