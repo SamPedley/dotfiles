@@ -199,9 +199,10 @@ This function should only modify configuration layer settings."
 
 
 (defun dotspacemacs/user-config ()
-  ;; (add-to-list 'golden-ratio-exclude-modes '( "ranger-mode"))
-
-  ;; (setq golden-ratio-mode 1)
+  (defun sam/split-right-and-open ()
+    (interactive)
+    (split-window-right-and-focus)
+    (helm-projectile-find-file))
 
   (defun sam/split-below-and-open ()
     (interactive)
@@ -214,6 +215,11 @@ This function should only modify configuration layer settings."
   (global-set-key (kbd "H--") 'ranger)
   (global-set-key (kbd "H-g") 'magit-status)
   (global-set-key (kbd "H-b") 'ibuffer)
+
+  ;; (global-set-key (kbd "H-]" 'spacemacs/t))
+
+
+  (spacemacs/set-leader-keys "p/" 'helm-projectile-find-file)
 
   (spacemacs/set-leader-keys "ESC" 'keyboard-quit)
   (spacemacs/set-leader-keys "oc" 'org-capture)
