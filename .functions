@@ -87,14 +87,14 @@ repo()
 }
 
 # Opens the dashboard ui for kubectl
-# usage: kproxy [prod | dev] [gr | gra] [ts | dm]
+# usage: kproxy [prod | dev] [gr | gra | prate]
 # Arg1 for enviroment will default to prod
 # Arg2 for Context will default to gr
-# Arg3 is shorthand for namespace will default to default
 function kproxy () {
   local ENV="prod"
   local CONTEXT="gr"
   local NAMESPACE="default"
+  local K8S_SUBDOMAIN="k8s-green"
 
   if [ "$1" == "dev" ];then
       ENV="dev"
@@ -104,19 +104,17 @@ function kproxy () {
       CONTEXT="gra"
   fi
 
-  # Figure out namespace to open dashboard directly to where you want to go
-  if [ "$3" == "ts" ] || [ "$3" == "transfersafe" ];then
-    NAMESPACE="transfersafe-$1"
-  elif [ "$3" == "dm" ] || [ "$3" == "ra" ] || [ "$3" == "kracken" ];then
-    NAMESPACE="kraken-$1"
+  if [ "$2" == "prate" ];then
+    CONTEXT="prate"
+    K8S_SUBDOMAIN="k8s"
+
+    # Print out the auth token you'll need to copy paste
+   echo ">>>>>>>>>>>>>> PRATE TOKEN >>>>>>>>>>>>>>"
+   kubectl --context k8s.prate-dev.com describe secrets --namespace kube-system kubernetes-dashboard-token-8zn2b
+   echo -e "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< \n"
   fi
 
-  if [ "$CONTEXT" == "gra" ] && [ "$ENV" == "dev" ];then
-    echo "There is no dev gra context"
-    exit 1
-  fi
-
-  local K8_FULL_CONTEXT="k8s-green.$CONTEXT-$ENV.com"
+  local K8_FULL_CONTEXT="$K8S_SUBDOMAIN.$CONTEXT-$ENV.com"
   local URL="http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/overview?namespace=$NAMESPACE"
 
   # Log debugging info

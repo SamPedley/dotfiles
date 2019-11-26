@@ -24,9 +24,7 @@ This function should only modify configuration layer settings."
                                                ranger-override-dired-mode t
                                                ranger-max-preview-size 10
                                                ranger-show-preview t
-                                               ranger-show-hidden t
-                                               ranger-cleanup-eagerly t
-                                               ranger-cleanup-on-disable t)
+                                               ranger-show-hidden t)
                                        xkcd
                                        (spell-checking :variables spell-checking-enable-by-default nil)
                                        ( restclient :variables restclient-use-org t)
@@ -129,10 +127,20 @@ This function should only modify configuration layer settings."
 
    dotspacemacs-scratch-mode 'org-mode
 
-   dotspacemacs-themes '(gruvbox-dark-hard
+   dotspacemacs-themes '(doom-gruvbox
+                         gruvbox-dark-hard
+
+                         ;; Others
+                         ;; seti
+                         ;; naquadah
+                         ;; material
+                         ;; kaolin-galaxy
+                         ;; kaolin-valley-dark
+                         ;; dakrone
                          ;; Light Themes
                          leuven
                          flatui
+
                          ;;
                          ;; Doom Themes : https://github.com/hlissner/emacs-doom-themes
                          ;;
@@ -157,7 +165,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-auto-generate-layout-names nil
    dotspacemacs-enable-paste-transient-state nil
    dotspacemacs-which-key-delay 0.4
-   dotspacemacs-switch-to-buffer-prefers-purpose nil
+   dotspacemacs-switch-to-buffer-prefers-purpose t
    dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native nil
    dotspacemacs-maximized-at-startup t
@@ -219,6 +227,12 @@ This function should only modify configuration layer settings."
   (global-set-key (kbd "H-g") 'magit-status)
   (global-set-key (kbd "H-b") 'ibuffer)
 
+  (global-set-key (kbd "H-h") 'evil-window-left)
+  (global-set-key (kbd "H-l") 'evil-window-right)
+  (global-set-key (kbd "H-k") 'evil-window-up)
+  (global-set-key (kbd "H-j") 'evil-window-down)
+
+
   ;; (global-set-key (kbd "H-]" 'spacemacs/t))
 
 
@@ -275,6 +289,11 @@ lines downward first."
   (global-visual-line-mode 1)
   (setq doom-modeline-height 10)
   (setq diff-hl-flydiff-mode t)
+  (setq doom-modeline-buffer-file-name-style 'file-name)
+  (setq doom-modeline-buffer-encoding nil)
+
+
+
 
   (spacemacs/toggle-vi-tilde-fringe-off)
 
