@@ -134,6 +134,10 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm/
 
 #+end_src
 
+#+name: install-doom
+#+begin_src bash
+ ln -s ~/Projects/dotfiles/emacs/doom-config/ ~/doom-config
+#+end_src
 *** Install Deps
 #+name: install-emacs
 #+begin_src bash
