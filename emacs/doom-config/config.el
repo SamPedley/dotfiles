@@ -9,13 +9,12 @@
 (setq
  ;; Themes to try:
  ;; doom-gruvbox - doom-challenger-deep - doom-Iosvkem - doom-snazzy
- doom-theme 'doom-snazzy
+ doom-theme 'doom-gruvbox
  doom-font (font-spec :family "Source Code Pro" :size 14)
  doom-big-font (font-spec :family "Source Code Pro" :size 18))
 
 (setq
- projectile-project-search-path '("~/Projects/")
-)
+ projectile-project-search-path '("~/Projects/"))
 
 (setq org-directory "~/Dropbox/Notes")
 

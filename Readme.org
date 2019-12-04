@@ -128,10 +128,22 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm/
 #+end_src
 
 ** Emacs
+** Install
 *** Install Doom
 #+name: install-emacs
 #+begin_src bash
 
+#+end_src
+
+#+name: install-doom
+#+begin_src bash
+ ln -s ~/Projects/dotfiles/emacs/doom-config/ ~/doom-config
+#+end_src
+
+*** Install spacemacs
+#+name: install-spacemacs
+#+begin_src bash
+ ln -s ~/Projects/dotfiles/emacs/.spacemacs ~/.spacemacs
 #+end_src
 
 #+name: install-doom
