@@ -14,24 +14,6 @@ brew update
 brew cleanup
 #+end_src
 
-*** Copy Local to Repo
-#+name: copy-spacemacs-to-dotfiles
-#+begin_src sh
-cp ~/.spacemacs ~/Projects/dotfiles/emacs/.spacemacs
-#+end_src
-
-*** Copy Repo to Local
-#+name: copy-dotfiles-to-dotfiles
-#+begin_src sh
-cp ~/Projects/dotfiles/emacs/.spacemacs ~/.spacemacs
-#+end_src
-
-*** Copy doom config to repo
-#+name: copy-dotfiles-to-dotfiles
-#+begin_src sh
-cp -r ~/doom-config ~/Projects/dotfiles/emacs/doom-config
-#+end_src
-
 ** JavaScript
 *** Install Node Using [[https://github.com/tj/n][n]]
 #+Name: install-js-n
@@ -128,12 +110,15 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm/
 #+end_src
 
 ** Emacs
-** Install
-*** Install Doom
+*** Install Chemacs
+[[https://github.com/plexus/chemacs][Chemacs - emacs switcher repo]]
 #+name: install-emacs
 #+begin_src bash
-
+ cp ~/Projects/dotfiles/emacs/.emacs-profile ~/.emacs-profile
+ ln -s ~/Projects/dotfiles/emacs/.emacs-profiles.el ~/.emacs-profiles.el
 #+end_src
+
+*** Install Doom
 
 #+name: install-doom
 #+begin_src bash
@@ -146,10 +131,6 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm/
  ln -s ~/Projects/dotfiles/emacs/.spacemacs ~/.spacemacs
 #+end_src
 
-#+name: install-doom
-#+begin_src bash
- ln -s ~/Projects/dotfiles/emacs/doom-config/ ~/doom-config
-#+end_src
 *** Install Deps
 #+name: install-emacs
 #+begin_src bash
