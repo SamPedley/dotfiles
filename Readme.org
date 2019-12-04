@@ -26,6 +26,12 @@ cp ~/.spacemacs ~/Projects/dotfiles/emacs/.spacemacs
 cp ~/Projects/dotfiles/emacs/.spacemacs ~/.spacemacs
 #+end_src
 
+*** Copy doom config to repo
+#+name: copy-dotfiles-to-dotfiles
+#+begin_src sh
+cp -r ~/doom-config ~/Projects/dotfiles/emacs/doom-config
+#+end_src
+
 ** JavaScript
 *** Install Node Using [[https://github.com/tj/n][n]]
 #+Name: install-js-n
@@ -122,6 +128,12 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm/
 #+end_src
 
 ** Emacs
+*** Install Doom
+#+name: install-emacs
+#+begin_src bash
+
+#+end_src
+
 *** Install Deps
 #+name: install-emacs
 #+begin_src bash
