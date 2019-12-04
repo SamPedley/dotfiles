@@ -7,7 +7,9 @@
 
 ;; UI Settings
 (setq
- doom-theme 'doom-gruvbox
+ ;; Themes to try:
+ ;; doom-gruvbox - doom-challenger-deep - doom-Iosvkem - doom-snazzy
+ doom-theme 'doom-snazzy
  doom-font (font-spec :family "Source Code Pro" :size 14)
  doom-big-font (font-spec :family "Source Code Pro" :size 18))
 
