@@ -6,6 +6,9 @@
 ;; (package! another-package :recipe (:host github :repo "username/repo"))
 ;; (package! builtin-package :disable t)
 
-(package! ranger)
+;; (package! ranger)
 
 (package! prettier-js)
+
+
+(package! gruvbox-theme)
