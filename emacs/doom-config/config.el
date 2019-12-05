@@ -43,3 +43,13 @@
   (global-set-key (kbd "s-l") #'evil-window-right)
   (global-set-key (kbd "s-k") #'evil-window-up)
   (global-set-key (kbd "s-j") #'evil-window-down)
+
+(map! (:leader
+          (:map (clojure-mode-map clojurescript-mode-map)
+            ;; ";" #'cider-pprint-eval-defun-at-point
+            (:prefix ("e" . "Clojure eval")
+
+              "e" #'cider-pprint-eval-defun-at-point
+              :desc "eval to comment" ";" #'cider-pprint-eval-defun-to-comment
+              ;; "e" #'cider-pprint-eval-defun-to-
+              ))))
