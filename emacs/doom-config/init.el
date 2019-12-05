@@ -36,7 +36,7 @@
         +defaults)       ; default popup rules
        pretty-code       ; replace bits of code with pretty symbols
        ;; tabs              ; an tab bar for Emacs
-       ;;treemacs          ; a project drawer, like neotree but cooler
+       treemacs          ; a project drawer, like neotree but cooler
        ;;unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
@@ -47,7 +47,7 @@
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        ;; fold              ; (nigh) universal code folding
-       (format +onsave)  ; automated prettiness
+       (format)  ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
        lispy             ; vim for lisp, for people who don't like vim
        multiple-cursors  ; editing in many places at once
@@ -74,7 +74,7 @@
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        ;;direnv
        docker
-       ;;editorconfig      ; let someone else argue about tabs vs spaces
+       editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
        flycheck          ; tasing you for every semicolon you forget
@@ -82,7 +82,7 @@
        ;;gist              ; interacting with github gists
        (lookup           ; helps you navigate your code and documentation
         +docsets)        ; ...or in Dash docsets locally
-       ;;lsp
+       lsp
        macos             ; MacOS-specific commands
        magit             ; a git porcelain for Emacs
        make              ; run make tasks from Emacs

@@ -2,52 +2,52 @@
 
 # Create a new directory and enter it
 function mkd() {
-	mkdir -p "$@" && cd "$_";
+	mkdir -p "$@" && cd "$_"
 }
 
 # Change working directory to the top-most Finder window location
 function cdf() { # short for `cdfinder`
-	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
+	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
 }
 
 # Determine size of a file or total size of a directory
 function fs() {
-	if du -b /dev/null > /dev/null 2>&1; then
-		local arg=-sbh;
+	if du -b /dev/null >/dev/null 2>&1; then
+		local arg=-sbh
 	else
-		local arg=-sh;
+		local arg=-sh
 	fi
 	if [[ -n "$@" ]]; then
-		du $arg -- "$@";
+		du $arg -- "$@"
 	else
-		du $arg .[^.]* ./*;
-	fi;
+		du $arg .[^.]* ./*
+	fi
 }
 
 # Use Git’s colored diff when available
-hash git &>/dev/null;
+hash git &>/dev/null
 if [ $? -eq 0 ]; then
 	function diff() {
-		git diff --no-index --color-words "$@";
+		git diff --no-index --color-words "$@"
 	}
-fi;
+fi
 
 # Create a data URL from a file
 function dataurl() {
-	local mimeType=$(file -b --mime-type "$1");
+	local mimeType=$(file -b --mime-type "$1")
 	if [[ $mimeType == text/* ]]; then
-		mimeType="${mimeType};charset=utf-8";
+		mimeType="${mimeType};charset=utf-8"
 	fi
-	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
+	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
 }
 
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
-	local port="${1:-8000}";
+	local port="${1:-8000}"
 	sleep 1 && open "http://localhost:${port}/" &
 	# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
 	# And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
-	python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
+	python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
 }
 
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
@@ -55,88 +55,81 @@ function server() {
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
 function tre() {
-	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX
 }
 
 # Call from a local repo to open the repository on github/bitbucket in browser
-repo()
-{
-  local giturl=$(git config --get remote.origin.url \
-    | sed 's/git@/\/\//g' \
-    | sed 's/.git$//' \
-    | sed 's/https://g' \
-    | sed 's/:/\//g')
+repo() {
+	local giturl=$(git config --get remote.origin.url |
+		sed 's/git@/\/\//g' |
+		sed 's/.git$//' |
+		sed 's/https://g' |
+		sed 's/:/\//g')
 
-  if [[ $giturl == "" ]]; then
-    echo "Not a git repository or no remote.origin.url is set."
-  else
-    local gitbranch=$(git rev-parse --abbrev-ref HEAD)
-    local giturl="https:${giturl}"
+	if [[ $giturl == "" ]]; then
+		echo "Not a git repository or no remote.origin.url is set."
+	else
+		local gitbranch=$(git rev-parse --abbrev-ref HEAD)
+		local giturl="https:${giturl}"
 
-    if [[ $gitbranch != "master" ]]; then
-      if echo "${giturl}" | grep -i "bitbucket" > /dev/null ; then
-        local giturl="${giturl}/branch/${gitbranch}"
-      else
-        local giturl="${giturl}/tree/${gitbranch}"
-      fi
-    fi
+		if [[ $gitbranch != "master" ]]; then
+			if echo "${giturl}" | grep -i "bitbucket" >/dev/null; then
+				local giturl="${giturl}/branch/${gitbranch}"
+			else
+				local giturl="${giturl}/tree/${gitbranch}"
+			fi
+		fi
 
-    echo $giturl
-    open $giturl
-  fi
+		echo $giturl
+		open $giturl
+	fi
 }
 
 # Opens the dashboard ui for kubectl
 # usage: kproxy [prod | dev] [gr | gra | prate]
 # Arg1 for enviroment will default to prod
 # Arg2 for Context will default to gr
-function kproxy () {
-  local ENV="prod"
-  local CONTEXT="gr"
-  local NAMESPACE="default"
-  local K8S_SUBDOMAIN="k8s-green"
+function kproxy() {
+	local ENV="prod"
+	local CONTEXT="gr"
+	local NAMESPACE="default"
+	local K8S_SUBDOMAIN="k8s-green"
 
-  if [ "$1" == "dev" ];then
-      ENV="dev"
-  fi
+	if [ "$1" == "dev" ]; then
+		ENV="dev"
+	fi
 
-  if [ "$2" == "gra" ];then
-      CONTEXT="gra"
-  fi
+	if [ "$2" == "gra" ]; then
+		CONTEXT="gra"
+	fi
 
-  if [ "$2" == "prate" ];then
-    CONTEXT="prate"
-    K8S_SUBDOMAIN="k8s"
+	if [ "$2" == "prate" ]; then
+		CONTEXT="prate"
+		K8S_SUBDOMAIN="k8s"
+	fi
 
-    # Print out the auth token you'll need to copy paste
-   echo ">>>>>>>>>>>>>> PRATE TOKEN >>>>>>>>>>>>>>"
-   kubectl --context k8s.prate-dev.com describe secrets --namespace kube-system kubernetes-dashboard-token-8zn2b
-   echo -e "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< \n"
-  fi
+	local K8_FULL_CONTEXT="$K8S_SUBDOMAIN.$CONTEXT-$ENV.com"
+	local URL="http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/overview?namespace=$NAMESPACE"
 
-  local K8_FULL_CONTEXT="$K8S_SUBDOMAIN.$CONTEXT-$ENV.com"
-  local URL="http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/overview?namespace=$NAMESPACE"
+	# Log debugging info
+	echo "Opening k8s $CONTEXT $ENV dashboard..."
+	echo "Context: $K8_FULL_CONTEXT | Namespace: $NAMESPACE"
+	echo "Url: $URL"
 
-  # Log debugging info
-  echo "Opening k8s $CONTEXT $ENV dashboard..."
-  echo "Context: $K8_FULL_CONTEXT | Namespace: $NAMESPACE"
-  echo "Url: $URL"
+	# Open url in default browser
+	Open "$URL"
 
-  # Open url in default browser
-  Open "$URL"
-
-  # Start last since it blocks
-  kubectl proxy --context=$K8_FULL_CONTEXT
+	# Start last since it blocks
+	kubectl proxy --context=$K8_FULL_CONTEXT
 }
 
-function jswap(){
-  export JAVA_HOME=`/usr/libexec/java_home $@`
-  echo "JAVA_HOME:" $JAVA_HOME
-  echo "java -version:"
-  java -version
+function jswap() {
+	export JAVA_HOME=$(/usr/libexec/java_home $@)
+	echo "JAVA_HOME:" $JAVA_HOME
+	echo "java -version:"
+	java -version
 }
 
-
-function mkorg(){
-    touch "$ORG_NOTES_PATH""/$1.org"
+function mkorg() {
+	touch "$ORG_NOTES_PATH""/$1.org"
 }

@@ -9,9 +9,13 @@
 (setq
  ;; Themes to try:
  ;; doom-gruvbox - doom-challenger-deep - doom-Iosvkem - doom-snazzy
- doom-theme 'gruvbox-dark-hard
+ doom-theme 'doom-gruvbox
  doom-font (font-spec :family "Source Code Pro" :size 14)
  doom-big-font (font-spec :family "Source Code Pro" :size 18))
+
+(add-hook!
+  js2-mode 'prettier-js-mode
+  (add-hook 'before-save-hook #'refmt-before-save nil t))
 
 (setq
  projectile-project-search-path '("~/Projects/"))
@@ -34,6 +38,16 @@
 
 
 
+(after! org
+  (set-face-attribute 'org-checkbox-statistics-done nil
+                      :foreground "#ffffff"
+                      :background nil
+                      :weight 'bold)
+(set-face-attribute 'org-checkbox nil
+                      :foreground "#ff0000"
+                      :background nil)
+)
+
 ;; (global-set-key (kbd "H-p") 'helm-projectile-find-file)
 ;; (global-set-key (kbd "H--") 'ranger)
 ;; (global-set-key (kbd "H-g") 'magit-status)
@@ -49,7 +63,8 @@
             ;; ";" #'cider-pprint-eval-defun-at-point
             (:prefix ("e" . "Clojure eval")
 
-              "e" #'cider-pprint-eval-defun-at-point
+              :desc "eval at point" "e" #'cider-eval-defun-at-point
+              :desc "eval to pprint" "p" #'cider-pprint-eval-defun-at-point
               :desc "eval to comment" ";" #'cider-pprint-eval-defun-to-comment
               ;; "e" #'cider-pprint-eval-defun-to-
               ))))
