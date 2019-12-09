@@ -94,6 +94,7 @@ function kproxy() {
 	local CONTEXT="gr"
 	local NAMESPACE="default"
 	local K8S_SUBDOMAIN="k8s-green"
+  local P_TOKEN="none"
 
 	if [ "$1" == "dev" ]; then
 		ENV="dev"
@@ -106,6 +107,18 @@ function kproxy() {
 	if [ "$2" == "prate" ]; then
 		CONTEXT="prate"
 		K8S_SUBDOMAIN="k8s"
+
+
+		# Get the secret result token from k8s but only save the security token to the local var
+	if [ "$1" == "dev" ]; then
+		P_TOKEN=$(kubectl --context k8s.prate-dev.com describe secrets --namespace kube-system kubernetes-dashboard-token-8zn2b| awk '/token:\s*\S*/ {print $2}')
+  else
+		P_TOKEN=$(kubectl --context k8s.prate-prod.com describe secrets --namespace kube-system kubernetes-dashboard-token-s5zhj| awk '/token:\s*\S*/ {print $2}')
+	fi
+
+	# Print Token to sdtout and copy it to clipboard
+  echo -e "Proper Secrity Token: \n$P_TOKEN\n"
+  echo $P_TOKEN | pbcopy
 	fi
 
 	local K8_FULL_CONTEXT="$K8S_SUBDOMAIN.$CONTEXT-$ENV.com"

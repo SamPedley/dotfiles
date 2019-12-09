@@ -62,7 +62,9 @@
           (:map (clojure-mode-map clojurescript-mode-map)
             ;; ";" #'cider-pprint-eval-defun-at-point
             (:prefix ("e" . "Clojure eval")
-
+              :desc  "jack in CLJS" "\"" #'cider-jack-in-cljs
+              :desc  "jack in CLJ" "'" #'cider-jack-in-clj
+              :desc "eval buffer" "b" #'cider-eval-buffer
               :desc "eval at point" "e" #'cider-eval-defun-at-point
               :desc "eval to pprint" "p" #'cider-pprint-eval-defun-at-point
               :desc "eval to comment" ";" #'cider-pprint-eval-defun-to-comment
