@@ -92,7 +92,6 @@ repo() {
 function kproxy() {
 	local ENV="prod"
 	local CONTEXT="gr"
-	local NAMESPACE="default"
 	local K8S_SUBDOMAIN="k8s-green"
   local P_TOKEN="none"
 
@@ -122,7 +121,7 @@ function kproxy() {
 	fi
 
 	local K8_FULL_CONTEXT="$K8S_SUBDOMAIN.$CONTEXT-$ENV.com"
-	local URL="http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/overview?namespace=$NAMESPACE"
+	local URL="http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/overview"
 
 	# Log debugging info
 	echo "Opening k8s $CONTEXT $ENV dashboard..."

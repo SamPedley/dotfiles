@@ -233,6 +233,7 @@ This function should only modify configuration layer settings."
   (global-set-key (kbd "H-j") 'evil-window-down)
 
 
+
   ;; (global-set-key (kbd "H-]" 'spacemacs/t))
 
 
@@ -241,6 +242,7 @@ This function should only modify configuration layer settings."
   (spacemacs/set-leader-keys "ESC" 'keyboard-quit)
   (spacemacs/set-leader-keys "oc" 'org-capture)
   ;; (spacemacs/set-leader-keys "TAB" 'spacemacs/layouts-transient-state/body)
+  (spacemacs/set-leader-keys "SPC" 'helm-projectile-find-file)
   (spacemacs/set-leader-keys "L" 'spacemacs/workspaces-transient-state/body)
   (spacemacs/set-leader-keys "W" 'spacemacs/window-manipulation-transient-state/body)
   (spacemacs/set-leader-keys "o1" 'spacemacs/custom-layouts-transient-state/spacemacs/custom-perspective-@Org-and-exit)

@@ -26,8 +26,14 @@
 
 (global-visual-line-mode 1)
 
-(global-set-key (kbd "s--") #'ranger)
-(map! "s--" #'ranger)
+;; (global-set-key (kbd "s--") #'ranger)
+;; (map! "s--" #'ranger)
+;;
+;;
+(global-set-key (kbd "s--") #'deer)
+(map! "s--" #'deer)
+
+;; (add-hook! dired-mode #'ranger-override-dired-fn) ;; Override dired-mode so it uses deer
 
 
 (global-set-key (kbd "s-b") #'ibuffer)
@@ -38,15 +44,15 @@
 
 
 
-(after! org
-  (set-face-attribute 'org-checkbox-statistics-done nil
-                      :foreground "#ffffff"
-                      :background nil
-                      :weight 'bold)
-(set-face-attribute 'org-checkbox nil
-                      :foreground "#ff0000"
-                      :background nil)
-)
+;; (after! org
+;;   (set-face-attribute 'org-checkbox-statistics-done nil
+;;                       :foreground "#ffffff"
+;;                       :background nil
+;;                       :weight 'bold)
+;; (set-face-attribute 'org-checkbox nil
+;;                       :foreground "#ff0000"
+;;                       :background nil)
+;; )
 
 ;; (global-set-key (kbd "H-p") 'helm-projectile-find-file)
 ;; (global-set-key (kbd "H--") 'ranger)
