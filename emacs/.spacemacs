@@ -71,7 +71,10 @@ This function should only modify configuration layer settings."
                                        react
                                        emacs-lisp
                                        (javascript :variables javascript-fmt-tool 'prettier
+                                         node-add-modules-path t
+                                         javascript-repl `nodejs
                                                    javascript-import-tool 'import-js
+                                         javascript-fmt-on-save t
                                                    javascript-backend 'lsp))
 
    dotspacemacs-additional-packages '(doom-themes evil-goggles)
@@ -294,7 +297,10 @@ lines downward first."
   (setq doom-modeline-buffer-file-name-style 'file-name)
   (setq doom-modeline-buffer-encoding nil)
 
-
+  (setq js2-strict-missing-semi-warning nil)
+  ;; (setq js2-mode-show-parse-errors nil)
+  ;; (setq js2-mode-show-strict-warnings nil)
+  ;; js2-toggle-warnings-and-errors
 
 
   (spacemacs/toggle-vi-tilde-fringe-off)
