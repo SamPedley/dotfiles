@@ -7,8 +7,8 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
     dotspacemacs-configuration-layers '(nginx
                                          csv
-                                       go
-                                       rust
+                                        ( go :variables go-tab-width 4 go-format-before-save t)
+                                      rust
                                        lsp
                                        sql
                                        yaml
@@ -23,8 +23,12 @@ This function should only modify configuration layer settings."
                                        docker
                                        (ranger :variables
                                                ranger-enter-with-minus t
+                                         ranger-parent-depth 1
                                                ranger-override-dired-mode t
                                                ranger-max-preview-size 10
+                                               ranger-cleanup-eagerly t
+                                               ranger-modify-header nil
+                                               ranger-cleanup-on-disable t
                                                ranger-show-preview t
                                                ranger-show-hidden t)
                                        xkcd

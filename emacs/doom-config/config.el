@@ -35,6 +35,8 @@
 
 ;; (add-hook! dired-mode #'ranger-override-dired-fn) ;; Override dired-mode so it uses deer
 
+(setq ranger-parent-depth 1)
+
 
 (global-set-key (kbd "s-b") #'ibuffer)
 (map! "s-b" #'ibuffer)
