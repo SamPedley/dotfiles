@@ -58,8 +58,8 @@ This function should only modify configuration layer settings."
                                        ;; Linters
                                        prettier
                                        ;; Languages
-                                       ( plantuml :variables plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.5/libexec/plantuml.jar"
-                                                  org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.5/libexec/plantuml.jar" )
+                                       ( plantuml :variables plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.13/libexec/plantuml.jar"
+                                                  org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.13/libexec/plantuml.jar" )
                                        themes-megapack
                                        python
                                        vimscript
