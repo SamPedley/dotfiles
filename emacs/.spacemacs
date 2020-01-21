@@ -14,8 +14,9 @@ This function should only modify configuration layer settings."
                                        yaml
                                        colors
                                        groovy
+                                       games
                                        ;; (colors :variables colors-enable-nyan-cat-progress-bar t)
-                                       helm
+                                         (helm :variables hybrid-style-enable-hjkl-bindings t)
                                        kubernetes
                                        ;; spacemacs-purpose
                                        ;; spacemacs-navigation
@@ -39,6 +40,7 @@ This function should only modify configuration layer settings."
                                        command-log
                                        git
                                        github
+                                       quickurl
                                        copy-as-format
                                        osx
                                        (ibuffer :variables ibuffer-group-buffers-by 'projects)
@@ -48,6 +50,7 @@ This function should only modify configuration layer settings."
                                             org-want-todo-bindings t
                                             org-enable-org-journal-support t
                                             org-enable-reveal-js-support t
+                                         org-enable-sticky-header t
                                             org-enable-github-support t)
                                        shell-scripts
                                        (shell :variables shell-default-term-shell "/usr/local/bin/bash"
