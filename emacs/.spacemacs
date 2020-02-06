@@ -5,34 +5,39 @@ This function should only modify configuration layer settings."
   (setq-default
 
    ;; List of configuration layers to load.
-    dotspacemacs-configuration-layers '(nginx
+    dotspacemacs-configuration-layers '(
+
+;; Spacemacs
+                                         (spacemacs-layouts :variables spacemacs-layouts-restrict-spc-tab t)
+                                         nginx
                                          csv
-                                        ( go :variables go-tab-width 4 go-format-before-save t)
+                                        ( go :variables go-tab-width 2 go-format-before-save t)
                                       rust
                                        lsp
                                        sql
                                        yaml
                                        colors
                                        groovy
-                                       games
+                                       ;; games
                                        ;; (colors :variables colors-enable-nyan-cat-progress-bar t)
                                          (helm :variables hybrid-style-enable-hjkl-bindings t)
                                        kubernetes
-                                       ;; spacemacs-purpose
-                                       ;; spacemacs-navigation
                                        (terraform :variables terraform-auto-format-on-save t)
                                        docker
                                        (ranger :variables
                                                ranger-enter-with-minus t
-                                         ranger-parent-depth 1
-                                               ranger-override-dired-mode t
-                                               ranger-max-preview-size 10
-                                               ranger-cleanup-eagerly t
-                                               ranger-modify-header nil
+                                         ;; ranger-parent-depth 0
+                                               ;; ranger-override-dired-mode t
+                                               ranger-max-preview-size 5
+                                               ;; ranger-cleanup-eagerly t
+                                               ;; ranger-preview-file nil
+
+                                               ;; ranger-modify-header nil
                                                ranger-cleanup-on-disable t
                                                ranger-show-preview t
-                                               ranger-show-hidden t)
-                                       xkcd
+                                         ranger-show-hidden t
+                                         )
+                                       ;; xkcd
                                        (spell-checking :variables spell-checking-enable-by-default nil)
                                        ( restclient :variables restclient-use-org t)
                                        auto-completion
@@ -84,11 +89,15 @@ This function should only modify configuration layer settings."
                                          javascript-repl `nodejs
                                                    javascript-import-tool 'import-js
                                          javascript-fmt-on-save t
-                                                   javascript-backend 'lsp))
+                                         javascript-backend 'lsp)
+
+                                         spacemacs-purpose
+                                         spacemacs-navigation
+                                         )
 
    dotspacemacs-additional-packages '(doom-themes evil-goggles)
    dotspacemacs-frozen-packages '()
-   dotspacemacs-excluded-packages '(adaptive-wrap)
+   dotspacemacs-excluded-packages '()
    dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
@@ -132,12 +141,12 @@ This function should only modify configuration layer settings."
    ;;   :relative t)
    dotspacemacs-folding-method 'evil
    dotspacemacs-zone-out-when-idle nil
-   dotspacemacs-startup-banner 100
+   dotspacemacs-startup-banner 999
    dotspacemacs-startup-lists '((recents . 5)
                                 (projects . 10)
                                 (todos . 10))
 
-   dotspacemacs-scratch-mode 'org-mode
+   dotspacemacs-scratch-mode 'text-mode
 
    dotspacemacs-themes '(doom-gruvbox
                          gruvbox-dark-hard
@@ -168,7 +177,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-mode-line-theme 'doom
    ;; dotspacemacs-mode-line-theme '(all-the-icons :separator none)
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 15
+                               :size 14
                                :weight normal
                                :width normal)
    dotspacemacs-default-layout-name "Default"
@@ -297,6 +306,10 @@ lines downward first."
   (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks)
   ;; (setq clojure-enable-fancify-symbols t)
 
+  ;; -------------------------------
+  ;; Visual  -----------------------
+
+  (setq org-re-reveal-root (quote ("~/Dropbox/Notes/attachments/reveal.js")))
   ;; -------------------------------
   ;; Visual  -----------------------
 
