@@ -12,7 +12,7 @@ This function should only modify configuration layer settings."
                                          nginx
                                          csv
                                         ( go :variables go-tab-width 2 go-format-before-save t)
-                                      rust
+                                      ;; rust
                                        lsp
                                        sql
                                        yaml
@@ -53,9 +53,10 @@ This function should only modify configuration layer settings."
                                        semantic
                                        (org :variables org-projectile-file "~/Dropbox/Notes/inbox.org"
                                             org-want-todo-bindings t
-                                            org-enable-org-journal-support t
+                                            ;; org-enable-org-journal-support t
                                             org-enable-reveal-js-support t
-                                         org-enable-sticky-header t
+                                         ;; org-enable-sticky-header t
+                                         org-enable-verb-support t
                                             org-enable-github-support t)
                                        shell-scripts
                                        (shell :variables shell-default-term-shell "/usr/local/bin/bash"
@@ -78,6 +79,8 @@ This function should only modify configuration layer settings."
                                        asciidoc
                                        (clojure :variables
                                         clojure-enable-sayid t
+                                        clojure-enable-fancify-symbols t
+                                        clojure-enable-linters 'clj-kondo
                                         clojure-enable-clj-refactor t)
                                        (json :variables json-fmt-tool 'prettier)
                                        (html :variables web-fmt-tool 'prettier)
@@ -93,6 +96,8 @@ This function should only modify configuration layer settings."
 
                                          spacemacs-purpose
                                          spacemacs-navigation
+                                         spacemacs-org
+                                         spacemacs-project
                                          )
 
    dotspacemacs-additional-packages '(doom-themes evil-goggles)
@@ -309,7 +314,7 @@ lines downward first."
   ;; -------------------------------
   ;; Visual  -----------------------
 
-  (setq org-re-reveal-root (quote ("~/Dropbox/Notes/attachments/reveal.js")))
+  ;; (setq org-re-reveal-root (quote ("~/Dropbox/Notes/attachments/reveal.js")))
   ;; -------------------------------
   ;; Visual  -----------------------
 
@@ -334,7 +339,6 @@ lines downward first."
   ;; -------------------------------
   ;; Org Mode
   ;; -------------------------------
-  (setq ranger-show-literal nil) ;; preview with syntax highlighting - toggle with "zi" in ranger mode
   (setq magit-repository-directories '("~/Projects"))
 
   (setq projectile-project-search-path '("~/Projects/"))
@@ -347,8 +351,12 @@ lines downward first."
   ;;
   ;; org mode config
   ;;
-  (setq org-journal-dir "~/Dropbox/Notes/journal/")
+  ;; (setq org-journal-dir "~/Dropbox/Notes/journal/")
+  (setq org-confirm-babel-evaluate nil
+    org-src-preserve-indentation nil
+    org-edit-src-content-indentation 0)
   (setq org-startup-indented t)
+
   (setq org-agenda-files (quote ("~/Dropbox/Notes")))
   ;; auto save agenda
   (add-hook 'org-agenda-mode-hook
