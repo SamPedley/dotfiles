@@ -145,3 +145,12 @@ brew install graphviz
 ** VS Code
 *** Install
 [[https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync][vscode sync settings plugin]]
+
+*** Vim VS Code
+- https://marketplace.visualstudio.com/items?itemName=vscodevim.vim
+#+NAME: vscode-vim
+#+begin_src bash
+  defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+  defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false
+  defaults delete -g ApplePressAndHoldEnabled
+#+end_src
