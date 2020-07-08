@@ -38,8 +38,6 @@ open_apps() {
   open https://itunes.apple.com/us/app/magnet/id441258766
   echo '1Password:'
   open https://itunes.apple.com/us/app/1password/id443987910
-  echo 'Frank:'
-  open https://itunes.apple.com/us/app/frank-deloupe/id530458789
   echo 'IA Writer:'
   open https://itunes.apple.com/us/app/ia-writer/id775737590
 }

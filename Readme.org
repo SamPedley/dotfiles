@@ -1,5 +1,4 @@
 #+TITLE: Dotfiles Setup
-#+STARTUP: overview
 
 #+CAPTION: Screenshot
 #+ATTR_HTML: :align center :style max-width:80%;
@@ -14,6 +13,15 @@ brew update
 brew cleanup
 #+end_src
 
+*** Source Code pro font
+#+begin_src bash
+brew tap homebrew/cask-fonts
+brew cask install font-source-code-pro
+#+end_src
+*** Alacritity
+#+begin_src bash
+ ln -s ~/Projects/dotfiles/alacritty.yml ~/.alacritty.yml
+#+end_src
 ** JavaScript
 *** Install Node Using [[https://github.com/tj/n][n]]
 #+Name: install-js-n
@@ -107,6 +115,9 @@ brew install tmux
 
 # install tmp - tmux package manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm/
+
+# copy over tmux config
+ ln -s ~/Projects/dotfiles/tmux.conf ~/.tmux.conf
 #+end_src
 
 ** Emacs
@@ -153,4 +164,23 @@ brew install graphviz
   defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
   defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false
   defaults delete -g ApplePressAndHoldEnabled
+#+end_src
+** ZSH
+*** Install Zsh
+#+begin_src  bash
+brew install zsh
+
+
+ ln -s ~/Projects/dotfiles/.profile ~/.profile
+#+end_src
+
+** Python
+*** Brew install
+#+begin_src bash
+brew install python
+#+end_src
+
+** Terraform
+#+begin_src bash
+brew install terraform
 #+end_src

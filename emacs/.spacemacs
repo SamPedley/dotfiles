@@ -25,15 +25,19 @@ This function should only modify configuration layer settings."
                                        (terraform :variables terraform-auto-format-on-save t)
                                        docker
                                        (ranger :variables
+                                         ;;  ranger-width-parents 0.12
+                                         ;; ranger-max-parent-width 0.12
+
                                                ranger-enter-with-minus t
                                          ;; ranger-parent-depth 0
-                                               ;; ranger-override-dired-mode t
-                                               ranger-max-preview-size 5
+                                               ranger-override-dired-mode t
+                                               ranger-max-preview-size 2
                                                ;; ranger-cleanup-eagerly t
                                                ;; ranger-preview-file nil
 
+                                         ranger-show-literal nil
                                                ;; ranger-modify-header nil
-                                               ranger-cleanup-on-disable t
+                                               ;; ranger-cleanup-on-disable t
                                                ranger-show-preview t
                                          ranger-show-hidden t
                                          )
@@ -51,7 +55,7 @@ This function should only modify configuration layer settings."
                                        (ibuffer :variables ibuffer-group-buffers-by 'projects)
                                        multiple-cursors
                                        semantic
-                                       (org :variables org-projectile-file "~/Dropbox/Notes/inbox.org"
+                                       (org :variables ;;org-projectile-file "~/Dropbox/Notes/inbox.org"
                                             org-want-todo-bindings t
                                             ;; org-enable-org-journal-support t
                                             org-enable-reveal-js-support t
@@ -329,6 +333,11 @@ lines downward first."
   ;; (setq js2-mode-show-strict-warnings nil)
   ;; js2-toggle-warnings-and-errors
 
+  ;; (add-to-list 'golden-ratio-exclude-modes "Ranger:name")
+  ;; (add-to-list 'golden-ratio-exclude-modes "ranger-mode")
+;; (with-eval-after-load 'golden-ratio
+;;   (add-to-list 'golden-ratio-exclude-modes "Ranger:name"))
+
 
   (spacemacs/toggle-vi-tilde-fringe-off)
 
@@ -336,6 +345,7 @@ lines downward first."
   (setq frame-title-format nil)
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
   (add-to-list 'default-frame-alist '(ns-appearance . dark))
+
   ;; -------------------------------
   ;; Org Mode
   ;; -------------------------------
@@ -357,7 +367,7 @@ lines downward first."
     org-edit-src-content-indentation 0)
   (setq org-startup-indented t)
 
-  (setq org-agenda-files (quote ("~/Dropbox/Notes")))
+  ;; (setq org-agenda-files (quote ("~/Dropbox/Notes")))
   ;; auto save agenda
   (add-hook 'org-agenda-mode-hook
             (lambda ()
@@ -379,34 +389,34 @@ lines downward first."
                 ("PHONE" :foreground "forest green" :weight bold))))
 
   ;; org-capture
-  (setq org-directory "~/Dropbox/Notes")
-  (setq org-default-notes-file "~/Dropbox/Notes/inbox.org")
-  (setq org-default-work-notes-file "~/Dropbox/Notes/work.org")
-  (setq org-capture-templates (quote (("t" "todo"
-                                       entry
-                                       (file "~/Dropbox/Notes/inbox.org")
-                                       "* TODO %?\n%T\n"
-                                       :clock-in t
-                                       :clock-resume t)
-                                      ("r" "respond"
-                                       entry
-                                       (file org-default-notes-file)
-                                       "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n"
-                                       :clock-in t
-                                       :clock-resume t
-                                       :immediate-finish t)
-                                      ("n" "note"
-                                       entry
-                                       (file org-default-notes-file)
-                                       "* %? :NOTE:\n%T\n"
-                                       :clock-in t
-                                       :clock-resume t)
-                                      ("m" "Meeting"
-                                       entry
-                                       (file org-default-work-notes-file)
-                                       "* MEETING with %? :MEETING:\n%T"
-                                       :clock-in t
-                                       :clock-resume t))))
+  ;; (setq org-directory "~/Dropbox/Notes")
+  ;; (setq org-default-notes-file "~/Dropbox/Notes/inbox.org")
+  ;; (setq org-default-work-notes-file "~/Dropbox/Notes/work.org")
+  ;; (setq org-capture-templates (quote (("t" "todo"
+  ;;                                      entry
+  ;;                                      (file "~/Dropbox/Notes/inbox.org")
+  ;;                                      "* TODO %?\n%T\n"
+  ;;                                      :clock-in t
+  ;;                                      :clock-resume t)
+  ;;                                     ("r" "respond"
+  ;;                                      entry
+  ;;                                      (file org-default-notes-file)
+  ;;                                      "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n"
+  ;;                                      :clock-in t
+  ;;                                      :clock-resume t
+  ;;                                      :immediate-finish t)
+  ;;                                     ("n" "note"
+  ;;                                      entry
+  ;;                                      (file org-default-notes-file)
+  ;;                                      "* %? :NOTE:\n%T\n"
+  ;;                                      :clock-in t
+  ;;                                      :clock-resume t)
+  ;;                                     ("m" "Meeting"
+  ;;                                      entry
+  ;;                                      (file org-default-work-notes-file)
+  ;;                                      "* MEETING with %? :MEETING:\n%T"
+  ;;                                      :clock-in t
+  ;;                                      :clock-resume t))))
 
   (spacemacs|define-custom-layout "@Rest"
     :binding "r"
