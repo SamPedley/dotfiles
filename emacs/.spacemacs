@@ -25,6 +25,7 @@ This function should only modify configuration layer settings."
                                        (terraform :variables terraform-auto-format-on-save t)
                                        docker
                                        (ranger :variables
+                                         ranger-show-literal nil
                                                ranger-enter-with-minus t
                                          ;; ranger-parent-depth 0
                                                ;; ranger-override-dired-mode t
@@ -51,7 +52,8 @@ This function should only modify configuration layer settings."
                                        (ibuffer :variables ibuffer-group-buffers-by 'projects)
                                        multiple-cursors
                                        semantic
-                                       (org :variables org-projectile-file "~/Dropbox/Notes/inbox.org"
+                                         (org :variables
+                                           ;;org-projectile-file "~/Dropbox/Notes/inbox.org"
                                             org-want-todo-bindings t
                                             ;; org-enable-org-journal-support t
                                             org-enable-reveal-js-support t
