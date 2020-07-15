@@ -145,3 +145,7 @@ function jswap() {
 function mkorg() {
 	touch "$ORG_NOTES_PATH""/$1.org"
 }
+
+function vault-login(){
+	vault login -method=ldap username=$(echo $USER)
+}
