@@ -133,8 +133,9 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm/
 
 #+name: install-doom
 #+begin_src bash
- ln -s ~/Projects/dotfiles/emacs/doom-config/ ~/doom-config
- ln -s ~/Projects/dotfiles/emacs/doom-config/ ~/.doom.d
+git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.doom-emacs
+ln -s ~/Projects/dotfiles/emacs/doom-config/ ~/doom-config
+ln -s ~/Projects/dotfiles/emacs/doom-config/ ~/.doom.d
 #+end_src
 
 *** Install spacemacs
