@@ -155,7 +155,10 @@ This function should only modify configuration layer settings."
 
    dotspacemacs-scratch-mode 'text-mode
 
-   dotspacemacs-themes '(doom-gruvbox
+    dotspacemacs-themes '(
+                           doom-old-hope
+                           doom-gruvbox
+                           doom-manegarm
                          gruvbox-dark-hard
 
                          ;; Others

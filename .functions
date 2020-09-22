@@ -149,3 +149,8 @@ function mkorg() {
 function vault-login(){
 	vault login -method=ldap username=$(echo $USER)
 }
+
+function goodmorning(){
+	vault login -method=ldap username=$(echo $USER)
+  saml2aws login
+}
