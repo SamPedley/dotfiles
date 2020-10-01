@@ -6,6 +6,12 @@
 
 * Setup
 ** Helpers
+*** Setup Github
+#+name: copy over dotfiles
+#+begin_src sh
+ln -s ~/Projects/dotfiles/.gitconfig ~/.gitconfig
+#+end_src
+
 *** Homebrew Update/cleanup
 #+name: copy-spacemacs-to-dotfiles
 #+begin_src sh
@@ -173,6 +179,8 @@ brew install zsh
 
 
  ln -s ~/Projects/dotfiles/.profile ~/.profile
+ ln -s ~/Projects/dotfiles/.functions ~/.functions
+ ln -s ~/Projects/dotfiles/.aliases ~/.aliases
 #+end_src
 
 ** Python
