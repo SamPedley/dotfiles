@@ -177,6 +177,11 @@ brew install graphviz
 #+begin_src  bash
 brew install zsh
 
+brew install starship
+brew install bat
+brew install fd
+
+brew install procs
 
  ln -s ~/Projects/dotfiles/.profile ~/.profile
  ln -s ~/Projects/dotfiles/.functions ~/.functions

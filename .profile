@@ -12,6 +12,8 @@ export PATH=$GOBIN:$PATH
 export PATH=/Users/sam/Library/Python/3.7/bin:$PATH
 
 # complete -C /usr/local/bin/terraform terraform
+# eval "$(starship init zsh)"
+
 
 
 # Load the shell dotfiles, and then some:

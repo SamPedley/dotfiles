@@ -43,6 +43,7 @@ This function should only modify configuration layer settings."
                                        ( restclient :variables restclient-use-org t)
                                        auto-completion
                                        emacs-lisp
+                                        common-lisp
                                        command-log
                                        git
                                        github
@@ -238,6 +239,8 @@ This function should only modify configuration layer settings."
 
 
 (defun dotspacemacs/user-config ()
+  ;; (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks)
+
   (defun sam/split-right-and-open ()
     (interactive)
     (split-window-right-and-focus)
