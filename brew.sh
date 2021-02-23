@@ -24,11 +24,11 @@ brew install gnu-sed
 brew install bash
 brew install bash-completion2
 
-# Switch to using brew-installed bash as default shell
-if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
-  echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
-  chsh -s /usr/local/bin/bash;
-fi;
+# # Switch to using brew-installed bash as default shell
+# if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
+#   echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
+#   chsh -s /usr/local/bin/bash;
+# fi;
 
 # Install `wget` with IRI support.
 brew install wget
@@ -37,7 +37,7 @@ brew install wget
 brew install gnupg
 
 # Install more recent versions of some macOS tools.
-# brew install tmux
+brew install tmux
 brew install vim
 brew install grep
 brew install openssh
@@ -50,6 +50,15 @@ brew install git-lfs
 # brew install rename
 # brew install ssh-copy-id
 brew install tree
+brew install jq
+
+brew install zsh
+
+brew install starship
+brew install bat
+brew install fd
+
+brew install procs
 
 # # Fonts
 # brew tap homebrew/cask-fonts

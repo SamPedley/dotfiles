@@ -202,10 +202,12 @@
   insteadOf = "https://github.com/"
 [user]
 	name = Sam Pedley
-	email = sjpeds@gmail.com
+	email = spedley@dinacare.com
 [magithub]
 	online = true
 [magithub "status"]
 	includeStatusHeader = true
 	includePullRequestsSection = true
 	includeIssuesSection = true
+[pull]
+	rebase = true

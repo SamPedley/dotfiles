@@ -9,6 +9,8 @@
 ;; (package! ranger)
 
 (package! prettier-js)
+(package! ob-typescript)
+(package! move-text)
 
 
 (package! gruvbox-theme)

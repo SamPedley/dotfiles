@@ -50,6 +50,26 @@ function server() {
 	python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
 }
 
+function open-pres() {
+PRES_PATH=~/Dropbox/Notes/Dina/present
+
+cd ~/Dropbox/Notes/Dina/present
+
+PS3='Please select a presentation: '
+select opt in *.html
+do
+    case $opt in
+        *.html)
+            echo "Opening up $opt"
+            open $opt
+            break
+            ;;
+        *) echo "$REPLY is not a choice"
+           break;;
+    esac
+done
+}
+
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
 # the `.git` directory, listing directories first. The output gets piped into
 # `less` with options to preserve color and line numbers, unless the output is
@@ -144,4 +164,21 @@ function jswap() {
 
 function mkorg() {
 	touch "$ORG_NOTES_PATH""/$1.org"
+}
+
+function core-rest-start() {
+  cd "$HOME/Projects/entouch-core/packages/entouch-rest"
+  nvm use 8
+  npm run start:dev | bunyan -o short
+}
+
+function web-start() {
+  cd "$HOME/Projects/entouch-web/ng"
+  nvm use 8
+  npm run start:dev
+}
+
+
+function nlog() {
+  echo "$@ | bunyan -o short"
 }

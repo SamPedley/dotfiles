@@ -12,8 +12,25 @@ alias cdp="cd ~/Projects"
 alias cdgo="cd $GOPATH"
 alias notes="cd ~/Dropbox/Notes"
 
-# GR shortcuts
-alias cdts="cd ~/Projects/TransferSafe/"
+# Dina shortcuts
+alias cdng="cd ~/Projects/enTouch-web/ng"
+alias cdcore="cd ~/Projects/enTouch-core"
+alias cdrest="cd ~/Projects/enTouch-core/packages/entouch-rest"
+alias cdpoc="cd ~/Projects/fe-structure-poc/dina-client"
+
+alias ngcd="cdng"
+alias corecd="cdcore"
+alias restcd="cdrest"
+
+alias restdev="core-rest-start"
+alias ngdev="web-start"
+
+alias ngcode="cdng && code ."
+alias corecode="cdcore && code ."
+
+alias pocstory="cdpoc && nx run ui:storybook"
+alias pocexpo="cdpoc && nx run app:start"
+alias poccode="cdpoc && code ."
 
 # Shortcuts
 alias e="emacs -nw"

@@ -21,8 +21,13 @@
  projectile-project-search-path '("~/Projects/"))
 
 (setq org-directory "~/Dropbox/Notes")
+(setq org-export-with-section-numbers nil)
+
+
 
 (setq display-line-numbers-type nil)
+;; (add-hook 'text-mode-hook #'display-line-numbers-mode)
+
 
 (global-visual-line-mode 1)
 
@@ -33,13 +38,26 @@
 (global-set-key (kbd "s--") #'deer)
 (map! "s--" #'deer)
 
+
+(global-set-key (kbd "s-p") #'projectile-find-file)
+(map! "s-p" #'projectile-find-file)
+
 ;; (add-hook! dired-mode #'ranger-override-dired-fn) ;; Override dired-mode so it uses deer
 
 (setq ranger-parent-depth 1)
 
 
+(setq ispell-dictionary "en-custom")
+(setq ispell-program-name "aspell")
+
+
+
 (global-set-key (kbd "s-b") #'ibuffer)
 (map! "s-b" #'ibuffer)
+
+(setq deft-directory "~/Dropbox/Notes"
+      deft-extensions `("txt" "org")
+      deft-recursive t)
 
 ;; Modules
 ;; (load! "+ranger")  ;; File manager stuff. Should replace with (dired +ranger)
@@ -60,6 +78,13 @@
 ;; (global-set-key (kbd "H--") 'ranger)
 ;; (global-set-key (kbd "H-g") 'magit-status)
 ;; (global-set-key (kbd "H-b") 'ibuffer)
+;;
+
+(defun clickup-link (clickup_id)
+  (browse-url (concat  "https://app.clickup.com/t/1257071/" (upcase clickup_id))))
+
+(after! org
+  (org-add-link-type "clickup" #'clickup-link))
 
 (global-set-key (kbd "s-h") #'evil-window-left)
   (global-set-key (kbd "s-l") #'evil-window-right)
