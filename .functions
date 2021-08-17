@@ -182,3 +182,49 @@ function web-start() {
 function nlog() {
   echo "$@ | bunyan -o short"
 }
+
+
+function fbget() {
+  local PROJECT="preparedhealth"
+  local QUERYPATH=""
+  local JQARGS="$3"
+
+  case $1 in
+
+  org)
+    QUERYPATH="/organizations/"
+    ;;
+
+  client)
+    QUERYPATH="/client/"
+    ;;
+
+
+  *)
+    QUERYPATH=""
+    ;;
+esac
+
+  local QUERY="$QUERYPATH""$2"
+if [[ "$4" == "" ]]; then
+  echo "Query Type: $1 - Query Path: $QUERYPATH"
+  echo "Value Passed: $2"
+  echo "Jq Args: $JQARGS"
+  echo "Firebase URL:"
+  echo "https://preparedhealth.firebaseio.com$QUERY"
+	fi
+
+
+ firebase database:get --project $PROJECT $QUERY  | jq $JQARGS
+}
+
+
+function fbget-file(){
+   local tmpfile=$(mktemp /tmp/fb-json.XXXXXX)
+
+  fbget $1 $2 $3 "hide" > "$tmpfile.json"
+ Open "$tmpfile.json"
+ echo "file path:"
+ echo "$tmpfile.json"
+
+}

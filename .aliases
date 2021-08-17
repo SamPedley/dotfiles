@@ -26,7 +26,10 @@ alias restdev="core-rest-start"
 alias ngdev="web-start"
 
 alias ngcode="cdng && code ."
+alias codeng="cdng && code ."
+
 alias corecode="cdcore && code ."
+alias codecore="corecode"
 
 alias pocstory="cdpoc && nx run ui:storybook"
 alias pocexpo="cdpoc && nx run app:start"
@@ -38,6 +41,16 @@ alias v="vim"
 alias g="git"
 alias nr="npm run"
 alias gb="go build"
+
+# Node
+alias n8="nvm use 8"
+alias n10="nvm use 10"
+alias n14="nvm use 14"
+alias nlatest="nvm use latest"
+
+
+#Dina dev fb
+alias fb-org="fbget /organizations/"
 
 # kubectl
 alias ku="kubectl"
